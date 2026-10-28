@@ -1,0 +1,98 @@
+.page-shell .section { max-width: 1440px; padding-left:6%; padding-right:6%; padding-top: 1%; padding-bottom: 5%; margin: auto; }
+        .page-shell .section-heading { display: flex; justify-content: space-between; align-items: flex-end; gap: 30px; margin-bottom: 38px; }
+        .page-shell h2 { font-size: 42px; line-height: 1.2; letter-spacing: -1.7px; font-weight: 550; margin-top: 17px; }
+        .page-shell h2 span { color: #85907f; }
+        .page-shell .section-heading > p { font-size: 13px; line-height: 1.9; color: var(--muted); padding-bottom: 4px; }
+        .page-shell .eyebrow {
+          margin-top: 5%;
+          font-size: 20px;
+          letter-spacing: 1.7px;
+          font-weight: 700;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        }
+        .page-shell .models-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
+        .page-shell .model-card {
+          text-align: left;
+          background: #fff;
+          border: 1px solid #dfe7df;
+          border-radius: 12px;
+          padding-left:22px;
+          padding-right:22px;
+          padding-top: 22px;
+          padding-bottom: 12px;
+          color: var(--dark);
+          transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+          display: flex;
+          flex-direction: column;
+        }
+        .page-shell .model-card:hover { transform: translateY(-5px); border-color: #92bfa1; }
+        .page-shell .model-card.active { border-color: #168853; box-shadow: 0 0 0 1px #168853; background: #f5faf4; }
+        .page-shell .model-icon {
+          display: grid;
+          place-items: center;
+          width: 47px;
+          height: 47px;
+          border: 1px solid #d5e7d8;
+          border-radius: 11px;
+          background: #eef6ec;
+          color: #178450;
+          font-size: 28px;
+          margin-bottom: 25px;
+        }
+        .page-shell .code-icon { font-size: 19px; }
+        .page-shell .model-card small { font-size: 7px; letter-spacing: 1.2px; color: #8b9988; }
+        .page-shell .model-card h3 { font-size: 22px; letter-spacing: -0.8px; font-weight: 600; margin: 12px 0; }
+        .page-shell .model-card p { font-size: 11px; line-height: 1.9; color: #788374; margin-bottom: 27px; }
+        .page-shell .model-action { display: flex; justify-content: space-between; align-items: center; font-size: 10px; margin-top: auto; color: #227345; }
+        .page-shell .model-console { margin-top: 28px; background: #0b221b; border: 1px solid #34533f; border-radius: 13px; overflow: hidden; color: #f0faf2; }
+        .page-shell .console-bar { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 17px 27px; border-bottom: 1px solid #ffffff12; font-size: 7px; letter-spacing: 1.7px; color: #8bab97; }
+        .page-shell .console-bar > span:first-child { display: flex; align-items: center; gap: 9px; }
+        .page-shell .console-bar i { width: 5px; height: 5px; background: #8cf8b2; border-radius: 50%; }
+        .page-shell .console-body { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; padding: 42px; }
+        .page-shell .console-kicker { font-size: 8px; color: #8ce5ad; letter-spacing: 1.2px; }
+        .page-shell .console-body h3 { font-size: 29px; line-height: 1.3; font-weight: 500; letter-spacing: -1px; margin: 15px 0; }
+        .page-shell .console-body p { font-size: 12px; color: #91ab9b; line-height: 1.8; }
+        .page-shell .console-body .button { margin-top: 25px; background: #b5efc3; color: #153b28; font-size: 11px; padding: 12px 18px; }
+        .page-shell .console-sample { align-self: center; background: #102d23; border: 1px solid #4e745333; border-radius: 9px; padding: 22px; }
+        .page-shell .sample-prompt { background: #1d3e2f; border: 1px solid #80b3871a; border-radius: 7px; padding: 13px 16px; font-size: 11px; line-height: 1.7; color: #c2dacb; margin: 0 0 25px 30px; }
+        .page-shell .sample-response { display: flex; gap: 13px; }
+        .page-shell .sample-response > span { color: #a8efbc; font-size: 27px; }
+        .page-shell .sample-response b { font-size: 12px; font-weight: 500; }
+        .page-shell .sample-response p { font-size: 10px; margin-top: 7px; }
+        .page-shell .model-note { display: block; font-size: 8px; color: #6f9580; line-height: 1.7; margin: 20px 0 0 34px; }
+        .page-shell .more-models { display: flex; align-items: center; gap: 17px; padding: 24px 8px 0; }
+        .page-shell .more-models > span { font-size: 32px; color: #3e8953; }
+        .page-shell .more-models b { font-size: 12px; font-weight: 500; }
+        .page-shell .more-models p { font-size: 10px; color: var(--muted); margin-top: 5px; }
+        .page-shell .more-models a { margin-left: auto; font-size: 11px; color: var(--green); }
+        .page-shell .possibilities { background: var(--cream); max-width: none; text-align: center; }
+        .page-shell .possibilities > .eyebrow { justify-content: center; }
+        .page-shell .possibilities > p { font-size: 13px; color: var(--muted); margin-top: 16px; }
+        .page-shell .tabs { display: flex; justify-content: center; gap: 9px; margin: 30px auto; }
+        .page-shell .tabs button { background: white; color: #6a7664; border: 1px solid #dfe5d9; padding: 12px 18px; border-radius: 6px; font-size: 11px; }
+        .page-shell .tabs button[aria-selected='true'] { color: white; background: var(--green); border-color: var(--green); }
+        .page-shell .example-panel { max-width: 1070px; margin: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; text-align: left; background: white; border: 1px solid var(--line); padding: 42px; border-radius: 10px; }
+        .page-shell .sample-label { font-size: 8px; letter-spacing: 1.4px; color: #8c9b83; }
+        .page-shell .example-panel h3 { font-size: 28px; font-weight: 550; letter-spacing: -0.8px; line-height: 1.3; margin: 17px 0 12px; }
+        .page-shell .example-panel p { font-size: 12px; line-height: 1.8; color: var(--muted); }
+        .page-shell .example-panel a { margin-top: 22px; font-size: 11px; color: var(--green); }
+        .page-shell .prompt-card { background: #f5f7f0; border: 1px solid #e2e9d9; border-radius: 7px; padding: 27px; align-self: center; }
+        .page-shell .prompt-card > span { font-size: 8px; letter-spacing: 1.2px; color: #85957b; }
+        .page-shell .prompt-card blockquote { font-size: 17px; line-height: 1.65; margin: 20px 0; font-weight: 450; }
+        .page-shell .prompt-card button { border: 1px solid #dce5d3; background: white; border-radius: 5px; padding: 9px 12px; font-size: 10px; display: flex; gap: 32px; color: #426334; }
+        .page-shell .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 45px; }
+        .page-shell .steps-grid article { border-top: 1px solid #d9e1d2; padding-top: 23px; }
+        .page-shell .steps-grid article > span { font-size: 11px; color: #7e956b; }
+        .page-shell .steps-grid h3 { font-size: 18px; font-weight: 550; margin: 20px 0 12px; }
+        .page-shell .steps-grid p { font-size: 12px; line-height: 1.9; color: var(--muted); max-width: 290px; }
+        @media (max-width: 980px) {
+          .page-shell .models-grid { grid-template-columns: 1fr 1fr; }
+          .page-shell .example-panel { grid-template-columns: 1fr; gap: 30px; }
+          .page-shell .steps-grid { grid-template-columns: 1fr; gap: 30px; }
+          .page-shell .steps-grid h3 { margin-top: 12px; }
+          .page-shell .steps-grid p { max-width: none; }
+          .page-shell .section-heading { flex-direction: column; align-items: flex-start; }
+        }
+      

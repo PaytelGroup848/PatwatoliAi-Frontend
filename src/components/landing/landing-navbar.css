@@ -1,0 +1,120 @@
+.landing-header {
+  box-sizing: border-box;
+  height: 94px;
+  max-width: 1440px;
+  margin: auto;
+  padding: 0 6%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 36px;
+  border-bottom: 1px solid #edf0e9;
+  background: rgba(255, 255, 255, 0.97);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.landing-header-home {
+  flex: 0 1 auto;
+}
+
+.landing-header-logo {
+  width: 172px;
+  height: auto;
+  max-width: 100%;
+  display: block;
+}
+
+.landing-header-nav {
+  display: flex;
+  gap: 30px;
+  font-size: 13px;
+  font-weight: 550;
+}
+
+.landing-header-nav a,
+.landing-header-login {
+  color: inherit;
+  text-decoration: none;
+}
+
+.landing-header-nav a:hover,
+.landing-header-login:hover {
+  color: #087849;
+}
+
+.landing-header-account {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  font-size: 13px;
+}
+
+.landing-header-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 12px 17px;
+  border: 0;
+  border-radius: 7px;
+  background: #087849;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.landing-header-button:hover {
+  background: #045b37;
+  transform: translateY(-2px);
+}
+
+.landing-header-button-icon {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  color: currentColor;
+}
+
+.landing-header-menu {
+  display: none;
+  border: 0;
+  background: transparent;
+  color: #172d24;
+  font-size: 20px;
+}
+
+@media (max-width: 980px) {
+  .landing-header-account {
+    display: none;
+  }
+
+  .landing-header-menu {
+    display: inline-flex;
+  }
+
+  .landing-header-logo {
+    width: 150px;
+  }
+
+  .landing-header-nav {
+    position: absolute;
+    top: 94px;
+    left: 6%;
+    right: 6%;
+    display: none;
+    flex-direction: column;
+    gap: 14px;
+    padding: 16px;
+    border: 1px solid #e5ebdf;
+    border-radius: 10px;
+    background: #fff;
+  }
+
+  .landing-header-nav.open {
+    display: flex;
+  }
+}
