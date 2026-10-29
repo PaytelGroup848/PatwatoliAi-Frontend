@@ -77,7 +77,7 @@ export function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
   const isDarkMode = resolvedTheme === "dark";
 
   return createPortal(
-    <div className="fixed inset-0 z-[99999] flex items-center justify-center bg-slate-900/60 dark:bg-black/75 backdrop-blur-md p-4 animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-99999 flex items-center justify-center bg-slate-900/60 dark:bg-black/75 backdrop-blur-md p-4 animate-in fade-in duration-200">
       <div className="relative w-full max-w-2xl overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 shadow-2xl transition-colors duration-200">
         
         {/* HEADER */}
@@ -100,7 +100,7 @@ export function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
         </div>
 
         {/* BODY CONTAINER */}
-        <div className="flex min-h-[400px]">
+        <div className="flex min-h-100">
           {/* TABS SIDEBAR */}
           <div className="w-52 border-r border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-950/40 p-3 space-y-1">
             <button
@@ -323,7 +323,7 @@ export function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                         </span>
                       </div>
                       <p className="text-[11px] text-slate-500 dark:text-slate-400">
-                        Toggles root HTML class instantaneously across your active chat session.
+                        
                       </p>
                     </div>
 

@@ -546,7 +546,7 @@ export function ConversationSidebar() {
         {/* USER / GUEST PROFILE CARD */}
         {isGuest ? (
           !isCollapsed ? (
-            <div className="rounded-2xl bg-gradient-to-br from-emerald-500/10 via-teal-500/5 to-slate-100 dark:to-slate-900/60 p-3 border border-emerald-200/70 dark:border-emerald-800/60 shadow-xs">
+            <div className="rounded-2xl bg-linear-to-br from-emerald-500/10 via-teal-500/5 to-slate-100 dark:to-slate-900/60 p-3 border border-emerald-200/70 dark:border-emerald-800/60 shadow-xs">
               <div className="flex items-center gap-2 mb-1.5">
                 <div className="flex h-6 w-6 items-center justify-center rounded-full bg-emerald-600 text-white text-[11px] font-bold shadow-xs">
                   G

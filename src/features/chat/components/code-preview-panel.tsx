@@ -110,7 +110,7 @@ export function CodePreviewPanel({
           </button>
 
           {isMenuOpen && (
-            <div className="absolute top-9 left-0 z-[99999] w-48 rounded-2xl border border-slate-200 bg-white p-2 shadow-2xl backdrop-blur-2xl animate-in fade-in slide-in-from-top-2 duration-150">
+            <div className="absolute top-9 left-0 z-99999 w-48 rounded-2xl border border-slate-200 bg-white p-2 shadow-2xl backdrop-blur-2xl animate-in fade-in slide-in-from-top-2 duration-150">
               <button
                 onClick={() => { setActiveTab("preview"); setIsMenuOpen(false); }}
                 className={`flex w-full items-center gap-2.5 rounded-xl px-3 py-2 text-xs font-semibold transition-colors cursor-pointer ${
@@ -235,8 +235,8 @@ export function CodePreviewPanel({
               deviceMode === "desktop"
                 ? "w-full"
                 : deviceMode === "tablet"
-                ? "w-[768px] max-w-full"
-                : "w-[375px] max-w-full"
+                ? "w-3xl max-w-full"
+                : "w-93.75 max-w-full"
             }`}
           >
             <iframe

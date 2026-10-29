@@ -610,10 +610,10 @@ export function ChatWindow() {
     <div className="relative flex h-full w-full flex-col overflow-hidden bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-200">
       {/* Patwatoli AI Emerald Green Wave Background */}
       <div className="absolute inset-0 -z-10 overflow-hidden bg-white dark:bg-slate-950 pointer-events-none transition-colors duration-200">
-        <div className="absolute -top-32 left-1/2 h-[520px] w-[1100px] -translate-x-1/2 rounded-full bg-emerald-200/40 dark:bg-emerald-950/20 blur-[120px]" />
-        <div className="absolute top-1/4 -left-40 h-[420px] w-[720px] rounded-full bg-teal-200/30 dark:bg-teal-950/20 blur-[130px]" />
-        <div className="absolute bottom-[-160px] left-[-80px] h-[520px] w-[820px] rounded-full bg-emerald-300/30 dark:bg-emerald-950/20 blur-[120px]" />
-        <div className="absolute bottom-[-220px] right-[-100px] h-[560px] w-[860px] rounded-full bg-teal-100/50 dark:bg-teal-950/20 blur-[120px]" />
+        <div className="absolute -top-32 left-1/2 h-130 w-275 -translate-x-1/2 rounded-full bg-emerald-200/40 dark:bg-emerald-950/20 blur-[120px]" />
+        <div className="absolute top-1/4 -left-40 h-105 w-180 rounded-full bg-teal-200/30 dark:bg-teal-950/20 blur-[130px]" />
+        <div className="absolute -bottom-40 -left-20 h-130 w-205 rounded-full bg-emerald-300/30 dark:bg-emerald-950/20 blur-[120px]" />
+        <div className="absolute -bottom-55 -right-25 h-140 w-215 rounded-full bg-teal-100/50 dark:bg-teal-950/20 blur-[120px]" />
       </div>
 
       {isEmpty ? (
@@ -706,7 +706,7 @@ export function ChatWindow() {
               </div>
 
               {/* Fixed Bottom Input Dock */}
-              <div className="shrink-0 w-full px-2 sm:px-4 pb-[max(0.75rem,env(safe-area-inset-bottom))] sm:pb-4 pt-2 bg-gradient-to-t from-white via-white/95 to-transparent dark:from-slate-950 dark:via-slate-950/95 border-t border-slate-100/60 dark:border-slate-800/60">
+              <div className="shrink-0 w-full px-2 sm:px-4 pb-[max(0.75rem,env(safe-area-inset-bottom))] sm:pb-4 pt-2 bg-linear-to-t from-white via-white/95 to-transparent dark:from-slate-950 dark:via-slate-950/95 border-t border-slate-100/60 dark:border-slate-800/60">
                 <div className="max-w-3xl mx-auto w-full">
                   <MessageInput
                     onSend={handleSend}
@@ -763,7 +763,7 @@ export function ChatWindow() {
             </div>
 
             {/* Fixed Bottom Input Dock */}
-            <div className="shrink-0 w-full px-2 sm:px-6 pb-[max(0.75rem,env(safe-area-inset-bottom))] sm:pb-4 pt-2 bg-gradient-to-t from-white via-white/95 to-transparent dark:from-slate-950 dark:via-slate-950/95 border-t border-slate-100/60 dark:border-slate-800/60">
+            <div className="shrink-0 w-full px-2 sm:px-6 pb-[max(0.75rem,env(safe-area-inset-bottom))] sm:pb-4 pt-2 bg-linear-to-t from-white via-white/95 to-transparent dark:from-slate-950 dark:via-slate-950/95 border-t border-slate-100/60 dark:border-slate-800/60">
               <div className="max-w-4xl mx-auto w-full">
                 {isGuest && guestCreditsRemaining === 0 && (
                   <div className="flex items-center justify-between gap-2 rounded-xl bg-amber-50 border border-amber-200 px-4 py-2 text-xs text-amber-900 mb-2 shadow-xs">

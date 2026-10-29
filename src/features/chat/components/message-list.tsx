@@ -583,7 +583,7 @@ export function MessageList({
                           className="flex items-center gap-2 rounded-xl bg-emerald-700/80 border border-emerald-400/40 px-3 py-1.5 text-xs text-white shadow-xs backdrop-blur-xs font-normal"
                         >
                           <FileText className="h-4 w-4 text-emerald-200 shrink-0" />
-                          <span className="truncate max-w-[260px] font-medium">{att.filename}</span>
+                          <span className="truncate max-w-65 font-medium">{att.filename}</span>
                         </div>
                       ))}
                     </div>

@@ -129,7 +129,7 @@ export const SourcesDropdown = forwardRef<SourcesDropdownHandle, SourcesDropdown
                   {sources.slice(0, 3).map((s) => (
                     <span
                       key={s.index}
-                      className="truncate max-w-[120px] rounded-sm bg-slate-100 dark:bg-slate-800 border border-slate-200/70 dark:border-slate-700 px-1.5 py-0.5 text-[10px] text-slate-600 dark:text-slate-300 font-mono"
+                      className="truncate max-w-30 rounded-sm bg-slate-100 dark:bg-slate-800 border border-slate-200/70 dark:border-slate-700 px-1.5 py-0.5 text-[10px] text-slate-600 dark:text-slate-300 font-mono"
                     >
                       {s.domain || `Source ${s.index}`}
                     </span>
@@ -230,7 +230,7 @@ export const SourcesDropdown = forwardRef<SourcesDropdownHandle, SourcesDropdown
                       className="flex items-center gap-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-2.5 py-1.5 text-xs text-slate-700 dark:text-slate-200 shadow-2xs"
                     >
                       <FileText size={12} className="text-blue-500 dark:text-blue-400 shrink-0" />
-                      <span className="font-medium truncate max-w-[220px]">
+                      <span className="font-medium truncate max-w-55">
                         {doc.filename}
                       </span>
                       {doc.page && (

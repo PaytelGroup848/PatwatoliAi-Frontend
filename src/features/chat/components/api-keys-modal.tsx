@@ -240,7 +240,7 @@ console.log(data);`;
   };
 
   const modalContent = (
-    <div className="fixed inset-0 z-[999999] h-screen w-screen overflow-hidden bg-slate-50 text-slate-900 flex flex-col animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-999999 h-screen w-screen overflow-hidden bg-slate-50 text-slate-900 flex flex-col animate-in fade-in duration-200">
       {/* DEVELOPER PORTAL TOP NAVBAR */}
       <div className="flex h-16 items-center justify-between border-b border-slate-200/80 bg-white/95 px-6 backdrop-blur-xl shrink-0 shadow-xs">
         <div className="flex items-center gap-3">
@@ -282,10 +282,10 @@ console.log(data);`;
       <div className="relative flex-1 overflow-y-auto p-6 md:p-8">
         {/* Patwatoli AI Emerald Green Wave Background */}
         <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
-          <div className="absolute -top-32 left-1/2 h-[520px] w-[1100px] -translate-x-1/2 rounded-full bg-emerald-200/40 blur-[120px]" />
-          <div className="absolute top-1/4 -left-40 h-[420px] w-[720px] rounded-full bg-teal-200/30 blur-[130px]" />
-          <div className="absolute bottom-[-160px] left-[-80px] h-[520px] w-[820px] rounded-full bg-emerald-300/30 blur-[120px]" />
-          <div className="absolute bottom-[-220px] right-[-100px] h-[560px] w-[860px] rounded-full bg-teal-100/50 blur-[120px]" />
+          <div className="absolute -top-32 left-1/2 h-130 w-275 -translate-x-1/2 rounded-full bg-emerald-200/40 blur-[120px]" />
+          <div className="absolute top-1/4 -left-40 h-105 w-180 rounded-full bg-teal-200/30 blur-[130px]" />
+          <div className="absolute -bottom-40 -left-20 h-130 w-205 rounded-full bg-emerald-300/30 blur-[120px]" />
+          <div className="absolute -bottom-55 -right-25 h-140 w-215 rounded-full bg-teal-100/50 blur-[120px]" />
         </div>
 
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6">
@@ -549,7 +549,7 @@ console.log(data);`;
                 </div>
               </div>
 
-              <pre className="overflow-x-auto p-4 bg-slate-950 rounded-xl text-emerald-400 font-mono text-[11px] leading-relaxed border border-slate-800 shadow-inner max-h-[260px]">
+              <pre className="overflow-x-auto p-4 bg-slate-950 rounded-xl text-emerald-400 font-mono text-[11px] leading-relaxed border border-slate-800 shadow-inner max-h-65">
                 {getCodeSnippet()}
               </pre>
 
