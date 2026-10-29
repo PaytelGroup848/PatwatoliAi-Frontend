@@ -32,7 +32,7 @@ import { useAuthStore } from "@/stores/auth-store";
 import { useAssistants } from "@/features/playground/hooks/use-assistants";
 import { Assistant } from "@/features/playground/types/assistant";
 import { getAssistantLogo } from "../utils/assistant-logo";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import { fetchUserUsage } from "@/features/billing/services/billing.service";
 import { UpgradePlanModal } from "@/features/billing/components/upgrade-plan-modal";
 import { AuthModal } from "@/components/auth/auth-modal";
@@ -65,26 +65,12 @@ export function ConversationSidebar() {
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [isTranslationOpen, setIsTranslationOpen] = useState(false);
 
-  const queryClient = useQueryClient();
-
   const { data: usage } = useQuery({
     queryKey: ["billing-usage"],
     queryFn: fetchUserUsage,
     staleTime: 60 * 1000,
     enabled: !isGuest,
   });
-
-  useEffect(() => {
-    const handleSubscriptionSync = () => {
-      queryClient.invalidateQueries({ queryKey: ["billing-usage"] });
-      queryClient.refetchQueries({ queryKey: ["billing-usage"] });
-    };
-
-    window.addEventListener("subscription_updated", handleSubscriptionSync);
-    return () => {
-      window.removeEventListener("subscription_updated", handleSubscriptionSync);
-    };
-  }, [queryClient]);
 
   const currentPlanName = isGuest ? "GUEST" : (usage?.plan?.toUpperCase() || "FREE");
 
@@ -236,12 +222,12 @@ export function ConversationSidebar() {
       )}
 
       <aside
-        className={`fixed inset-y-0 left-0 z-50 flex h-full flex-col border-r border-slate-200 bg-white text-slate-900 select-none shadow-2xl transition-transform duration-300 ease-in-out md:relative md:z-0 md:shadow-sm md:translate-x-0 ${
+        className={`fixed inset-y-0 left-0 z-50 flex h-full flex-col border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 select-none shadow-2xl transition-transform duration-300 ease-in-out md:relative md:z-0 md:shadow-sm md:translate-x-0 ${
           isMobileSidebarOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
         } w-72 ${isCollapsed ? "md:w-20" : "md:w-72"}`}
       >
         {/* ASSISTANT SELECTOR & TOGGLE HEADER */}
-        <div className="relative border-b border-slate-200/80 p-3.5 flex flex-col gap-2">
+        <div className="relative border-b border-slate-200/80 dark:border-slate-800 p-3.5 flex flex-col gap-2">
           <div className="flex items-center justify-between">
             {!isCollapsed && (
               <label className="text-[11px] font-bold uppercase tracking-wider text-emerald-700 px-1">
@@ -252,7 +238,7 @@ export function ConversationSidebar() {
               {/* DESKTOP COLLAPSE BUTTON */}
               <button
                 onClick={() => setIsCollapsed(!isCollapsed)}
-                className={`hidden md:flex p-1.5 rounded-xl text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all ${isCollapsed ? "mx-auto" : ""}`}
+                className={`hidden md:flex p-1.5 rounded-xl text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-all ${isCollapsed ? "mx-auto" : ""}`}
                 title={isCollapsed ? "Expand Sidebar" : "Collapse Sidebar"}
               >
                 {isCollapsed ? <PanelLeftOpen size={18} /> : <PanelLeftClose size={18} />}
@@ -260,7 +246,7 @@ export function ConversationSidebar() {
               {/* MOBILE CLOSE (X) BUTTON */}
               <button
                 onClick={() => setMobileSidebarOpen(false)}
-                className="flex md:hidden p-1.5 rounded-xl text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all cursor-pointer"
+                className="flex md:hidden p-1.5 rounded-xl text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-all cursor-pointer"
                 title="Close Menu"
                 aria-label="Close Menu"
               >
@@ -273,10 +259,10 @@ export function ConversationSidebar() {
             {!isCollapsed ? (
               <button
                 onClick={() => setIsAssistantDropdownOpen(!isAssistantDropdownOpen)}
-                className="flex w-full items-center justify-between rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-left transition hover:border-emerald-500 hover:bg-emerald-50/50 shadow-sm"
+                className="flex w-full items-center justify-between rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/80 px-3 py-2.5 text-left transition hover:border-emerald-500 hover:bg-emerald-50/50 dark:hover:bg-slate-800 shadow-sm"
               >
                 <div className="flex items-center gap-2.5 overflow-hidden">
-                  <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg overflow-hidden border border-slate-200 bg-white shadow-xs">
+                  <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-xs">
                     <img
                       src={getAssistantLogo(activeAssistant?.code, activeAssistant?.name)}
                       alt={activeAssistant?.name || "Assistant"}
@@ -284,10 +270,10 @@ export function ConversationSidebar() {
                     />
                   </div>
                   <div className="truncate">
-                    <div className="text-sm font-bold text-slate-900 truncate">
+                    <div className="text-sm font-bold text-slate-900 dark:text-white truncate">
                       {activeAssistant?.name || "General Chat"}
                     </div>
-                    <div className="text-[11px] font-medium text-slate-500 truncate">
+                    <div className="text-[11px] font-medium text-slate-500 dark:text-slate-400 truncate">
                       {activeAssistant?.description || "Universal AI Assistant"}
                     </div>
                   </div>
@@ -297,7 +283,7 @@ export function ConversationSidebar() {
             ) : (
               <button
                 onClick={() => setIsAssistantDropdownOpen(!isAssistantDropdownOpen)}
-                className="flex h-10 w-10 items-center justify-center rounded-xl overflow-hidden border border-slate-200 bg-white shadow-md mx-auto transition hover:scale-105 p-1"
+                className="flex h-10 w-10 items-center justify-center rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 shadow-md mx-auto transition hover:scale-105 p-1"
                 title={activeAssistant?.name || "General Chat"}
               >
                 <img
@@ -317,7 +303,7 @@ export function ConversationSidebar() {
                   onClick={() => setIsAssistantDropdownOpen(false)}
                 />
                 <div
-                  className={`absolute z-50 max-h-80 overflow-y-auto space-y-1 rounded-2xl border border-slate-200 bg-white p-1.5 shadow-2xl backdrop-blur-xl ${
+                  className={`absolute z-50 max-h-80 overflow-y-auto space-y-1 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-1.5 shadow-2xl backdrop-blur-xl ${
                     isCollapsed ? "left-full ml-2 top-0 w-64" : "left-0 right-0 top-full mt-1.5"
                   }`}
                 >
@@ -338,11 +324,11 @@ export function ConversationSidebar() {
                         }}
                         className={`flex w-full items-center gap-2.5 rounded-xl px-3 py-2.5 text-left text-sm transition ${
                           activeAssistantId === assistant.id
-                            ? "bg-emerald-50 text-emerald-900 font-bold border border-emerald-200/80 shadow-xs"
-                            : "text-slate-700 hover:bg-slate-100 hover:text-slate-900"
+                            ? "bg-emerald-50 dark:bg-emerald-950/60 text-emerald-900 dark:text-emerald-200 font-bold border border-emerald-200/80 dark:border-emerald-800 shadow-xs"
+                            : "text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white"
                         }`}
                       >
-                        <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg overflow-hidden border border-slate-200 bg-white">
+                        <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800">
                           <img
                             src={getAssistantLogo(assistant.code, assistant.name)}
                             alt={assistant.name}
@@ -350,8 +336,8 @@ export function ConversationSidebar() {
                           />
                         </div>
                         <div className="truncate">
-                          <div className="font-bold text-slate-900 truncate">{assistant.name}</div>
-                          <div className="text-[10px] text-slate-500 truncate">{assistant.description}</div>
+                          <div className="font-bold text-slate-900 dark:text-white truncate">{assistant.name}</div>
+                          <div className="text-[10px] text-slate-500 dark:text-slate-400 truncate">{assistant.description}</div>
                         </div>
                       </button>
                     ))
@@ -376,7 +362,7 @@ export function ConversationSidebar() {
             </button>
             <button
               onClick={() => setIsTranslationOpen(true)}
-              className="flex w-full items-center justify-center gap-2 rounded-xl bg-slate-50 hover:bg-emerald-50 hover:text-emerald-700 hover:border-emerald-300 border border-slate-200/90 px-4 py-2 text-xs font-semibold text-slate-700 transition-all duration-200 active:scale-[0.98] cursor-pointer"
+              className="flex w-full items-center justify-center gap-2 rounded-xl bg-slate-50 dark:bg-slate-800/80 hover:bg-emerald-50 dark:hover:bg-emerald-950/40 hover:text-emerald-700 dark:hover:text-emerald-300 hover:border-emerald-300 dark:hover:border-emerald-700 border border-slate-200/90 dark:border-slate-700 px-4 py-2 text-xs font-semibold text-slate-700 dark:text-slate-300 transition-all duration-200 active:scale-[0.98] cursor-pointer"
             >
               <Languages size={15} className="text-emerald-600" />
               <span>Translate Document</span>
@@ -393,7 +379,7 @@ export function ConversationSidebar() {
             </button>
             <button
               onClick={() => setIsTranslationOpen(true)}
-              className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-50 hover:bg-emerald-50 text-slate-700 hover:text-emerald-700 border border-slate-200/90 mx-auto transition hover:scale-105 cursor-pointer"
+              className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-50 dark:bg-slate-800 hover:bg-emerald-50 dark:hover:bg-emerald-950/40 text-slate-700 dark:text-slate-300 hover:text-emerald-700 dark:hover:text-emerald-300 border border-slate-200/90 dark:border-slate-700 mx-auto transition hover:scale-105 cursor-pointer"
               title="Translate Document"
             >
               <Languages size={17} className="text-emerald-600" />
@@ -405,7 +391,7 @@ export function ConversationSidebar() {
       {/* CONVERSATION HISTORY */}
       <div className="flex-1 overflow-y-auto px-3.5 py-1 space-y-1">
         {!isCollapsed && (
-          <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400 px-2 py-1">
+          <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 px-2 py-1">
             Recent Chats
           </div>
         )}
@@ -434,7 +420,7 @@ export function ConversationSidebar() {
                     setMessages([]);
                   }
                 }}
-                className={`group flex items-center ${isCollapsed ? "justify-center p-2.5" : "justify-between px-3 py-2.5"} rounded-xl text-sm cursor-pointer transition-all duration-150 ${isActive ? "bg-emerald-50 text-emerald-800 font-semibold border border-emerald-200/80 shadow-sm" : "text-slate-600 border border-transparent hover:bg-slate-100 hover:text-slate-900"}`}
+                className={`group flex items-center ${isCollapsed ? "justify-center p-2.5" : "justify-between px-3 py-2.5"} rounded-xl text-sm cursor-pointer transition-all duration-150 ${isActive ? "bg-emerald-50 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 font-semibold border border-emerald-200/80 dark:border-emerald-800 shadow-sm" : "text-slate-600 dark:text-slate-300 border border-transparent hover:bg-slate-100 dark:hover:bg-slate-800/70 hover:text-slate-900 dark:hover:text-white"}`}
                 title={isCollapsed ? conversation.title || "Untitled Chat" : undefined}
               >
                 {!isCollapsed ? (
@@ -461,7 +447,7 @@ export function ConversationSidebar() {
       </div>
 
       {/* USER & SETTINGS FOOTER */}
-      <div className="border-t border-slate-200 p-3 mt-auto space-y-2 bg-slate-50">
+      <div className="border-t border-slate-200 dark:border-slate-800 p-3 mt-auto space-y-2 bg-slate-50 dark:bg-slate-950/60">
         {!isCollapsed ? (
           <>
             {/* UPGRADE PLAN BUTTON */}
@@ -470,17 +456,17 @@ export function ConversationSidebar() {
                 router.push("/pricing");
                 setMobileSidebarOpen(false);
               }}
-              className="flex w-full items-center justify-between rounded-xl bg-white border border-slate-200 p-2.5 transition hover:border-emerald-500 hover:bg-emerald-50/30 shadow-xs cursor-pointer group"
+              className="flex w-full items-center justify-between rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-2.5 transition hover:border-emerald-500 hover:bg-emerald-50/30 dark:hover:bg-slate-800/80 shadow-xs cursor-pointer group"
             >
               <div className="flex items-center gap-2.5">
                 <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-emerald-600 text-white shadow-xs group-hover:scale-105 transition-transform">
                   <Sparkles size={16} />
                 </div>
                 <div className="text-left">
-                  <div className="text-xs font-bold text-slate-900">
+                  <div className="text-xs font-bold text-slate-900 dark:text-white">
                     {currentPlanName === "PRO" ? "Pro Plan Active" : "Upgrade Plan"}
                   </div>
-                  <div className="text-[11px] font-medium text-slate-500">
+                  <div className="text-[11px] font-medium text-slate-500 dark:text-slate-400">
                     {currentPlanName === "PRO" ? "1M monthly tokens" : "Frontier AI & higher limits"}
                   </div>
                 </div>
@@ -502,10 +488,10 @@ export function ConversationSidebar() {
                 setIsApiKeysOpen(true);
                 setMobileSidebarOpen(false);
               }}
-              className="flex w-full items-center gap-2.5 rounded-xl px-3 py-2 text-xs font-semibold text-slate-800 hover:text-slate-950 hover:bg-slate-200/70 transition cursor-pointer"
+              className="flex w-full items-center gap-2.5 rounded-xl px-3 py-2 text-xs font-semibold text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white hover:bg-slate-200/70 dark:hover:bg-slate-800/70 transition cursor-pointer"
             >
-              <Key size={16} className="text-slate-700" />
-              <span className="text-slate-800 font-semibold">Developer API Keys</span>
+              <Key size={16} className="text-slate-600 dark:text-slate-300" />
+              <span className="text-slate-800 dark:text-slate-200 font-semibold">Developer API Keys</span>
             </button>
 
             {/* PLATFORM SETTINGS */}
@@ -514,10 +500,10 @@ export function ConversationSidebar() {
                 setIsSettingsOpen(true);
                 setMobileSidebarOpen(false);
               }}
-              className="flex w-full items-center gap-2.5 rounded-xl px-3 py-2 text-xs font-semibold text-slate-800 hover:text-slate-950 hover:bg-slate-200/70 transition cursor-pointer"
+              className="flex w-full items-center gap-2.5 rounded-xl px-3 py-2 text-xs font-semibold text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white hover:bg-slate-200/70 dark:hover:bg-slate-800/70 transition cursor-pointer"
             >
-              <Settings size={16} className="text-slate-700" />
-              <span className="text-slate-800 font-semibold">Platform Settings</span>
+              <Settings size={16} className="text-slate-600 dark:text-slate-300" />
+              <span className="text-slate-800 dark:text-slate-200 font-semibold">Platform Settings</span>
             </button>
           </>
         ) : (
@@ -527,7 +513,7 @@ export function ConversationSidebar() {
                 router.push("/pricing");
                 setMobileSidebarOpen(false);
               }}
-              className="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-emerald-600 shadow-xs hover:border-emerald-400 hover:bg-emerald-50 mx-auto transition cursor-pointer"
+              className="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-emerald-600 dark:text-emerald-400 shadow-xs hover:border-emerald-400 hover:bg-emerald-50 dark:hover:bg-slate-700 mx-auto transition cursor-pointer"
               title={`Upgrade Plan (${currentPlanName})`}
             >
               <Sparkles size={18} />
@@ -538,7 +524,7 @@ export function ConversationSidebar() {
                 setIsApiKeysOpen(true);
                 setMobileSidebarOpen(false);
               }}
-              className="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-700 shadow-xs hover:text-slate-900 hover:bg-slate-100 mx-auto transition cursor-pointer"
+              className="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 shadow-xs hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-700 mx-auto transition cursor-pointer"
               title="Developer API Keys"
             >
               <Key size={18} />
@@ -549,7 +535,7 @@ export function ConversationSidebar() {
                 setIsSettingsOpen(true);
                 setMobileSidebarOpen(false);
               }}
-              className="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-700 shadow-xs hover:text-slate-900 hover:bg-slate-100 mx-auto transition cursor-pointer"
+              className="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 shadow-xs hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-700 mx-auto transition cursor-pointer"
               title="Platform Settings"
             >
               <Settings size={18} />
@@ -560,14 +546,14 @@ export function ConversationSidebar() {
         {/* USER / GUEST PROFILE CARD */}
         {isGuest ? (
           !isCollapsed ? (
-            <div className="rounded-2xl bg-gradient-to-br from-emerald-500/10 via-teal-500/5 to-slate-100 p-3 border border-emerald-200/70 shadow-xs">
+            <div className="rounded-2xl bg-gradient-to-br from-emerald-500/10 via-teal-500/5 to-slate-100 dark:to-slate-900/60 p-3 border border-emerald-200/70 dark:border-emerald-800/60 shadow-xs">
               <div className="flex items-center gap-2 mb-1.5">
                 <div className="flex h-6 w-6 items-center justify-center rounded-full bg-emerald-600 text-white text-[11px] font-bold shadow-xs">
                   G
                 </div>
-                <span className="text-xs font-bold text-slate-800">Guest Visitor</span>
+                <span className="text-xs font-bold text-slate-800 dark:text-white">Guest Visitor</span>
               </div>
-              <p className="text-[11px] text-slate-500 mb-2.5 leading-relaxed">
+              <p className="text-[11px] text-slate-500 dark:text-slate-400 mb-2.5 leading-relaxed">
                 Sign in to save your chat history and unlock all features.
               </p>
               <button
@@ -588,16 +574,16 @@ export function ConversationSidebar() {
             </button>
           )
         ) : !isCollapsed ? (
-          <div className="flex items-center justify-between rounded-xl bg-white p-2.5 border border-slate-200 shadow-xs">
+          <div className="flex items-center justify-between rounded-xl bg-white dark:bg-slate-900 p-2.5 border border-slate-200 dark:border-slate-800 shadow-xs">
             <div className="flex items-center gap-2.5 overflow-hidden">
               <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-emerald-700 font-bold text-xs text-white shadow-xs">
                 {userAvatarInitial}
               </div>
               <div className="truncate">
-                <div className="text-xs font-bold text-slate-900 truncate">
+                <div className="text-xs font-bold text-slate-900 dark:text-white truncate">
                   {userName}
                 </div>
-                <div className="text-[11px] font-medium text-slate-500 truncate">
+                <div className="text-[11px] font-medium text-slate-500 dark:text-slate-400 truncate">
                   {userEmail}
                 </div>
               </div>

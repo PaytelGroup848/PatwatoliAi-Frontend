@@ -607,24 +607,24 @@ export function ChatWindow() {
   ];
 
   return (
-    <div className="relative flex h-full w-full flex-col overflow-hidden bg-white text-slate-900">
+    <div className="relative flex h-full w-full flex-col overflow-hidden bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-200">
       {/* Patwatoli AI Emerald Green Wave Background */}
-      <div className="absolute inset-0 -z-10 overflow-hidden bg-white pointer-events-none">
-        <div className="absolute -top-32 left-1/2 h-[520px] w-[1100px] -translate-x-1/2 rounded-full bg-emerald-200/40 blur-[120px]" />
-        <div className="absolute top-1/4 -left-40 h-[420px] w-[720px] rounded-full bg-teal-200/30 blur-[130px]" />
-        <div className="absolute bottom-[-160px] left-[-80px] h-[520px] w-[820px] rounded-full bg-emerald-300/30 blur-[120px]" />
-        <div className="absolute bottom-[-220px] right-[-100px] h-[560px] w-[860px] rounded-full bg-teal-100/50 blur-[120px]" />
+      <div className="absolute inset-0 -z-10 overflow-hidden bg-white dark:bg-slate-950 pointer-events-none transition-colors duration-200">
+        <div className="absolute -top-32 left-1/2 h-[520px] w-[1100px] -translate-x-1/2 rounded-full bg-emerald-200/40 dark:bg-emerald-950/20 blur-[120px]" />
+        <div className="absolute top-1/4 -left-40 h-[420px] w-[720px] rounded-full bg-teal-200/30 dark:bg-teal-950/20 blur-[130px]" />
+        <div className="absolute bottom-[-160px] left-[-80px] h-[520px] w-[820px] rounded-full bg-emerald-300/30 dark:bg-emerald-950/20 blur-[120px]" />
+        <div className="absolute bottom-[-220px] right-[-100px] h-[560px] w-[860px] rounded-full bg-teal-100/50 dark:bg-teal-950/20 blur-[120px]" />
       </div>
 
       {isEmpty ? (
         // ---------- Landing / hero state (ChatGPT Style) ----------
         <div className="relative z-10 flex min-h-full w-full flex-col items-center justify-center gap-6 px-4 sm:px-6 py-8 my-auto overflow-y-auto">
-          <div className="flex items-center gap-2 rounded-full bg-emerald-50 px-4 py-1.5 border border-emerald-200 text-xs font-semibold text-emerald-700 shadow-sm">
+          <div className="flex items-center gap-2 rounded-full bg-emerald-50 dark:bg-emerald-950/60 px-4 py-1.5 border border-emerald-200 dark:border-emerald-800/80 text-xs font-semibold text-emerald-700 dark:text-emerald-300 shadow-sm">
             <Sparkles className="h-3.5 w-3.5 text-emerald-600" />
             <span>Patwatoli AI Workspace</span>
           </div>
 
-          <h1 className="max-w-2xl text-center text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+          <h1 className="max-w-2xl text-center text-3xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-4xl">
              {displayName}, <span className="text-emerald-600">What&apos;s the vision?</span>
           </h1>
 
@@ -666,7 +666,7 @@ export function ChatWindow() {
                   key={idx}
                   type="button"
                   onClick={() => setPrefillState({ text: item.prompt, webSearch: item.webSearch })}
-                  className="flex items-center gap-3 px-3 py-2 rounded-xl text-[13px] sm:text-[14px] text-zinc-600 hover:text-zinc-900 hover:bg-zinc-100/80 transition-all cursor-pointer select-none"
+                  className="flex items-center gap-3 px-3 py-2 rounded-xl text-[13px] sm:text-[14px] text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100/80 dark:hover:bg-zinc-800/80 transition-all cursor-pointer select-none"
                 >
                   <Icon className="h-4 w-4 text-zinc-400 shrink-0" />
                   <span>{item.label}</span>
@@ -680,7 +680,7 @@ export function ChatWindow() {
         previewData ? (
           <div className="relative z-10 flex h-full w-full overflow-hidden">
             {/* LEFT COLUMN: CHAT WINDOW */}
-            <div className="flex flex-col flex-1 h-full overflow-hidden w-full lg:w-1/2 border-r border-slate-200/80">
+            <div className="flex flex-col flex-1 h-full overflow-hidden w-full lg:w-1/2 border-r border-slate-200/80 dark:border-slate-800">
               {/* Message History Scroller */}
               <div
                 ref={scrollContainerRef}
@@ -706,7 +706,7 @@ export function ChatWindow() {
               </div>
 
               {/* Fixed Bottom Input Dock */}
-              <div className="shrink-0 w-full px-2 sm:px-4 pb-[max(0.75rem,env(safe-area-inset-bottom))] sm:pb-4 pt-2 bg-gradient-to-t from-white via-white/95 to-transparent border-t border-slate-100/60">
+              <div className="shrink-0 w-full px-2 sm:px-4 pb-[max(0.75rem,env(safe-area-inset-bottom))] sm:pb-4 pt-2 bg-gradient-to-t from-white via-white/95 to-transparent dark:from-slate-950 dark:via-slate-950/95 border-t border-slate-100/60 dark:border-slate-800/60">
                 <div className="max-w-3xl mx-auto w-full">
                   <MessageInput
                     onSend={handleSend}
@@ -763,7 +763,7 @@ export function ChatWindow() {
             </div>
 
             {/* Fixed Bottom Input Dock */}
-            <div className="shrink-0 w-full px-2 sm:px-6 pb-[max(0.75rem,env(safe-area-inset-bottom))] sm:pb-4 pt-2 bg-gradient-to-t from-white via-white/95 to-transparent border-t border-slate-100/60">
+            <div className="shrink-0 w-full px-2 sm:px-6 pb-[max(0.75rem,env(safe-area-inset-bottom))] sm:pb-4 pt-2 bg-gradient-to-t from-white via-white/95 to-transparent dark:from-slate-950 dark:via-slate-950/95 border-t border-slate-100/60 dark:border-slate-800/60">
               <div className="max-w-4xl mx-auto w-full">
                 {isGuest && guestCreditsRemaining === 0 && (
                   <div className="flex items-center justify-between gap-2 rounded-xl bg-amber-50 border border-amber-200 px-4 py-2 text-xs text-amber-900 mb-2 shadow-xs">

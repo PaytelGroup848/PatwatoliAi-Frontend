@@ -36,8 +36,8 @@ export function RecommendedSuggestions({
             onClick={() => handleClick(prompt)}
             className={`group flex items-start gap-2.5 py-1.5 px-2 rounded-lg text-left transition-all cursor-pointer ${
               isClicked
-                ? "bg-emerald-50 text-emerald-800 font-medium"
-                : "hover:bg-slate-100/90 active:scale-[0.99]"
+                ? "bg-emerald-50 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 font-medium"
+                : "hover:bg-slate-100/90 dark:hover:bg-slate-800/70 active:scale-[0.99]"
             } ${clickedPrompt ? "opacity-60 cursor-not-allowed" : ""}`}
             title="Click to send follow-up"
           >
@@ -45,11 +45,11 @@ export function RecommendedSuggestions({
               size={15}
               className={`shrink-0 mt-0.5 transition-transform ${
                 isClicked
-                  ? "text-emerald-600"
-                  : "text-slate-600 group-hover:text-emerald-600 group-hover:translate-x-0.5"
+                  ? "text-emerald-600 dark:text-emerald-400"
+                  : "text-slate-400 dark:text-emerald-400/90 group-hover:text-emerald-600 dark:group-hover:text-emerald-300 group-hover:translate-x-0.5"
               }`}
             />
-            <span className="text-[13.5px] sm:text-sm font-semibold leading-snug text-slate-800">
+            <span className="text-[13.5px] sm:text-sm font-medium leading-snug text-slate-700 dark:text-slate-100 group-hover:text-slate-950 dark:group-hover:text-white transition-colors">
               {prompt}
             </span>
           </button>

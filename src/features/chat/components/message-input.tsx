@@ -347,11 +347,11 @@ export function MessageInput({
         <div
           className="
             relative flex items-center w-full rounded-2xl sm:rounded-full
-            border border-zinc-200/90
-            bg-white px-2.5 sm:px-3 py-1.5 sm:py-2 gap-1.5 sm:gap-2
-            shadow-[0_2px_10px_rgba(0,0,0,0.04)]
-            hover:border-zinc-300
-            focus-within:border-zinc-400
+            border border-zinc-200/90 dark:border-slate-800
+            bg-white dark:bg-slate-900 px-2.5 sm:px-3 py-1.5 sm:py-2 gap-1.5 sm:gap-2
+            shadow-[0_2px_10px_rgba(0,0,0,0.04)] dark:shadow-none
+            hover:border-zinc-300 dark:hover:border-slate-700
+            focus-within:border-zinc-400 dark:focus-within:border-emerald-500/50
             focus-within:shadow-[0_4px_16px_rgba(0,0,0,0.08)]
             transition-all duration-150 min-h-12 sm:min-h-13
           "
@@ -476,7 +476,7 @@ export function MessageInput({
             placeholder="Ask anything"
             className="
               min-w-0 flex-1 bg-transparent border-none outline-none focus:outline-none focus:ring-0
-              text-[16px] sm:text-[15px] text-zinc-800 placeholder:text-zinc-400
+              text-[16px] sm:text-[15px] text-zinc-800 dark:text-zinc-100 placeholder:text-zinc-400 dark:placeholder:text-zinc-500
               resize-none overflow-hidden py-1 sm:py-1.5 px-1.5 sm:px-2 leading-relaxed max-h-40
             "
           />
@@ -491,8 +491,8 @@ export function MessageInput({
               className={cn(
                 "flex items-center gap-1 sm:gap-1.5 px-2 sm:px-2.5 py-1 rounded-full text-xs sm:text-[13px] transition-colors cursor-pointer select-none shrink-0",
                 think
-                  ? "bg-zinc-100 text-zinc-900 font-medium"
-                  : "text-zinc-500 hover:text-zinc-800 hover:bg-zinc-100/60 font-normal"
+                  ? "bg-zinc-100 dark:bg-slate-800 text-zinc-900 dark:text-zinc-100 font-medium"
+                  : "text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-100 hover:bg-zinc-100/60 dark:hover:bg-slate-800/60 font-normal"
               )}
             >
               <Brain className="h-4 w-4 stroke-[1.8]" />
@@ -505,7 +505,7 @@ export function MessageInput({
               onClick={handleMicToggle}
               aria-label="Voice dictation"
               className={cn(
-                "flex h-8 w-8 items-center justify-center rounded-full text-zinc-600 hover:text-zinc-900 hover:bg-zinc-100 transition-colors cursor-pointer",
+                "flex h-8 w-8 items-center justify-center rounded-full text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-slate-800 transition-colors cursor-pointer",
                 isRecording && "text-red-600 bg-red-50 animate-pulse"
               )}
             >
@@ -596,11 +596,11 @@ export function MessageInput({
         <div
           className="
             relative flex flex-col w-full rounded-[26px]
-            border border-zinc-200/90
-            bg-white p-3 gap-2
-            shadow-[0_2px_10px_rgba(0,0,0,0.04)]
-            hover:border-zinc-300
-            focus-within:border-zinc-400
+            border border-zinc-200/90 dark:border-slate-800
+            bg-white dark:bg-slate-900 p-3 gap-2
+            shadow-[0_2px_10px_rgba(0,0,0,0.04)] dark:shadow-none
+            hover:border-zinc-300 dark:hover:border-slate-700
+            focus-within:border-zinc-400 dark:focus-within:border-emerald-500/50
             focus-within:shadow-[0_4px_16px_rgba(0,0,0,0.08)]
             transition-all duration-150
           "
@@ -615,7 +615,7 @@ export function MessageInput({
             placeholder="Ask anything"
             className="
               w-full bg-transparent border-none outline-none focus:outline-none focus:ring-0
-              text-[16px] sm:text-[15px] text-zinc-800 placeholder:text-zinc-400
+              text-[16px] sm:text-[15px] text-zinc-800 dark:text-zinc-100 placeholder:text-zinc-400 dark:placeholder:text-zinc-500
               resize-none overflow-hidden px-2 leading-relaxed max-h-48
             "
           />
@@ -756,7 +756,7 @@ export function MessageInput({
                 onClick={handleMicToggle}
                 aria-label="Voice dictation"
                 className={cn(
-                  "flex h-8 w-8 items-center justify-center rounded-full text-zinc-600 hover:text-zinc-900 hover:bg-zinc-100 transition-colors cursor-pointer",
+                  "flex h-8 w-8 items-center justify-center rounded-full text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-slate-800 transition-colors cursor-pointer",
                   isRecording && "text-red-600 bg-red-50 animate-pulse"
                 )}
               >

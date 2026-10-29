@@ -166,7 +166,7 @@ function AssistantActions({
         onClick={handleCopy}
         title={copied ? "Copied!" : "Copy response"}
         aria-label="Copy response"
-        className="flex h-7 w-7 items-center justify-center rounded-md hover:bg-slate-100 hover:text-slate-700 transition-colors cursor-pointer"
+        className="flex h-7 w-7 items-center justify-center rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-700 dark:hover:text-slate-200 transition-colors cursor-pointer"
       >
         {copied ? (
           <Check size={14} className="text-emerald-600" />
@@ -184,7 +184,7 @@ function AssistantActions({
         }}
         title="Good response"
         aria-label="Good response"
-        className={`flex h-7 w-7 items-center justify-center rounded-md hover:bg-slate-100 hover:text-slate-700 transition-colors cursor-pointer ${
+        className={`flex h-7 w-7 items-center justify-center rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-700 dark:hover:text-slate-200 transition-colors cursor-pointer ${
           liked ? "text-emerald-600" : ""
         }`}
       >
@@ -200,7 +200,7 @@ function AssistantActions({
         }}
         title="Bad response"
         aria-label="Bad response"
-        className={`flex h-7 w-7 items-center justify-center rounded-md hover:bg-slate-100 hover:text-slate-700 transition-colors cursor-pointer ${
+        className={`flex h-7 w-7 items-center justify-center rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-700 dark:hover:text-slate-200 transition-colors cursor-pointer ${
           disliked ? "text-rose-600" : ""
         }`}
       >
@@ -212,7 +212,7 @@ function AssistantActions({
         onClick={handleShare}
         title={shared ? "Shared!" : "Share response"}
         aria-label="Share response"
-        className="flex h-7 w-7 items-center justify-center rounded-md hover:bg-slate-100 hover:text-slate-700 transition-colors cursor-pointer"
+        className="flex h-7 w-7 items-center justify-center rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-700 dark:hover:text-slate-200 transition-colors cursor-pointer"
       >
         {shared ? (
           <Check size={14} className="text-emerald-600" />
@@ -231,14 +231,14 @@ function AssistantActions({
           }}
           className={`flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium border transition-all cursor-pointer ml-1.5 ${
             isSourcesOpen
-              ? "bg-emerald-50 border-emerald-300 text-emerald-700 shadow-2xs"
-              : "bg-slate-50 hover:bg-slate-100 border-slate-200 text-slate-700 hover:text-slate-900"
+              ? "bg-emerald-50 dark:bg-emerald-950/60 border-emerald-300 dark:border-emerald-800 text-emerald-700 dark:text-emerald-300 shadow-2xs"
+              : "bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white"
           }`}
           title={isSourcesOpen ? "Hide sources" : "View sources"}
           aria-expanded={isSourcesOpen}
         >
           <Globe size={13} className="text-emerald-600 shrink-0" />
-          <span className="font-semibold text-slate-800">Sources</span>
+          <span className="font-semibold text-slate-800 dark:text-slate-200">Sources</span>
           <span className="rounded-full bg-emerald-100/90 border border-emerald-200/80 px-1.5 py-0.2 text-[10px] font-bold text-emerald-800">
             {totalSources}
           </span>
@@ -283,7 +283,34 @@ function AssistantMessageItem({
   const markdownComponents: Components = useMemo(
     () => ({
       p({ children }) {
-        return <div className="mb-3 leading-relaxed last:mb-0">{children}</div>;
+        return <div className="mb-3 leading-relaxed last:mb-0 text-slate-800 dark:text-slate-100">{children}</div>;
+      },
+      strong({ children }) {
+        return <strong className="font-bold text-slate-900 dark:text-white">{children}</strong>;
+      },
+      em({ children }) {
+        return <em className="italic text-slate-800 dark:text-slate-200">{children}</em>;
+      },
+      h1({ children }) {
+        return <h1 className="text-xl font-bold text-slate-900 dark:text-white mt-4 mb-2">{children}</h1>;
+      },
+      h2({ children }) {
+        return <h2 className="text-lg font-bold text-slate-900 dark:text-white mt-3 mb-2">{children}</h2>;
+      },
+      h3({ children }) {
+        return <h3 className="text-base font-bold text-slate-900 dark:text-white mt-2 mb-1">{children}</h3>;
+      },
+      ul({ children }) {
+        return <ul className="list-disc pl-5 mb-3 space-y-1 text-slate-800 dark:text-slate-100">{children}</ul>;
+      },
+      ol({ children }) {
+        return <ol className="list-decimal pl-5 mb-3 space-y-1 text-slate-800 dark:text-slate-100">{children}</ol>;
+      },
+      li({ children }) {
+        return <li className="leading-relaxed text-slate-800 dark:text-slate-100">{children}</li>;
+      },
+      blockquote({ children }) {
+        return <blockquote className="border-l-4 border-emerald-500 bg-slate-50 dark:bg-slate-800/60 pl-3 py-1.5 my-2 text-slate-700 dark:text-slate-200 rounded-r-lg italic">{children}</blockquote>;
       },
       code({ className, children }) {
         const match = /language-(\w+)/.exec(className || "");
@@ -307,7 +334,7 @@ function AssistantMessageItem({
             href={href}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-emerald-600 hover:underline font-medium"
+            className="text-emerald-600 dark:text-emerald-400 hover:underline font-medium"
           >
             {children}
           </a>
@@ -319,7 +346,7 @@ function AssistantMessageItem({
 
   return (
     <div className="flex flex-col items-start w-full max-w-3xl">
-      <div className="w-full text-[15px] leading-7 overflow-x-auto text-slate-800 bg-transparent py-1">
+      <div className="w-full text-[15px] leading-7 overflow-x-auto text-slate-800 dark:text-slate-100 bg-transparent py-1">
         {/* LOVABLE AI RESPONSE EXTENSIONS */}
         {message.role === "assistant" && message.content.includes("```") && (
           <div className="mb-3 flex flex-col gap-2.5">
@@ -366,7 +393,7 @@ function AssistantMessageItem({
 
         {/* SUGGESTION CHIPS (Fallback: only if code present and dynamic suggestions absent) */}
         {message.role === "assistant" && message.content.includes("```") && suggestions.length === 0 && (
-          <div className="mt-4 flex flex-wrap gap-2 pt-2 border-t border-slate-100">
+          <div className="mt-4 flex flex-wrap gap-2 pt-2 border-t border-slate-100 dark:border-slate-800">
             {["Add input validation", "Support custom ranges", "Create history log", "Enable shareable results"].map((chip) => (
               <button
                 key={chip}
@@ -388,7 +415,7 @@ function AssistantMessageItem({
                     }
                   }
                 }}
-                className="rounded-full bg-slate-100 px-3 py-1 text-[11px] font-medium text-slate-700 border border-slate-200/80 hover:border-emerald-400 hover:bg-emerald-50 hover:text-emerald-800 transition-all cursor-pointer"
+                className="rounded-full bg-slate-100 dark:bg-slate-800 px-3 py-1 text-[11px] font-medium text-slate-700 dark:text-slate-300 border border-slate-200/80 dark:border-slate-700 hover:border-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-950/40 hover:text-emerald-800 dark:hover:text-emerald-300 transition-all cursor-pointer"
               >
                 {chip}
               </button>
@@ -503,7 +530,7 @@ export function MessageList({
           {message.role === "user" ? (
             editingId === message.id ? (
               /* INLINE EDIT MODE (CHATGPT STYLE) */
-              <div className="w-full max-w-2xl rounded-2xl border border-emerald-300 bg-white p-3.5 shadow-md transition-all">
+              <div className="w-full max-w-2xl rounded-2xl border border-emerald-300 dark:border-emerald-700 bg-white dark:bg-slate-900 p-3.5 shadow-md transition-all">
                 <textarea
                   value={editContent}
                   onChange={(e) => setEditContent(e.target.value)}
@@ -519,13 +546,13 @@ export function MessageList({
                     }
                   }}
                   rows={Math.max(2, editContent.split("\n").length)}
-                  className="w-full resize-none border-none bg-transparent p-1 text-sm text-slate-800 focus:outline-none"
+                  className="w-full resize-none border-none bg-transparent p-1 text-sm text-slate-800 dark:text-slate-100 focus:outline-none"
                   autoFocus
                 />
-                <div className="mt-2.5 flex items-center justify-end gap-2 border-t border-slate-100 pt-2">
+                <div className="mt-2.5 flex items-center justify-end gap-2 border-t border-slate-100 dark:border-slate-800 pt-2">
                   <button
                     onClick={() => setEditingId(null)}
-                    className="rounded-full px-3 py-1 text-xs font-medium text-slate-600 hover:bg-slate-100 transition-colors cursor-pointer"
+                    className="rounded-full px-3 py-1 text-xs font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
                   >
                     Cancel
                   </button>
@@ -571,7 +598,7 @@ export function MessageList({
                     onClick={() => handleCopy(message.id, message.content)}
                     title={copiedId === message.id ? "Copied!" : "Copy prompt"}
                     aria-label="Copy prompt"
-                    className="flex h-7 w-7 items-center justify-center rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-all cursor-pointer"
+                    className="flex h-7 w-7 items-center justify-center rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all cursor-pointer"
                   >
                     {copiedId === message.id ? (
                       <Check size={13} className="text-emerald-600" />
@@ -584,7 +611,7 @@ export function MessageList({
                     onClick={() => startEditing(message)}
                     title="Edit prompt"
                     aria-label="Edit prompt"
-                    className="flex h-7 w-7 items-center justify-center rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-all cursor-pointer"
+                    className="flex h-7 w-7 items-center justify-center rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all cursor-pointer"
                   >
                     <Pencil size={13} />
                   </button>
@@ -593,7 +620,7 @@ export function MessageList({
                     onClick={() => handleShare(message.id, message.content)}
                     title={sharedId === message.id ? "Shared!" : "Share prompt"}
                     aria-label="Share prompt"
-                    className="flex h-7 w-7 items-center justify-center rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-all cursor-pointer"
+                    className="flex h-7 w-7 items-center justify-center rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all cursor-pointer"
                   >
                     {sharedId === message.id ? (
                       <Check size={13} className="text-emerald-600" />
@@ -620,16 +647,16 @@ export function MessageList({
 
       {showThinking && (
         <div className="flex justify-start">
-          <div className="flex items-center gap-3.5 rounded-2xl border border-emerald-200 bg-white/95 px-5 py-3.5 shadow-sm backdrop-blur-md">
+          <div className="flex items-center gap-3.5 rounded-2xl border border-emerald-200 dark:border-emerald-800/80 bg-white/95 dark:bg-slate-900/95 px-5 py-3.5 shadow-sm backdrop-blur-md">
             <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-emerald-600 text-white shadow-sm shadow-emerald-600/30">
               <Bot size={18} className="animate-pulse" />
             </div>
             <div className="flex flex-col gap-0.5">
-              <div className="flex items-center gap-2 text-xs font-bold text-slate-900">
+              <div className="flex items-center gap-2 text-xs font-bold text-slate-900 dark:text-white">
                 <Sparkles size={13} className="text-emerald-600 animate-spin" />
                 <span>Generating response...</span>
               </div>
-              <div className="flex items-center gap-1.5 text-[11px] text-slate-500 font-medium">
+              <div className="flex items-center gap-1.5 text-[11px] text-slate-500 dark:text-slate-400 font-medium">
                 <span>Patwatoli AI is  active</span>
                 <span className="flex items-center gap-1">
                   <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-emerald-500 [animation-delay:-0.3s]"></span>
