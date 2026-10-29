@@ -31,7 +31,7 @@ export function ChatHeader() {
   };
 
   return (
-    <header className="flex h-14 md:h-16 min-h-[56px] md:min-h-[64px] items-center justify-between border-b border-slate-200/80 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 px-3 sm:px-6 py-2 backdrop-blur-2xl text-slate-900 dark:text-white shadow-xs z-10">
+    <header className="flex h-14 md:h-16 min-h-14 md:min-h-16 items-center justify-between border-b border-slate-200/80 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 px-3 sm:px-6 py-2 backdrop-blur-2xl text-slate-900 dark:text-white shadow-xs z-10">
       <div className="flex items-center gap-2 sm:gap-3.5 overflow-hidden min-w-0">
         {/* MOBILE HAMBURGER BUTTON (DRAWER TOGGLE) */}
         <button
@@ -60,7 +60,7 @@ export function ChatHeader() {
               <span className="hidden sm:inline">Active Model</span>
             </span>
           </div>
-          <p className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 truncate max-w-[150px] sm:max-w-md hidden xs:block">
+          <p className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 truncate max-w-37.5 sm:max-w-md hidden xs:block">
             {assistant?.description ?? "Universal AI Assistant"}
           </p>
         </div>
