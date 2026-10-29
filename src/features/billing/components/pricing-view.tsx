@@ -333,7 +333,7 @@ export function PricingView({ showBackButton = true }: { showBackButton?: boolea
                   )}
                 </div>
 
-                <p className="text-xs text-slate-500 dark:text-slate-400 min-h-[36px] line-clamp-2">
+                <p className="text-xs text-slate-500 dark:text-slate-400 min-h-9 line-clamp-2">
                   {plan.description || "Comprehensive AI platform access"}
                 </p>
 

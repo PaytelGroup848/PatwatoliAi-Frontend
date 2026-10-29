@@ -384,7 +384,7 @@ export function AuthModal({
   if (!isOpen || !mounted) return null;
 
   return createPortal(
-    <div className="fixed inset-0 z-[99999] flex items-center justify-center p-4">
+    <div className="fixed inset-0 z-99999 flex items-center justify-center p-4">
       {/* Frosted glass backdrop */}
       <motion.div
         initial={{ opacity: 0 }}
@@ -407,7 +407,7 @@ export function AuthModal({
         initial={{ opacity: 0, scale: 0.95, y: 15 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.95, y: 15 }}
-        className="relative w-full max-w-[440px] max-h-[92dvh] overflow-y-auto overscroll-contain rounded-3xl border border-slate-200/90 bg-white/95 text-slate-900 shadow-2xl shadow-emerald-500/10 backdrop-blur-2xl p-6 sm:p-8 dark:border-slate-800/90 dark:bg-slate-900/95 dark:text-slate-100 transition-colors duration-200"
+        className="relative w-full max-w-110 max-h-[92dvh] overflow-y-auto overscroll-contain rounded-3xl border border-slate-200/90 bg-white/95 text-slate-900 shadow-2xl shadow-emerald-500/10 backdrop-blur-2xl p-6 sm:p-8 dark:border-slate-800/90 dark:bg-slate-900/95 dark:text-slate-100 transition-colors duration-200"
       >
         {/* Optional Close Button */}
         {canClose && (
@@ -450,7 +450,7 @@ export function AuthModal({
             </>
           ) : (
             <>
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-tr from-emerald-500 to-green-600 text-white shadow-lg shadow-emerald-500/25 mb-3">
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-linear-to-tr from-emerald-500 to-green-600 text-white shadow-lg shadow-emerald-500/25 mb-3">
                 <Sparkles size={24} />
               </div>
               <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
@@ -499,10 +499,10 @@ export function AuthModal({
 
         {/* GOOGLE SIGN-IN OFFICIAL GIS BUTTON */}
         <div className="w-full flex flex-col items-center mb-1">
-          <div className="w-full max-w-[360px] h-[44px] min-h-[44px] flex justify-center items-center shrink-0 overflow-hidden">
+          <div className="w-full max-w-90 h-11 min-h-11 flex justify-center items-center shrink-0 overflow-hidden">
             <div
               ref={googleButtonContainerRef}
-              className="w-full h-[44px] min-h-[44px] flex justify-center items-center shrink-0"
+              className="w-full h-11 min-h-11 flex justify-center items-center shrink-0"
             />
           </div>
           {googleLoading && (
@@ -532,7 +532,7 @@ export function AuthModal({
               exit={{ opacity: 0, y: -8 }}
               className="mb-4 rounded-xl border border-red-500/30 bg-red-500/10 p-3 text-xs text-red-600 dark:text-red-400 flex items-start gap-2"
             >
-              <div className="h-4 w-4 rounded-full bg-red-500/20 text-red-600 dark:text-red-400 flex items-center justify-center font-bold flex-shrink-0 mt-0.5">
+              <div className="h-4 w-4 rounded-full bg-red-500/20 text-red-600 dark:text-red-400 flex items-center justify-center font-bold shrink-0 mt-0.5">
                 !
               </div>
               <span>{error}</span>
@@ -546,7 +546,7 @@ export function AuthModal({
               exit={{ opacity: 0, y: -8 }}
               className="mb-4 rounded-xl border border-emerald-500/30 bg-emerald-500/10 p-3 text-xs text-emerald-700 dark:text-emerald-300 flex items-center gap-2"
             >
-              <CheckCircle2 size={16} className="text-emerald-600 dark:text-emerald-400 flex-shrink-0" />
+              <CheckCircle2 size={16} className="text-emerald-600 dark:text-emerald-400 shrink-0" />
               <span>{successMessage}</span>
             </motion.div>
           )}
@@ -617,7 +617,7 @@ export function AuthModal({
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full mt-2 flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-emerald-600 to-green-600 py-3 text-sm font-semibold text-white shadow-lg shadow-emerald-600/25 hover:from-emerald-500 hover:to-green-500 transition disabled:opacity-50 cursor-pointer"
+                  className="w-full mt-2 flex items-center justify-center gap-2 rounded-xl bg-linear-to-r from-emerald-600 to-green-600 py-3 text-sm font-semibold text-white shadow-lg shadow-emerald-600/25 hover:from-emerald-500 hover:to-green-500 transition disabled:opacity-50 cursor-pointer"
                 >
                   {loading ? (
                     <>
@@ -721,7 +721,7 @@ export function AuthModal({
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full mt-2 flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-emerald-600 to-green-600 py-3 text-sm font-semibold text-white shadow-lg shadow-emerald-600/25 hover:from-emerald-500 hover:to-green-500 transition disabled:opacity-50 cursor-pointer"
+                  className="w-full mt-2 flex items-center justify-center gap-2 rounded-xl bg-linear-to-r from-emerald-600 to-green-600 py-3 text-sm font-semibold text-white shadow-lg shadow-emerald-600/25 hover:from-emerald-500 hover:to-green-500 transition disabled:opacity-50 cursor-pointer"
                 >
                   {loading ? (
                     <>
