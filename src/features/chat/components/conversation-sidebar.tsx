@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import {
   Plus,
   Trash2,
@@ -556,22 +557,22 @@ export function ConversationSidebar() {
               <p className="text-[11px] text-slate-500 dark:text-slate-400 mb-2.5 leading-relaxed">
                 Sign in to save your chat history and unlock all features.
               </p>
-              <button
-                onClick={() => setIsAuthModalOpen(true)}
+              <Link
+                href="/login"
                 className="w-full flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold shadow-xs transition cursor-pointer"
               >
                 <LogIn size={13} />
                 <span>Sign In / Register</span>
-              </button>
+              </Link>
             </div>
           ) : (
-            <button
-              onClick={() => setIsAuthModalOpen(true)}
+            <Link
+              href="/login"
               className="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-700 text-xs font-bold text-white shadow-xs mx-auto transition hover:opacity-90 cursor-pointer"
               title="Sign in to save chat"
             >
               <LogIn size={16} />
-            </button>
+            </Link>
           )
         ) : !isCollapsed ? (
           <div className="flex items-center justify-between rounded-xl bg-white dark:bg-slate-900 p-2.5 border border-slate-200 dark:border-slate-800 shadow-xs">

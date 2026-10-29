@@ -7,6 +7,7 @@ import { authService } from "@/features/auth/services/auth.service";
 import { WorkspaceSkeleton } from "./workspace-skeleton";
 import { PublicWorkspacePreview } from "./public-workspace-preview";
 import { AuthModal } from "./auth-modal";
+import { EnterpriseAuthView } from "./enterprise-auth-view";
 
 interface AuthGuardProps {
   children: React.ReactNode;
@@ -279,19 +280,9 @@ function AuthGuardContent({ children }: AuthGuardProps) {
     );
   }
 
-  // 4. Explicit ?auth=login: Render centered AuthModal with preview
+  // 4. Explicit ?auth=login: Render Enterprise Split Layout
   if (authQuery === "login") {
-    return (
-      <div className="relative h-screen w-screen overflow-hidden bg-slate-50 flex items-center justify-center transition-colors duration-200">
-        <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
-          <div className="absolute -top-32 left-1/2 h-[520px] w-[1000px] -translate-x-1/2 rounded-full bg-emerald-200/40 blur-[120px]" />
-          <div className="absolute bottom-[-160px] left-[-80px] h-[480px] w-[800px] rounded-full bg-teal-200/30 blur-[120px]" />
-        </div>
-
-        <PublicWorkspacePreview />
-        <AuthModal isOpen={true} canClose={false} />
-      </div>
-    );
+    return <EnterpriseAuthView initialMode="login" redirectPath="/chat" />;
   }
 
   // 5. Default in-flight guest provisioning state: Render workspace skeleton matching chat palette

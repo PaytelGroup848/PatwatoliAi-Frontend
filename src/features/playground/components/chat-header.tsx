@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { Bot, Sparkles, Menu, Plus, LogIn } from "lucide-react";
 import { useAssistants } from "../hooks/use-assistants";
 import { getAssistantLogo } from "@/features/chat/utils/assistant-logo";
@@ -115,13 +116,13 @@ export function ChatHeader() {
               <Sparkles size={12} className="text-amber-600 dark:text-amber-400" />
               <span>Guest Mode</span>
             </span>
-            <button
-              onClick={() => setIsAuthModalOpen(true)}
+            <Link
+              href="/login"
               className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white shadow-xs transition cursor-pointer"
             >
               <LogIn size={13} />
               <span>Sign In</span>
-            </button>
+            </Link>
           </div>
         )}
 
