@@ -222,26 +222,26 @@ export function PricingView({ showBackButton = true }: { showBackButton?: boolea
     <div className="w-full max-w-6xl mx-auto px-4 py-8">
       {/* HEADER SECTION */}
       <div className="text-center max-w-3xl mx-auto mb-10">
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-semibold mb-3">
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/60 text-emerald-700 dark:text-emerald-300 text-xs font-semibold mb-3">
           <Sparkles size={13} />
           <span>Scale Your Intelligence</span>
         </div>
 
-        <h1 className="text-3xl md:text-5xl font-black tracking-tight text-slate-900 mb-4">
+        <h1 className="text-3xl md:text-5xl font-black tracking-tight text-slate-900 dark:text-slate-100 mb-4">
           Choose the Perfect Plan
         </h1>
-        <p className="text-sm md:text-base text-slate-600">
-          Unlock high token allowances, frontier AI models (Claude 3.5, GPT-4o), and priority generation latency with enterprise security.
+        <p className="text-sm md:text-base text-slate-600 dark:text-slate-400">
+          Unlock high token allowances, frontier AI models , and priority generation latency with enterprise security.
         </p>
 
         {/* BILLING CYCLE TOGGLE */}
-        <div className="mt-6 inline-flex items-center p-1 rounded-2xl bg-slate-100 border border-slate-200 shadow-inner">
+        <div className="mt-6 inline-flex items-center p-1 rounded-2xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-inner">
           <button
             onClick={() => setBillingCycle("monthly")}
             className={`px-5 py-2 rounded-xl text-xs md:text-sm font-bold transition-all cursor-pointer ${
               billingCycle === "monthly"
-                ? "bg-white text-slate-900 shadow-sm"
-                : "text-slate-600 hover:text-slate-900"
+                ? "bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-xs"
+                : "text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white"
             }`}
           >
             Monthly Billing
@@ -250,13 +250,13 @@ export function PricingView({ showBackButton = true }: { showBackButton?: boolea
             onClick={() => setBillingCycle("yearly")}
             className={`flex items-center gap-2 px-5 py-2 rounded-xl text-xs md:text-sm font-bold transition-all cursor-pointer ${
               billingCycle === "yearly"
-                ? "bg-white text-slate-900 shadow-sm"
-                : "text-slate-600 hover:text-slate-900"
+                ? "bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-xs"
+                : "text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white"
             }`}
           >
             <span>Annual Billing</span>
             {annualDiscountPct > 0 && (
-              <span className="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[11px] font-extrabold">
+              <span className="px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 text-[11px] font-extrabold">
                 Save {annualDiscountPct}%
               </span>
             )}
@@ -266,15 +266,15 @@ export function PricingView({ showBackButton = true }: { showBackButton?: boolea
 
       {/* NOTIFICATIONS */}
       {errorMessage && (
-        <div className="max-w-2xl mx-auto mb-6 p-4 rounded-2xl bg-red-50 border border-red-200 text-red-700 text-sm flex items-center gap-3 shadow-xs">
-          <AlertCircle size={18} className="shrink-0 text-red-600" />
+        <div className="max-w-2xl mx-auto mb-6 p-4 rounded-2xl bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-800/60 text-red-700 dark:text-red-300 text-sm flex items-center gap-3 shadow-xs">
+          <AlertCircle size={18} className="shrink-0 text-red-600 dark:text-red-400" />
           <span>{errorMessage}</span>
         </div>
       )}
 
       {successMessage && (
-        <div className="max-w-2xl mx-auto mb-6 p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-sm flex items-center gap-3 font-semibold shadow-xs">
-          <ShieldCheck size={18} className="shrink-0 text-emerald-600" />
+        <div className="max-w-2xl mx-auto mb-6 p-4 rounded-2xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800/60 text-emerald-800 dark:text-emerald-300 text-sm flex items-center gap-3 font-semibold shadow-xs">
+          <ShieldCheck size={18} className="shrink-0 text-emerald-600 dark:text-emerald-400" />
           <span>{successMessage}</span>
         </div>
       )}
@@ -282,8 +282,8 @@ export function PricingView({ showBackButton = true }: { showBackButton?: boolea
       {/* PLAN CARDS GRID */}
       {isPlansLoading ? (
         <div className="py-24 flex flex-col items-center justify-center gap-3">
-          <Loader2 className="animate-spin text-emerald-600" size={36} />
-          <span className="text-sm font-medium text-slate-500">Loading plan tiers...</span>
+          <Loader2 className="animate-spin text-emerald-600 dark:text-emerald-400" size={36} />
+          <span className="text-sm font-medium text-slate-500 dark:text-slate-400">Loading plan tiers...</span>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch mb-14">
@@ -309,10 +309,10 @@ export function PricingView({ showBackButton = true }: { showBackButton?: boolea
             return (
               <div
                 key={plan.id}
-                className={`relative flex flex-col rounded-3xl p-6 bg-white transition-all duration-300 ${
+                className={`relative flex flex-col rounded-3xl p-6 bg-white dark:bg-slate-900 transition-all duration-300 ${
                   isPro
-                    ? "border-2 border-emerald-500 shadow-xl shadow-emerald-500/10 md:-translate-y-2"
-                    : "border border-slate-200 shadow-sm hover:border-slate-300 hover:shadow-md"
+                    ? "border-2 border-emerald-500 shadow-xl shadow-emerald-500/10 dark:shadow-emerald-500/5 md:-translate-y-2"
+                    : "border border-slate-200 dark:border-slate-800 shadow-sm hover:border-slate-300 dark:hover:border-slate-700 hover:shadow-md"
                 }`}
               >
                 {isPro && (
@@ -322,39 +322,39 @@ export function PricingView({ showBackButton = true }: { showBackButton?: boolea
                 )}
 
                 <div className="flex items-center justify-between mb-2">
-                  <div className="font-bold text-lg text-slate-900 flex items-center gap-2">
-                    {isPro && <Crown size={18} className="text-emerald-600" />}
+                  <div className="font-bold text-lg text-slate-900 dark:text-slate-100 flex items-center gap-2">
+                    {isPro && <Crown size={18} className="text-emerald-600 dark:text-emerald-400" />}
                     <span>{plan.plan_name}</span>
                   </div>
                   {isCurrentTier && (
-                    <span className="px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-800 text-xs font-bold border border-emerald-200">
+                    <span className="px-2.5 py-1 rounded-lg bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 text-xs font-bold border border-emerald-200 dark:border-emerald-800/60">
                       Current Plan
                     </span>
                   )}
                 </div>
 
-                <p className="text-xs text-slate-500 min-h-[36px] line-clamp-2">
+                <p className="text-xs text-slate-500 dark:text-slate-400 min-h-[36px] line-clamp-2">
                   {plan.description || "Comprehensive AI platform access"}
                 </p>
 
                 {/* PRICE BLOCK */}
-                <div className="my-5 pb-5 border-b border-slate-100">
+                <div className="my-5 pb-5 border-b border-slate-100 dark:border-slate-800">
                   {isFree ? (
-                    <div className="text-4xl font-black text-slate-900">
+                    <div className="text-4xl font-black text-slate-900 dark:text-slate-100">
                       Free
-                      <span className="text-xs font-normal text-slate-500 ml-1.5">/ forever</span>
+                      <span className="text-xs font-normal text-slate-500 dark:text-slate-400 ml-1.5">/ forever</span>
                     </div>
                   ) : (
                     <div className="flex items-baseline gap-1.5">
-                      <span className="text-4xl font-black text-slate-900">
+                      <span className="text-4xl font-black text-slate-900 dark:text-slate-100">
                         {currency}{amount.toLocaleString()}
                       </span>
-                      <span className="text-xs font-normal text-slate-500">
+                      <span className="text-xs font-normal text-slate-500 dark:text-slate-400">
                         /{billingCycle === "yearly" ? "year" : "month"}
                       </span>
                     </div>
                   )}
-                  <div className="text-xs font-semibold text-emerald-700 mt-1.5">
+                  <div className="text-xs font-semibold text-emerald-700 dark:text-emerald-400 mt-1.5">
                     {plan.monthly_token_limit > 0
                       ? `${plan.monthly_token_limit.toLocaleString()} monthly tokens`
                       : "Standard token limit"}
@@ -363,12 +363,12 @@ export function PricingView({ showBackButton = true }: { showBackButton?: boolea
 
                 {/* FEATURES LIST */}
                 <div className="flex-1 space-y-3 mb-8">
-                  <div className="text-xs font-bold text-slate-400 uppercase tracking-wider">
+                  <div className="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider">
                     Included Features
                   </div>
                   {plan.features.map((feature, idx) => (
-                    <div key={idx} className="flex items-start gap-2.5 text-xs text-slate-700">
-                      <div className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-emerald-700 mt-0.5">
+                    <div key={idx} className="flex items-start gap-2.5 text-xs text-slate-700 dark:text-slate-300">
+                      <div className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 mt-0.5">
                         <Check size={11} strokeWidth={3} />
                       </div>
                       <span className="font-medium leading-relaxed">{feature}</span>
@@ -381,9 +381,9 @@ export function PricingView({ showBackButton = true }: { showBackButton?: boolea
                   {isCurrentPlanAndCycle ? (
                     <button
                       disabled
-                      className="w-full py-3 rounded-2xl text-xs font-bold bg-slate-100 text-slate-500 border border-slate-200 cursor-default flex items-center justify-center gap-2"
+                      className="w-full py-3 rounded-2xl text-xs font-bold bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-700 cursor-default flex items-center justify-center gap-2"
                     >
-                      <Check size={16} className="text-emerald-600" />
+                      <Check size={16} className="text-emerald-600 dark:text-emerald-400" />
                       <span>Current Plan</span>
                     </button>
                   ) : isCurrentTier && !isCurrentPlanAndCycle ? (
@@ -411,7 +411,7 @@ export function PricingView({ showBackButton = true }: { showBackButton?: boolea
                       className={`w-full py-3 rounded-2xl text-xs font-bold transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer ${
                         isPro
                           ? "bg-emerald-600 hover:bg-emerald-700 text-white shadow-emerald-600/20 hover:scale-[1.01]"
-                          : "bg-slate-900 hover:bg-slate-800 text-white shadow-slate-900/10"
+                          : "bg-slate-900 dark:bg-slate-800 hover:bg-slate-800 dark:hover:bg-slate-700 text-white shadow-slate-900/10"
                       } ${
                         isProcessing || processingPlanCode !== null
                           ? "opacity-60 cursor-not-allowed"
@@ -434,7 +434,7 @@ export function PricingView({ showBackButton = true }: { showBackButton?: boolea
                     <button
                       onClick={() => setIsDowngradeModalOpen(true)}
                       disabled={isProcessing || isDowngrading}
-                      className="w-full py-3 rounded-2xl text-xs font-semibold text-slate-700 hover:text-red-700 bg-slate-50 hover:bg-red-50 border border-slate-200 hover:border-red-200 transition-all cursor-pointer flex items-center justify-center gap-2"
+                      className="w-full py-3 rounded-2xl text-xs font-semibold text-slate-700 dark:text-slate-300 hover:text-red-700 dark:hover:text-red-400 bg-slate-50 dark:bg-slate-800/80 hover:bg-red-50 dark:hover:bg-red-950/40 border border-slate-200 dark:border-slate-700 hover:border-red-200 dark:hover:border-red-800 transition-all cursor-pointer flex items-center justify-center gap-2"
                     >
                       <span>Downgrade to Free</span>
                     </button>
@@ -442,7 +442,7 @@ export function PricingView({ showBackButton = true }: { showBackButton?: boolea
                     <button
                       onClick={() => handleUpgrade(plan)}
                       disabled={isProcessing || processingPlanCode !== null}
-                      className="w-full py-3 rounded-2xl text-xs font-semibold text-slate-800 hover:text-slate-950 bg-slate-100 hover:bg-slate-200 border border-slate-200 transition-all cursor-pointer flex items-center justify-center gap-2"
+                      className="w-full py-3 rounded-2xl text-xs font-semibold text-slate-800 dark:text-slate-200 hover:text-slate-950 dark:hover:text-white bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 transition-all cursor-pointer flex items-center justify-center gap-2"
                     >
                       {isProcessing ? (
                         <>
@@ -462,49 +462,49 @@ export function PricingView({ showBackButton = true }: { showBackButton?: boolea
       )}
 
       {/* TRUST & SECURITY BADGES */}
-      <div className="rounded-2xl bg-white border border-slate-200 p-6 shadow-xs flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-600 mb-14">
+      <div className="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 shadow-xs flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-600 dark:text-slate-400 mb-14">
         <div className="flex items-center gap-3">
-          <div className="h-10 w-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 border border-emerald-200">
+          <div className="h-10 w-10 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 border border-emerald-200 dark:border-emerald-800/60">
             <ShieldCheck size={20} />
           </div>
           <div>
-            <div className="font-bold text-slate-900">Encrypted 256-bit Razorpay Checkout</div>
-            <div className="text-slate-500">Instant token activation directly applied to your user balance.</div>
+            <div className="font-bold text-slate-900 dark:text-slate-100">Encrypted 256-bit Razorpay Checkout</div>
+            <div className="text-slate-500 dark:text-slate-400">Instant token activation directly applied to your user balance.</div>
           </div>
         </div>
-        <div className="flex items-center gap-2 text-slate-500 font-medium">
+        <div className="flex items-center gap-2 text-slate-500 dark:text-slate-400 font-medium">
           <span>Supported:</span>
-          <span className="px-2 py-1 bg-slate-100 rounded-md font-semibold text-slate-700">UPI (GPay / PhonePe / Paytm)</span>
-          <span className="px-2 py-1 bg-slate-100 rounded-md font-semibold text-slate-700">Cards</span>
-          <span className="px-2 py-1 bg-slate-100 rounded-md font-semibold text-slate-700">NetBanking</span>
+          <span className="px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded-md font-semibold text-slate-700 dark:text-slate-300">UPI (GPay / PhonePe / Paytm)</span>
+          <span className="px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded-md font-semibold text-slate-700 dark:text-slate-300">Cards</span>
+          <span className="px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded-md font-semibold text-slate-700 dark:text-slate-300">NetBanking</span>
         </div>
       </div>
 
       {/* FREQUENTLY ASKED QUESTIONS */}
       <div className="max-w-3xl mx-auto">
-        <h2 className="text-2xl font-bold text-slate-900 text-center mb-8 flex items-center justify-center gap-2">
-          <HelpCircle size={22} className="text-emerald-600" />
+        <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100 text-center mb-8 flex items-center justify-center gap-2">
+          <HelpCircle size={22} className="text-emerald-600 dark:text-emerald-400" />
           <span>Frequently Asked Questions</span>
         </h2>
 
         <div className="space-y-4">
-          <div className="bg-white rounded-2xl border border-slate-200 p-5 shadow-xs">
-            <h3 className="font-bold text-sm text-slate-900 mb-1.5">Can I cancel or downgrade my subscription anytime?</h3>
-            <p className="text-xs text-slate-600 leading-relaxed">
+          <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-5 shadow-xs">
+            <h3 className="font-bold text-sm text-slate-900 dark:text-slate-100 mb-1.5">Can I cancel or downgrade my subscription anytime?</h3>
+            <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
               Yes, absolutely. You can downgrade back to the Free Tier with a single click. Your plan will transition cleanly without hidden charges or retention locks.
             </p>
           </div>
 
-          <div className="bg-white rounded-2xl border border-slate-200 p-5 shadow-xs">
-            <h3 className="font-bold text-sm text-slate-900 mb-1.5">How are tokens measured and consumed?</h3>
-            <p className="text-xs text-slate-600 leading-relaxed">
+          <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-5 shadow-xs">
+            <h3 className="font-bold text-sm text-slate-900 dark:text-slate-100 mb-1.5">How are tokens measured and consumed?</h3>
+            <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
               Tokens are counted in real-time for input prompts and model responses across standard chat, tool calls, and document intelligence. Pro Tier includes 50 Million monthly tokens.
             </p>
           </div>
 
-          <div className="bg-white rounded-2xl border border-slate-200 p-5 shadow-xs">
-            <h3 className="font-bold text-sm text-slate-900 mb-1.5">Will I get a GST Tax Invoice?</h3>
-            <p className="text-xs text-slate-600 leading-relaxed">
+          <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 p-5 shadow-xs">
+            <h3 className="font-bold text-sm text-slate-900 dark:text-slate-100 mb-1.5">Will I get a GST Tax Invoice?</h3>
+            <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
               Yes, all paid purchases generate automated Razorpay invoices with GST breakdowns suitable for business expense accounting.
             </p>
           </div>
@@ -513,19 +513,19 @@ export function PricingView({ showBackButton = true }: { showBackButton?: boolea
 
       {/* CONFIRMATION MODAL FOR DOWNGRADE TO FREE */}
       {isDowngradeModalOpen && (
-        <div className="fixed inset-0 z-60 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs animate-in fade-in duration-150">
-          <div className="bg-white rounded-3xl p-6 max-w-md w-full border border-slate-200 shadow-2xl space-y-4">
+        <div className="fixed inset-0 z-60 flex items-center justify-center p-4 bg-slate-900/60 dark:bg-slate-950/80 backdrop-blur-xs animate-in fade-in duration-150">
+          <div className="bg-white dark:bg-slate-900 rounded-3xl p-6 max-w-md w-full border border-slate-200 dark:border-slate-800 shadow-2xl space-y-4">
             <div className="flex items-center gap-3">
-              <div className="h-10 w-10 rounded-full bg-red-50 text-red-600 flex items-center justify-center shrink-0 border border-red-200">
+              <div className="h-10 w-10 rounded-full bg-red-50 dark:bg-red-950/40 text-red-600 dark:text-red-400 flex items-center justify-center shrink-0 border border-red-200 dark:border-red-800/60">
                 <AlertCircle size={20} />
               </div>
               <div>
-                <h3 className="text-base font-bold text-slate-900">Downgrade to Free Tier?</h3>
-                <p className="text-xs text-slate-500">Cancel your paid subscription plan</p>
+                <h3 className="text-base font-bold text-slate-900 dark:text-slate-100">Downgrade to Free Tier?</h3>
+                <p className="text-xs text-slate-500 dark:text-slate-400">Cancel your paid subscription plan</p>
               </div>
             </div>
 
-            <p className="text-xs text-slate-600 leading-relaxed">
+            <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
               Are you sure you want to downgrade? Your active subscription will be cancelled immediately and your account limits will revert to the standard Free Tier (10,000,000 tokens/month).
             </p>
 
@@ -533,7 +533,7 @@ export function PricingView({ showBackButton = true }: { showBackButton?: boolea
               <button
                 onClick={() => setIsDowngradeModalOpen(false)}
                 disabled={isDowngrading}
-                className="px-4 py-2 text-xs font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-xl transition cursor-pointer"
+                className="px-4 py-2 text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition cursor-pointer"
               >
                 Keep My Plan
               </button>

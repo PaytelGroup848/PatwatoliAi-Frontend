@@ -240,21 +240,21 @@ console.log(data);`;
   };
 
   const modalContent = (
-    <div className="fixed inset-0 z-999999 h-screen w-screen overflow-hidden bg-slate-50 text-slate-900 flex flex-col animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-999999 h-screen w-screen overflow-hidden bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex flex-col animate-in fade-in duration-200">
       {/* DEVELOPER PORTAL TOP NAVBAR */}
-      <div className="flex h-16 items-center justify-between border-b border-slate-200/80 bg-white/95 px-6 backdrop-blur-xl shrink-0 shadow-xs">
+      <div className="flex h-16 items-center justify-between border-b border-slate-200/80 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/95 px-6 backdrop-blur-xl shrink-0 shadow-xs">
         <div className="flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600 border border-emerald-200 shadow-xs">
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/60 shadow-xs">
             <Key size={20} />
           </div>
           <div>
-            <div className="flex items-center gap-2 font-bold text-slate-900 text-base">
-              <span>Patwatoli AI Developer Portal</span>
-              <span className="flex items-center gap-1 rounded-full bg-emerald-50 px-2.5 py-0.5 text-[11px] font-bold text-emerald-700 border border-emerald-200">
+            <div className="flex items-center gap-2 font-bold text-slate-900 dark:text-slate-100 text-base">
+              <span>Patwatoli Developer Portal</span>
+              <span className="flex items-center gap-1 rounded-full bg-emerald-50 dark:bg-emerald-950/40 px-2.5 py-0.5 text-[11px] font-bold text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/60">
                 <Sparkles size={10} /> Patwatoli v1 REST API
               </span>
             </div>
-            <p className="text-xs text-slate-500 font-medium">
+            <p className="text-xs text-slate-500 dark:text-slate-400 font-medium">
               API Keys, Documentation & Metered Usage Dashboard
             </p>
           </div>
@@ -271,7 +271,7 @@ console.log(data);`;
 
           <button
             onClick={onClose}
-            className="flex h-9 w-9 items-center justify-center rounded-xl text-slate-400 hover:bg-slate-100 hover:text-slate-700 transition cursor-pointer"
+            className="flex h-9 w-9 items-center justify-center rounded-xl text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-700 dark:hover:text-slate-200 transition cursor-pointer"
           >
             <X size={20} />
           </button>
@@ -282,10 +282,10 @@ console.log(data);`;
       <div className="relative flex-1 overflow-y-auto p-6 md:p-8">
         {/* Patwatoli AI Emerald Green Wave Background */}
         <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
-          <div className="absolute -top-32 left-1/2 h-130 w-275 -translate-x-1/2 rounded-full bg-emerald-200/40 blur-[120px]" />
-          <div className="absolute top-1/4 -left-40 h-105 w-180 rounded-full bg-teal-200/30 blur-[130px]" />
-          <div className="absolute -bottom-40 -left-20 h-130 w-205 rounded-full bg-emerald-300/30 blur-[120px]" />
-          <div className="absolute -bottom-55 -right-25 h-140 w-215 rounded-full bg-teal-100/50 blur-[120px]" />
+          <div className="absolute -top-32 left-1/2 h-130 w-275 -translate-x-1/2 rounded-full bg-emerald-200/40 dark:bg-emerald-900/20 blur-[120px]" />
+          <div className="absolute top-1/4 -left-40 h-105 w-180 rounded-full bg-teal-200/30 dark:bg-teal-900/20 blur-[130px]" />
+          <div className="absolute -bottom-40 -left-20 h-130 w-205 rounded-full bg-emerald-300/30 dark:bg-emerald-950/30 blur-[120px]" />
+          <div className="absolute -bottom-55 -right-25 h-140 w-215 rounded-full bg-teal-100/50 dark:bg-teal-950/30 blur-[120px]" />
         </div>
 
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6">
@@ -293,69 +293,69 @@ console.log(data);`;
           <div className="lg:col-span-7 space-y-6">
             {isGuest ? (
               /* GUEST USER LOCKOUT BANNER */
-              <div className="rounded-2xl bg-white p-7 border border-slate-200/80 shadow-sm space-y-6">
+              <div className="rounded-2xl bg-white dark:bg-slate-900 p-7 border border-slate-200/80 dark:border-slate-800 shadow-sm space-y-6">
                 <div className="flex items-start gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-600 border border-emerald-200 shadow-xs shrink-0">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/60 shadow-xs shrink-0">
                     <Lock size={24} />
                   </div>
                   <div>
-                    <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-50 px-2.5 py-0.5 text-[11px] font-bold text-amber-700 border border-amber-200 mb-1.5">
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-50 dark:bg-amber-950/40 px-2.5 py-0.5 text-[11px] font-bold text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800/60 mb-1.5">
                       🔒 Developer Account Required
                     </span>
-                    <h3 className="text-lg font-bold text-slate-900">
-                      Unlock Patwatoli AI Developer Platform
+                    <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100">
+                      Unlock Patwatoli Developer Platform
                     </h3>
-                    <p className="text-xs text-slate-500 mt-1">
-                      Generate cryptographic <code className="rounded bg-emerald-50 px-1.5 py-0.5 font-mono font-bold text-emerald-700 border border-emerald-200">pt_live_</code> secret keys and deploy custom AI models (LawGPT, Astrology AI, Code Architect, MedAssist) into your web and mobile applications.
+                    <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+                      Generate cryptographic <code className="rounded bg-emerald-50 dark:bg-emerald-950/50 px-1.5 py-0.5 font-mono font-bold text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/60">pt_live_</code> secret keys and deploy custom AI models (LawGPT, Astrology AI, Code Architect, MedAssist) into your web and mobile applications.
                     </p>
                   </div>
                 </div>
 
                 {/* Feature Value Props */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
-                  <div className="rounded-xl bg-slate-50 p-3.5 border border-slate-200/70 space-y-1">
-                    <div className="flex items-center gap-2 text-xs font-bold text-slate-900">
-                      <Sparkles size={14} className="text-emerald-600" />
+                  <div className="rounded-xl bg-slate-50 dark:bg-slate-800/50 p-3.5 border border-slate-200/70 dark:border-slate-700/70 space-y-1">
+                    <div className="flex items-center gap-2 text-xs font-bold text-slate-900 dark:text-slate-100">
+                      <Sparkles size={14} className="text-emerald-600 dark:text-emerald-400" />
                       <span>Custom Fine-Tuned Models</span>
                     </div>
-                    <p className="text-[11px] text-slate-500">
+                    <p className="text-[11px] text-slate-500 dark:text-slate-400">
                       Access LawGPT, Astrology AI, Code Architect & General Chat.
                     </p>
                   </div>
 
-                  <div className="rounded-xl bg-slate-50 p-3.5 border border-slate-200/70 space-y-1">
-                    <div className="flex items-center gap-2 text-xs font-bold text-slate-900">
-                      <Terminal size={14} className="text-emerald-600" />
+                  <div className="rounded-xl bg-slate-50 dark:bg-slate-800/50 p-3.5 border border-slate-200/70 dark:border-slate-700/70 space-y-1">
+                    <div className="flex items-center gap-2 text-xs font-bold text-slate-900 dark:text-slate-100">
+                      <Terminal size={14} className="text-emerald-600 dark:text-emerald-400" />
                       <span>OpenAI SDK Compatible</span>
                     </div>
-                    <p className="text-[11px] text-slate-500">
+                    <p className="text-[11px] text-slate-500 dark:text-slate-400">
                       Drop-in replacement for OpenAI Python, Node & REST clients.
                     </p>
                   </div>
 
-                  <div className="rounded-xl bg-slate-50 p-3.5 border border-slate-200/70 space-y-1">
-                    <div className="flex items-center gap-2 text-xs font-bold text-slate-900">
-                      <ShieldCheck size={14} className="text-emerald-600" />
+                  <div className="rounded-xl bg-slate-50 dark:bg-slate-800/50 p-3.5 border border-slate-200/70 dark:border-slate-700/70 space-y-1">
+                    <div className="flex items-center gap-2 text-xs font-bold text-slate-900 dark:text-slate-100">
+                      <ShieldCheck size={14} className="text-emerald-600 dark:text-emerald-400" />
                       <span>pt_live_ Key Security</span>
                     </div>
-                    <p className="text-[11px] text-slate-500">
+                    <p className="text-[11px] text-slate-500 dark:text-slate-400">
                       Secure SHA-256 hashed keys with instant revocation control.
                     </p>
                   </div>
 
-                  <div className="rounded-xl bg-slate-50 p-3.5 border border-slate-200/70 space-y-1">
-                    <div className="flex items-center gap-2 text-xs font-bold text-slate-900">
-                      <Zap size={14} className="text-emerald-600" />
+                  <div className="rounded-xl bg-slate-50 dark:bg-slate-800/50 p-3.5 border border-slate-200/70 dark:border-slate-700/70 space-y-1">
+                    <div className="flex items-center gap-2 text-xs font-bold text-slate-900 dark:text-slate-100">
+                      <Zap size={14} className="text-emerald-600 dark:text-emerald-400" />
                       <span>Real-Time Usage Meter</span>
                     </div>
-                    <p className="text-[11px] text-slate-500">
+                    <p className="text-[11px] text-slate-500 dark:text-slate-400">
                       Monitor token counts, latency ms, and quota allocations.
                     </p>
                   </div>
                 </div>
 
                 {/* Action CTA Buttons */}
-                <div className="flex flex-col sm:flex-row gap-3 pt-2 border-t border-slate-100">
+                <div className="flex flex-col sm:flex-row gap-3 pt-2 border-t border-slate-100 dark:border-slate-800">
                   <Link
                     href="/register?redirect=/chat"
                     className="flex-1 flex items-center justify-center gap-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 px-5 py-3 text-xs font-bold text-white shadow-sm shadow-emerald-600/30 transition cursor-pointer active:scale-95 text-center"
@@ -366,7 +366,7 @@ console.log(data);`;
 
                   <Link
                     href="/login?redirect=/chat"
-                    className="flex items-center justify-center gap-2 rounded-xl bg-slate-100 hover:bg-slate-200 px-5 py-3 text-xs font-bold text-slate-700 border border-slate-200 transition cursor-pointer active:scale-95 text-center"
+                    className="flex items-center justify-center gap-2 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 px-5 py-3 text-xs font-bold text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 transition cursor-pointer active:scale-95 text-center"
                   >
                     <LogIn size={16} />
                     <span>Sign In</span>
@@ -376,12 +376,12 @@ console.log(data);`;
             ) : (
               /* LOGGED IN USER: CREATE NEW KEY CARD */
               <>
-                <div className="rounded-2xl bg-white p-6 border border-slate-200/80 shadow-sm space-y-4">
-                  <div className="flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-slate-900">
-                    <Plus size={16} className="text-emerald-600" />
+                <div className="rounded-2xl bg-white dark:bg-slate-900 p-6 border border-slate-200/80 dark:border-slate-800 shadow-sm space-y-4">
+                  <div className="flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-slate-900 dark:text-slate-100">
+                    <Plus size={16} className="text-emerald-600 dark:text-emerald-400" />
                     <span>Create New Secret API Key</span>
                   </div>
-                  <p className="text-xs text-slate-500">
+                  <p className="text-xs text-slate-500 dark:text-slate-400">
                     Name your secret key to identify where it is deployed (e.g. Production Backend, WhatsApp Bot, Mobile App).
                   </p>
 
@@ -394,7 +394,7 @@ console.log(data);`;
                         setNewKeyName(e.target.value);
                         if (createError) setCreateError(null);
                       }}
-                      className="flex-1 rounded-xl border border-slate-200 bg-slate-50 px-4 py-2.5 text-xs text-slate-900 placeholder-slate-400 focus:border-emerald-500 focus:bg-white focus:outline-none shadow-xs font-mono transition"
+                      className="flex-1 rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/80 px-4 py-2.5 text-xs text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:border-emerald-500 focus:bg-white dark:focus:bg-slate-800 focus:outline-none shadow-xs font-mono transition"
                     />
                     <button
                       onClick={handleGenerateKey}
@@ -407,24 +407,24 @@ console.log(data);`;
                   </div>
 
                   {createError && (
-                    <div className="mt-3 rounded-xl bg-red-50 p-3 text-xs text-red-700 border border-red-200 flex items-center gap-2">
+                    <div className="mt-3 rounded-xl bg-red-50 dark:bg-red-950/40 p-3 text-xs text-red-700 dark:text-red-300 border border-red-200 dark:border-red-800/60 flex items-center gap-2">
                       <X size={15} className="text-red-500 shrink-0" />
                       <span>{createError}</span>
                     </div>
                   )}
 
                   {generatedKey && (
-                    <div className="mt-4 rounded-xl bg-emerald-50/80 p-4 border border-emerald-200 space-y-2 shadow-xs">
+                    <div className="mt-4 rounded-xl bg-emerald-50/80 dark:bg-emerald-950/40 p-4 border border-emerald-200 dark:border-emerald-800/60 space-y-2 shadow-xs">
                       <div className="flex items-center justify-between">
-                        <span className="text-xs font-bold text-emerald-800 flex items-center gap-1.5">
-                          <Sparkles size={14} className="text-emerald-600" /> Please copy your secret key now!
+                        <span className="text-xs font-bold text-emerald-800 dark:text-emerald-300 flex items-center gap-1.5">
+                          <Sparkles size={14} className="text-emerald-600 dark:text-emerald-400" /> Please copy your secret key now!
                         </span>
-                        <span className="text-[11px] text-amber-700 font-medium">
+                        <span className="text-[11px] text-amber-700 dark:text-amber-300 font-medium">
                           You won&apos;t be able to view it again.
                         </span>
                       </div>
-                      <div className="rounded-lg bg-white p-3 text-xs font-mono text-emerald-700 border border-emerald-200 flex items-center justify-between shadow-xs">
-                        <div className="truncate pr-3 font-semibold select-all text-slate-800">{generatedKey}</div>
+                      <div className="rounded-lg bg-white dark:bg-slate-900 p-3 text-xs font-mono text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/60 flex items-center justify-between shadow-xs">
+                        <div className="truncate pr-3 font-semibold select-all text-slate-800 dark:text-slate-200">{generatedKey}</div>
                         <button
                           onClick={() => handleCopy(generatedKey, "gen")}
                           className="flex items-center gap-1.5 shrink-0 rounded-lg bg-emerald-600 hover:bg-emerald-500 px-3 py-1.5 text-xs font-bold text-white transition cursor-pointer shadow-xs active:scale-95"
@@ -438,16 +438,16 @@ console.log(data);`;
                 </div>
 
                 {/* ACTIVE KEYS TABLE */}
-                <div className="rounded-2xl bg-white p-6 border border-slate-200/80 shadow-sm space-y-4">
-                  <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-                    <span className="text-sm font-bold uppercase tracking-wider text-slate-900 flex items-center gap-2">
-                      <Key size={16} className="text-emerald-600" />
+                <div className="rounded-2xl bg-white dark:bg-slate-900 p-6 border border-slate-200/80 dark:border-slate-800 shadow-sm space-y-4">
+                  <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
+                    <span className="text-sm font-bold uppercase tracking-wider text-slate-900 dark:text-slate-100 flex items-center gap-2">
+                      <Key size={16} className="text-emerald-600 dark:text-emerald-400" />
                       <span>Your Active Secret Keys ({keys.length})</span>
                     </span>
-                    <span className="text-xs text-slate-500 font-medium">Keep your secret keys safe and secure.</span>
+                    <span className="text-xs text-slate-500 dark:text-slate-400 font-medium">Keep your secret keys safe and secure.</span>
                   </div>
 
-                  <div className="overflow-hidden rounded-xl border border-slate-200 bg-white">
+                  <div className="overflow-hidden rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
                     {loading ? (
                       <div className="p-8 text-center text-xs text-slate-400 flex items-center justify-center gap-2">
                         <Loader2 size={16} className="animate-spin text-emerald-600" />
@@ -456,31 +456,31 @@ console.log(data);`;
                     ) : keys.length === 0 ? (
                       <div className="p-8 text-center text-xs text-slate-400 italic">No active secret API keys found. Generate one above.</div>
                     ) : (
-                      <div className="divide-y divide-slate-100">
+                      <div className="divide-y divide-slate-100 dark:divide-slate-800">
                         {keys.map((k) => (
-                          <div key={k.id} className="flex items-center justify-between p-4 text-xs hover:bg-slate-50 transition">
+                          <div key={k.id} className="flex items-center justify-between p-4 text-xs hover:bg-slate-50 dark:hover:bg-slate-800/50 transition">
                             <div className="space-y-1 max-w-[65%]">
-                              <div className="font-bold text-slate-900 flex items-center gap-2 text-sm">
+                              <div className="font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2 text-sm">
                                 <span>{k.name}</span>
-                                <span className="rounded-md bg-slate-100 px-2 py-0.5 text-[11px] font-mono text-emerald-700 border border-slate-200 font-medium">
+                                <span className="rounded-md bg-slate-100 dark:bg-slate-800 px-2 py-0.5 text-[11px] font-mono text-emerald-700 dark:text-emerald-400 border border-slate-200 dark:border-slate-700 font-medium">
                                   {k.key.substring(0, 16)}••••
                                 </span>
                               </div>
-                              <div className="text-[11px] text-slate-500 font-mono">Created: {k.created} • Last used: {k.lastUsed}</div>
+                              <div className="text-[11px] text-slate-500 dark:text-slate-400 font-mono">Created: {k.created} • Last used: {k.lastUsed}</div>
                             </div>
 
                             <div className="flex items-center gap-2">
                               <button
                                 onClick={() => handleCopy(k.key, k.id)}
-                                className="flex items-center gap-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 px-3 py-1.5 text-xs font-semibold text-slate-700 transition cursor-pointer border border-slate-200 active:scale-95"
+                                className="flex items-center gap-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 px-3 py-1.5 text-xs font-semibold text-slate-700 dark:text-slate-300 transition cursor-pointer border border-slate-200 dark:border-slate-700 active:scale-95"
                               >
-                                {copiedId === k.id ? <Check size={13} className="text-emerald-600" /> : <Copy size={13} />}
+                                {copiedId === k.id ? <Check size={13} className="text-emerald-600 dark:text-emerald-400" /> : <Copy size={13} />}
                                 <span>{copiedId === k.id ? "Copied" : "Copy"}</span>
                               </button>
 
                               <button
                                 onClick={() => handleRevokeKey(k.id)}
-                                className="p-2 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition cursor-pointer border border-transparent hover:border-red-200"
+                                className="p-2 text-slate-400 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-950/40 rounded-lg transition cursor-pointer border border-transparent hover:border-red-200 dark:hover:border-red-800/50"
                                 title="Revoke Key"
                               >
                                 <Trash2 size={15} />
@@ -499,19 +499,19 @@ console.log(data);`;
           {/* RIGHT COLUMN: QUICKSTART & METERING (5 COLS) */}
           <div className="lg:col-span-5 space-y-6">
             {/* PATWATOLI AI REST API QUICKSTART */}
-            <div className="rounded-2xl bg-white p-6 border border-slate-200/80 shadow-sm space-y-4">
-              <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-                <div className="flex items-center gap-2 font-bold text-slate-900 text-sm">
-                  <Terminal size={16} className="text-emerald-600" />
+            <div className="rounded-2xl bg-white dark:bg-slate-900 p-6 border border-slate-200/80 dark:border-slate-800 shadow-sm space-y-4">
+              <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
+                <div className="flex items-center gap-2 font-bold text-slate-900 dark:text-slate-100 text-sm">
+                  <Terminal size={16} className="text-emerald-600 dark:text-emerald-400" />
                   <span>API Integration Quickstart</span>
                 </div>
-                <div className="flex items-center gap-1 rounded-lg bg-slate-100 p-1 border border-slate-200">
+                <div className="flex items-center gap-1 rounded-lg bg-slate-100 dark:bg-slate-800 p-1 border border-slate-200 dark:border-slate-700">
                   <button
                     onClick={() => setActiveCodeTab("curl")}
                     className={`rounded-md px-2.5 py-1 text-[11px] font-semibold transition cursor-pointer ${
                       activeCodeTab === "curl"
                         ? "bg-emerald-600 text-white shadow-xs"
-                        : "text-slate-600 hover:text-slate-900"
+                        : "text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white"
                     }`}
                   >
                     cURL
@@ -521,7 +521,7 @@ console.log(data);`;
                     className={`rounded-md px-2.5 py-1 text-[11px] font-semibold transition cursor-pointer ${
                       activeCodeTab === "python"
                         ? "bg-emerald-600 text-white shadow-xs"
-                        : "text-slate-600 hover:text-slate-900"
+                        : "text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white"
                     }`}
                   >
                     Python
@@ -531,7 +531,7 @@ console.log(data);`;
                     className={`rounded-md px-2.5 py-1 text-[11px] font-semibold transition cursor-pointer ${
                       activeCodeTab === "openai"
                         ? "bg-emerald-600 text-white shadow-xs"
-                        : "text-slate-600 hover:text-slate-900"
+                        : "text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white"
                     }`}
                   >
                     OpenAI SDK
@@ -541,7 +541,7 @@ console.log(data);`;
                     className={`rounded-md px-2.5 py-1 text-[11px] font-semibold transition cursor-pointer ${
                       activeCodeTab === "js"
                         ? "bg-emerald-600 text-white shadow-xs"
-                        : "text-slate-600 hover:text-slate-900"
+                        : "text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white"
                     }`}
                   >
                     Node.js
@@ -549,27 +549,27 @@ console.log(data);`;
                 </div>
               </div>
 
-              <pre className="overflow-x-auto p-4 bg-slate-950 rounded-xl text-emerald-400 font-mono text-[11px] leading-relaxed border border-slate-800 shadow-inner max-h-65">
+              <pre className="overflow-x-auto p-4 bg-slate-950 dark:bg-black/60 rounded-xl text-emerald-400 font-mono text-[11px] leading-relaxed border border-slate-800 shadow-inner max-h-65">
                 {getCodeSnippet()}
               </pre>
 
-              <div className="flex items-center justify-between text-xs text-slate-500 pt-1">
+              <div className="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 pt-1">
                 <span>
-                  Base URL: <code className="rounded bg-slate-100 px-1.5 py-0.5 text-emerald-700 font-mono border border-slate-200">https://api.patwatoliai.com/v1</code>
+                  Base URL: <code className="rounded bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 text-emerald-700 dark:text-emerald-300 font-mono border border-slate-200 dark:border-slate-700">https://api.patwatoliai.com/v1</code>
                 </span>
-                <span className="flex items-center gap-1 text-emerald-600 font-semibold">
+                <span className="flex items-center gap-1 text-emerald-600 dark:text-emerald-400 font-semibold">
                   <BookOpen size={13} /> v1 Compatible
                 </span>
               </div>
             </div>
 
             {/* LIVE USAGE & BILLING METER */}
-            <div className="rounded-2xl bg-white p-6 border border-slate-200/80 shadow-sm space-y-4">
+            <div className="rounded-2xl bg-white dark:bg-slate-900 p-6 border border-slate-200/80 dark:border-slate-800 shadow-sm space-y-4">
               <div className="flex items-center justify-between text-sm">
-                <span className="font-bold text-slate-900 flex items-center gap-2">
+                <span className="font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2">
                   <Zap size={16} className="text-amber-500" /> Live Monthly Token Usage
                 </span>
-                <span className="font-mono text-xs text-emerald-700 font-bold bg-emerald-50 px-2.5 py-0.5 rounded-md border border-emerald-200">
+                <span className="font-mono text-xs text-emerald-700 dark:text-emerald-300 font-bold bg-emerald-50 dark:bg-emerald-950/40 px-2.5 py-0.5 rounded-md border border-emerald-200 dark:border-emerald-800/60">
                   {isGuest
                     ? "Login Required"
                     : loading
@@ -578,7 +578,7 @@ console.log(data);`;
                 </span>
               </div>
 
-              <div className="h-2.5 w-full rounded-full bg-slate-100 overflow-hidden border border-slate-200">
+              <div className="h-2.5 w-full rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden border border-slate-200 dark:border-slate-700">
                 <div
                   className="h-full bg-emerald-500 rounded-full transition-all duration-500 shadow-sm"
                   style={{
@@ -596,40 +596,40 @@ console.log(data);`;
               </div>
 
               {isGuest ? (
-                <div className="rounded-xl bg-slate-50 p-4 border border-slate-200/80 text-center space-y-2 py-5">
+                <div className="rounded-xl bg-slate-50 dark:bg-slate-800/50 p-4 border border-slate-200/80 dark:border-slate-700/80 text-center space-y-2 py-5">
                   <Lock size={18} className="mx-auto text-slate-400" />
-                  <div className="text-xs font-bold text-slate-700">Account Required for Usage Metering</div>
-                  <p className="text-[11px] text-slate-500">Sign in to view token consumption, remaining balance, and plan tier.</p>
+                  <div className="text-xs font-bold text-slate-700 dark:text-slate-200">Account Required for Usage Metering</div>
+                  <p className="text-[11px] text-slate-500 dark:text-slate-400">Sign in to view token consumption, remaining balance, and plan tier.</p>
                 </div>
               ) : (
-                <div className="rounded-xl bg-slate-50 p-4 border border-slate-200/80 space-y-2 text-xs">
-                  <div className="flex items-center justify-between text-slate-600">
+                <div className="rounded-xl bg-slate-50 dark:bg-slate-800/50 p-4 border border-slate-200/80 dark:border-slate-700/80 space-y-2 text-xs">
+                  <div className="flex items-center justify-between text-slate-600 dark:text-slate-400">
                     <span>Prompt Tokens</span>
-                    <span className="font-semibold text-slate-900 font-mono">
+                    <span className="font-semibold text-slate-900 dark:text-slate-100 font-mono">
                       {usage.prompt_tokens.toLocaleString()}
                     </span>
                   </div>
-                  <div className="flex items-center justify-between text-slate-600">
+                  <div className="flex items-center justify-between text-slate-600 dark:text-slate-400">
                     <span>Completion Tokens</span>
-                    <span className="font-semibold text-slate-900 font-mono">
+                    <span className="font-semibold text-slate-900 dark:text-slate-100 font-mono">
                       {usage.completion_tokens.toLocaleString()}
                     </span>
                   </div>
-                  <div className="flex items-center justify-between text-slate-600">
+                  <div className="flex items-center justify-between text-slate-600 dark:text-slate-400">
                     <span>Remaining Balance</span>
-                    <span className="font-semibold text-emerald-700 font-mono">
+                    <span className="font-semibold text-emerald-700 dark:text-emerald-400 font-mono">
                       {usage.remaining_tokens.toLocaleString()} Tokens
                     </span>
                   </div>
-                  <div className="flex items-center justify-between text-slate-600 border-t border-slate-200 pt-2">
+                  <div className="flex items-center justify-between text-slate-600 dark:text-slate-400 border-t border-slate-200 dark:border-slate-700 pt-2">
                     <span>Estimated Total Usage Cost</span>
-                    <span className="font-semibold text-emerald-700 font-mono">
+                    <span className="font-semibold text-emerald-700 dark:text-emerald-400 font-mono">
                       ${usage.estimated_cost.toFixed(4)} USD
                     </span>
                   </div>
-                  <div className="flex items-center justify-between text-slate-600 pt-2 border-t border-slate-200">
+                  <div className="flex items-center justify-between text-slate-600 dark:text-slate-400 pt-2 border-t border-slate-200 dark:border-slate-700">
                     <span>Subscription Plan</span>
-                    <span className="text-emerald-700 font-bold flex items-center gap-1 uppercase">
+                    <span className="text-emerald-700 dark:text-emerald-400 font-bold flex items-center gap-1 uppercase">
                       <ShieldCheck size={14} /> {usage.plan_name} Tier
                     </span>
                   </div>
