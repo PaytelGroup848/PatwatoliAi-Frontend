@@ -9,13 +9,16 @@ import { useAuthStore } from "@/stores/auth-store";
 function RegisterContent() {
   const router = useRouter();
   const accessToken = useAuthStore((state) => state.accessToken);
+  const user = useAuthStore((state) => state.user);
   const hydrated = useAuthStore((state) => state.hydrated);
 
   useEffect(() => {
-    if (hydrated && accessToken) {
+    // Only redirect if the user is an actual authenticated member (not a temporary guest)
+    const isRealMember = Boolean(accessToken && user && user.role !== "guest");
+    if (hydrated && isRealMember) {
       router.replace("/chat");
     }
-  }, [hydrated, accessToken, router]);
+  }, [hydrated, accessToken, user, router]);
 
   if (!hydrated) {
     return <WorkspaceSkeleton />;

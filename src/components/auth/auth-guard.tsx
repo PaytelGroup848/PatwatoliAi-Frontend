@@ -42,6 +42,7 @@ let activeGuestProvisionPromise: Promise<void> | null = null;
 
 function AuthGuardContent({ children }: AuthGuardProps) {
   const accessToken = useAuthStore((state) => state.accessToken);
+  const user = useAuthStore((state) => state.user);
   const hydrated = useAuthStore((state) => state.hydrated);
   const setAuth = useAuthStore((state) => state.setAuth);
   const searchParams = useSearchParams();
@@ -249,6 +250,12 @@ function AuthGuardContent({ children }: AuthGuardProps) {
     return <WorkspaceSkeleton />;
   }
 
+  // If user explicitly asks for ?auth=login and is not an authenticated registered member, show the Enterprise Auth view!
+  const isRealMember = Boolean(accessToken && user && user.role !== "guest" && !isJwtExpired(accessToken));
+  if (authQuery === "login" && !isRealMember) {
+    return <EnterpriseAuthView initialMode="login" redirectPath="/chat" />;
+  }
+
   // 2. Authenticated-First check: If valid access token exists, IMMEDIATELY render children!
   // A valid session MUST NEVER be blocked by in-flight provisioning flags or unmount states.
   if (accessToken && !isJwtExpired(accessToken)) {
@@ -280,12 +287,7 @@ function AuthGuardContent({ children }: AuthGuardProps) {
     );
   }
 
-  // 4. Explicit ?auth=login: Render Enterprise Split Layout
-  if (authQuery === "login") {
-    return <EnterpriseAuthView initialMode="login" redirectPath="/chat" />;
-  }
-
-  // 5. Default in-flight guest provisioning state: Render workspace skeleton matching chat palette
+  // 4. Default in-flight guest provisioning state: Render workspace skeleton matching chat palette
   return <WorkspaceSkeleton />;
 }
 
