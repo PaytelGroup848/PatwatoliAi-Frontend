@@ -172,7 +172,7 @@ export default function TermsPage() {
       icon: Mail,
       title: "23. Contact Information",
       content:
-        "Address: Okhla Industrial Estate, Phase 3, New Delhi – 110020, India",
+        "Address: A-212, First Floor, Okhla Industrial Estate Phase-3, New Delhi – 110020",
     },
   ];
 
@@ -370,28 +370,49 @@ export default function TermsPage() {
           </motion.div>
 
           {/* Footer */}
-          <motion.div
-            variants={fadeInUp}
-            transition={{
-              duration: 0.4,
-              delay: 0.5,
-            }}
-            className="mt-12 rounded-2xl border border-[#087849]/20 bg-[#087849]/5 p-8 text-center"
-          >
-         
+            <motion.div
+          initial={false}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.6 }}
+          className="mt-12 rounded-2xl border border-[#087849]/20 bg-[#087849]/5 p-8 text-center"
+        >
+          <h3 className="mb-4 text-xl font-semibold text-zinc-900">
+            Contact Information
+          </h3>
 
-            <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-zinc-500">
-              <span>www.patwatoliai.com</span>
-              <span>•</span>
-              <span>Last updated: July 11, 2026</span>
-            </div>
+          <p className="mb-2 text-zinc-600">
+            For questions regarding these Terms of Service,
+            please contact:
+          </p>
 
-            <div className="mt-4 border-t border-[#087849]/15 pt-4">
-              <p className="text-xs text-zinc-400">
-                © 2026 Patwatoli. All rights reserved.
-              </p>
-            </div>
-          </motion.div>
+          <div className="flex flex-col items-center justify-center gap-4 text-sm sm:flex-row">
+            <a
+              href="mailto:support@patwatoliai.com"
+              className="flex items-center gap-2 font-medium text-[#087849] hover:text-[#065c37] hover:underline"
+            >
+              <Mail className="h-4 w-4" />
+              support@patwatoliai.com
+            </a>
+
+            <span className="hidden text-zinc-300 sm:block">
+              |
+            </span>
+
+            <span className="text-zinc-500">
+              www.patwatoliai.com
+            </span>
+          </div>
+
+          <div className="mt-4 border-t border-[#087849]/15 pt-4">
+            <p className="text-xs text-zinc-400">
+              Last updated: July 11, 2026
+            </p>
+
+            <p className="mt-1 text-xs text-zinc-400">
+              © 2026 Patwatoli. All rights reserved.
+            </p>
+          </div>
+        </motion.div>
         </motion.div>
       </div>
     </div>

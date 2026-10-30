@@ -39,11 +39,11 @@ const formVariants = {
 
 export default function ContactPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white/90 via-white to-white/90 pt-24 px-4">
+    <div className="min-h-screen from-white/90 via-white to-white/90 pt-5 px-4">
       {/* Decorative Background Elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-blue-200/20 rounded-full blur-3xl"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-purple-200/20 rounded-full blur-3xl"></div>
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-emerald-200/20 rounded-full blur-3xl"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-emerald-200/20 rounded-full blur-3xl"></div>
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-indigo-200/10 rounded-full blur-3xl"></div>
       </div>
 
@@ -53,10 +53,10 @@ export default function ContactPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-center mb-16"
+          className="text-center mb-5"
         >
           <h1 className="text-4xl md:text-6xl font-bold mb-4">
-            <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient">
+            <span className="bg-emerald-600 bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient">
               Contact Us
             </span>
           </h1>
@@ -66,7 +66,7 @@ export default function ContactPage() {
 
           {/* Decorative line */}
           <div className="flex justify-center mt-6">
-            <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
+            <div className="w-24 h-1 bg-emerald-500 rounded-full"></div>
           </div>
         </motion.div>
 
@@ -82,16 +82,16 @@ export default function ContactPage() {
               variants={cardVariants}
               transition={{ duration: 0.4, delay: 0.1 }}
               whileHover={{ y: -4, transition: { duration: 0.2 } }}
-              className="group p-6 rounded-2xl bg-white/80 backdrop-blur-sm border border-zinc-200/50 hover:border-blue-200/50 shadow-lg shadow-zinc-500/5 hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300"
+              className="group p-6 rounded-2xl bg-white/80 backdrop-blur-sm border border-zinc-200/50 hover:border-emerald-200/50 shadow-lg shadow-zinc-500/5 hover:shadow-xl hover:shadow-emerald-500/10 transition-all duration-300"
             >
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500/20 to-blue-600/20 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                  <Mail className="w-6 h-6 text-blue-600" />
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500/20 to-emerald-600/20 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                  <Mail className="w-6 h-6 text-emerald-600" />
                 </div>
                 <div>
                   <h3 className="font-semibold text-zinc-900 mb-1">Email</h3>
-                  <p className="text-zinc-600 hover:text-blue-600 transition-colors">
-                    support@patwatoli.com
+                  <p className="text-zinc-600 hover:text-emerald-600 transition-colors">
+                    support@patwatoliai.com
                   </p>
                   <p className="text-zinc-500 text-sm mt-1">
                     We respond within 24 hours
@@ -104,15 +104,15 @@ export default function ContactPage() {
               variants={cardVariants}
               transition={{ duration: 0.4, delay: 0.2 }}
               whileHover={{ y: -4, transition: { duration: 0.2 } }}
-              className="group p-6 rounded-2xl bg-white/80 backdrop-blur-sm border border-zinc-200/50 hover:border-purple-200/50 shadow-lg shadow-zinc-500/5 hover:shadow-xl hover:shadow-purple-500/10 transition-all duration-300"
+              className="group p-6 rounded-2xl bg-white/80 backdrop-blur-sm border border-zinc-200/50 hover:border-emerald-200/50 shadow-lg shadow-zinc-500/5 hover:shadow-xl hover:shadow-emerald-500/10 transition-all duration-300"
             >
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500/20 to-purple-600/20 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                  <Phone className="w-6 h-6 text-purple-600" />
+                <div className="w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                  <Phone className="w-6 h-6 text-emerald-600" />
                 </div>
                 <div>
                   <h3 className="font-semibold text-zinc-900 mb-1">Phone</h3>
-                  <p className="text-zinc-600 hover:text-purple-600 transition-colors">
+                  <p className="text-zinc-600 hover:text-emerald-600 transition-colors">
                     +91 9311472355
                   </p>
                   <div className="flex items-center gap-1 text-zinc-500 text-sm mt-1">
@@ -127,18 +127,18 @@ export default function ContactPage() {
               variants={cardVariants}
               transition={{ duration: 0.4, delay: 0.3 }}
               whileHover={{ y: -4, transition: { duration: 0.2 } }}
-              className="group p-6 rounded-2xl bg-white/80 backdrop-blur-sm border border-zinc-200/50 hover:border-pink-200/50 shadow-lg shadow-zinc-500/5 hover:shadow-xl hover:shadow-pink-500/10 transition-all duration-300"
+              className="group p-6 rounded-2xl bg-white/80 backdrop-blur-sm border border-zinc-200/50 hover:border-emerald-200/50 shadow-lg shadow-zinc-500/5 hover:shadow-xl hover:shadow-emerald-500/10 transition-all duration-300"
             >
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-pink-500/20 to-pink-600/20 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                  <MapPin className="w-6 h-6 text-pink-600" />
+                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500/20 to-emerald-600/20 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                  <MapPin className="w-6 h-6 text-emerald-600" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-zinc-900 mb-1">Location</h3>
-                  <p className="text-zinc-600 hover:text-pink-600 transition-colors">
-                    India
+                  <h3 className="font-semibold text-emerald-900 mb-1">Location</h3>
+                  <p className="text-zinc-600 hover:text-emerald-600 transition-colors">
+                    A-212, First Floor, Okhla Industrial Estate Phase-3, 
                   </p>
-                  <p className="text-zinc-500 text-sm mt-1">
+                  <p className="text-zinc-600 hover:text-emerald-600 transition-colors">
                     New Delhi – 110020
                   </p>
                 </div>
@@ -170,7 +170,7 @@ export default function ContactPage() {
             variants={formVariants}
             transition={{ duration: 0.5, delay: 0.2 }}
             whileHover={{ y: -4, transition: { duration: 0.2 } }}
-            className="p-8 mb-3 rounded-2xl bg-white/80 backdrop-blur-sm border border-zinc-200/50 shadow-lg shadow-zinc-500/5 hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300"
+            className="p-8 pt-2 mb-3 rounded-2xl bg-white/80 backdrop-blur-sm border border-zinc-200/50 shadow-lg shadow-zinc-500/5 hover:shadow-xl hover:shadow-emerald-500/10 transition-all duration-300"
           >
             <div className="flex items-center gap-2 mb-6">
               <h2 className="text-xl font-semibold text-zinc-900">
@@ -185,7 +185,7 @@ export default function ContactPage() {
                 </label>
                 <input
                   type="text"
-                  className="w-full px-4 py-3 rounded-xl bg-white/50 border-2 border-zinc-200/50 focus:border-blue-400 focus:ring-4 focus:ring-blue-50 outline-none transition-all duration-200 placeholder:text-zinc-400 text-zinc-900"
+                  className="w-full px-4 py-3 rounded-xl bg-white/50 border-2 border-zinc-200/50 focus:border-emerald-400 focus:ring-4 focus:ring-emerald-50 outline-none transition-all duration-200 placeholder:text-zinc-400 text-zinc-900"
                   placeholder="John Doe"
                 />
               </div>
@@ -196,7 +196,7 @@ export default function ContactPage() {
                 </label>
                 <input
                   type="email"
-                  className="w-full px-4 py-3 rounded-xl bg-white/50 border-2 border-zinc-200/50 focus:border-blue-400 focus:ring-4 focus:ring-blue-50 outline-none transition-all duration-200 placeholder:text-zinc-400 text-zinc-900"
+                  className="w-full px-4 py-3 rounded-xl bg-white/50 border-2 border-zinc-200/50 focus:border-emerald-400 focus:ring-4 focus:ring-emerald-50 outline-none transition-all duration-200 placeholder:text-zinc-400 text-zinc-900"
                   placeholder="john@example.com"
                 />
               </div>
@@ -207,7 +207,7 @@ export default function ContactPage() {
                 </label>
                 <textarea
                   rows={5}
-                  className="w-full px-4 py-3 rounded-xl bg-white/50 border-2 border-zinc-200/50 focus:border-blue-400 focus:ring-4 focus:ring-blue-50 outline-none transition-all duration-200 placeholder:text-zinc-400 text-zinc-900 resize-none"
+                  className="w-full px-4 py-3 rounded-xl bg-white/50 border-2 border-zinc-200/50 focus:border-emerald-400 focus:ring-4 focus:ring-emerald-50 outline-none transition-all duration-200 placeholder:text-zinc-400 text-zinc-900 resize-none"
                   placeholder="Tell us how we can help..."
                 />
               </div>
@@ -216,15 +216,13 @@ export default function ContactPage() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 type="submit"
-                className="w-full px-6 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-xl font-semibold hover:opacity-90 transition-opacity shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 inline-flex items-center justify-center gap-2"
+                className="w-full px-6 py-4 bg-gradient-to-r from-emerald-600 to-emerald-600 text-white rounded-xl font-semibold hover:opacity-90 transition-opacity shadow-lg shadow-emerald-500/25 hover:shadow-emerald-500/40 inline-flex items-center justify-center gap-2"
               >
                 Send Message
                 <Send className="w-4 h-4" />
               </motion.button>
 
-              <p className="text-xs text-center text-zinc-500">
-                We'll never share your information with third parties.
-              </p>
+              
             </form>
           </motion.div>
         </motion.div>

@@ -281,7 +281,7 @@ export function CtaSection({ annual, setAnnual }: CtaSectionProps) {
             <summary>Where can I find account and pricing details?<span>＋</span></summary>
             <p>
               Compare the Free, Pro, and Enterprise plans above, then open the platform to select a plan and complete payment. For specific questions, visit our{" "}
-              <a href="https://patwatoliai.com/contact">contact page</a>.
+              <a href="/contact">contact page</a>.
             </p>
           </details>
         </div>

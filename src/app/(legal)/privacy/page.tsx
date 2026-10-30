@@ -42,8 +42,7 @@ Unless stated otherwise, the contracting entity is:
 
 Paytel Terminal Pvt. Ltd.
 
-Registered Address: Okhla Industrial Estate, Phase 3, New Delhi – 110020, India
-
+Registered Address: A-212, First Floor, Okhla Industrial Estate Phase-3, New Delhi – 110020
 This Agreement governs your use of:
 • The Patwatoli website ("Site")
 • All products and services provided by Patwatoli ("Services")
@@ -142,10 +141,7 @@ Patwatoli does not guarantee uninterrupted availability and shall not be liable 
           </p>
 
           <div className="mt-4 flex flex-col items-center justify-center gap-4 text-sm text-zinc-500 sm:flex-row">
-            <span className="flex items-center gap-1">
-              <Mail className="h-4 w-4 text-[#087849]" />
-              support@patwatoli.com
-            </span>
+           
 
             <span className="hidden sm:block">•</span>
             <span>www.patwatoliai.com</span>
@@ -158,36 +154,7 @@ Patwatoli does not guarantee uninterrupted availability and shall not be liable 
           </div>
         </motion.div>
 
-        {/* Company Information */}
-        <motion.div
-          initial={false}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.2 }}
-          className="mb-8 rounded-2xl border border-[#087849]/20 bg-[#087849]/5 p-6 shadow-lg shadow-[#087849]/5"
-        >
-          <div className="flex items-start gap-4">
-            <div className="flex-shrink-0">
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#087849]/10">
-                <Building className="h-6 w-6 text-[#087849]" />
-              </div>
-            </div>
-
-            <div>
-              <h3 className="mb-1 text-lg font-semibold text-zinc-900">
-                Contracting Entity
-              </h3>
-
-              <p className="font-medium text-zinc-700">
-                Paytel Terminal Pvt. Ltd.
-              </p>
-
-              <p className="mt-1 text-sm text-zinc-600">
-                Registered Address: Okhla Industrial Estate, Phase 3,
-                New Delhi – 110020, India
-              </p>
-            </div>
-          </div>
-        </motion.div>
+       
 
         {/* Main Content */}
         <motion.div
@@ -272,11 +239,11 @@ Patwatoli does not guarantee uninterrupted availability and shall not be liable 
 
           <div className="flex flex-col items-center justify-center gap-4 text-sm sm:flex-row">
             <a
-              href="mailto:support@patwatoli.com"
+              href="mailto:support@patwatoliai.com"
               className="flex items-center gap-2 font-medium text-[#087849] hover:text-[#065c37] hover:underline"
             >
               <Mail className="h-4 w-4" />
-              support@patwatoli.com
+              support@patwatoliai.com
             </a>
 
             <span className="hidden text-zinc-300 sm:block">
