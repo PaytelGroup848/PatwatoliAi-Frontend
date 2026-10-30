@@ -33,21 +33,21 @@ let activeGoogleAuthHandler: ((credential: string) => void) | null = null;
 let isGisInitialized = false;
 
 /**
- * Continuous Fluid Gradient Animation Mesh (Spacial / Silicon Valley SaaS style)
- * 5 distinct harmonic color blobs continuously morphing & translating on independent loops.
+ * Continuous Fluid Gradient Animation Mesh matching Patwatoli AI's signature brand palette:
+ * Deep Forest Emerald, Vibrant Mint, Rich Teal, and Luminous Cyan.
  * GPU-accelerated with zero CPU lag at 60 FPS across Desktop, Tablet & Mobile.
  */
 function AnimatedFluidMesh() {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
-      {/* Base Canvas Vibrant Sky Tone */}
-      <div className="absolute inset-0 bg-[#0284c7]" />
+      {/* Base Canvas Deep Emerald-Teal Background */}
+      <div className="absolute inset-0 bg-[#022c22]" />
 
-      {/* 1. Electric Cyan / Deep Sky Blue Blob */}
+      {/* 1. Vibrant Emerald Glow Blob */}
       <motion.div
         animate={{
-          x: [0, 80, -50, 0],
-          y: [0, -70, 60, 0],
+          x: [0, 80, -60, 0],
+          y: [0, -70, 50, 0],
           scale: [1, 1.25, 0.92, 1],
           rotate: [0, 90, 180, 360],
         }}
@@ -56,13 +56,13 @@ function AnimatedFluidMesh() {
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute -top-24 -left-24 h-[420px] w-[420px] rounded-full bg-[#06b6d4] opacity-85 blur-[75px]"
+        className="absolute -top-24 -left-24 h-[440px] w-[440px] rounded-full bg-[#059669] opacity-80 blur-[80px]"
       />
 
-      {/* 2. Vibrant Emerald / Deep Mint Blob */}
+      {/* 2. Rich Deep Teal Blob */}
       <motion.div
         animate={{
-          x: [0, -70, 50, 0],
+          x: [0, -70, 60, 0],
           y: [0, 80, -60, 0],
           scale: [1.1, 0.9, 1.2, 1.1],
           rotate: [360, 270, 90, 0],
@@ -72,13 +72,13 @@ function AnimatedFluidMesh() {
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute top-1/4 -right-20 h-[440px] w-[440px] rounded-full bg-[#10b981] opacity-75 blur-[80px]"
+        className="absolute top-1/4 -right-20 h-[460px] w-[460px] rounded-full bg-[#0d9488] opacity-75 blur-[85px]"
       />
 
-      {/* 3. Warm Coral / Sunset Magenta Blob (Spacial Gradient Signature) */}
+      {/* 3. Luminous Cyan Highlight Blob */}
       <motion.div
         animate={{
-          x: [0, 70, -60, 0],
+          x: [0, 70, -70, 0],
           y: [0, -50, 70, 0],
           scale: [0.95, 1.3, 1, 0.95],
           rotate: [0, 120, 240, 360],
@@ -88,10 +88,10 @@ function AnimatedFluidMesh() {
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute -bottom-20 left-10 h-[480px] w-[480px] rounded-full bg-[#f43f5e] opacity-75 blur-[85px]"
+        className="absolute -bottom-20 left-10 h-[480px] w-[480px] rounded-full bg-[#0891b2] opacity-75 blur-[85px]"
       />
 
-      {/* 4. Golden Honey / Amber Glow Blob */}
+      {/* 4. Electric Mint / Jade Glow Blob */}
       <motion.div
         animate={{
           x: [0, -60, 50, 0],
@@ -104,10 +104,10 @@ function AnimatedFluidMesh() {
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute bottom-1/3 left-1/4 h-[380px] w-[380px] rounded-full bg-[#f59e0b] opacity-80 blur-[75px]"
+        className="absolute bottom-1/3 left-1/4 h-[400px] w-[400px] rounded-full bg-[#10b981] opacity-85 blur-[75px]"
       />
 
-      {/* 5. Electric Violet / Sapphire Blob */}
+      {/* 5. Soft Jade Aurora Accent Blob */}
       <motion.div
         animate={{
           x: [0, 50, -40, 0],
@@ -120,11 +120,11 @@ function AnimatedFluidMesh() {
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute -bottom-10 -right-10 h-[400px] w-[400px] rounded-full bg-[#8b5cf6] opacity-70 blur-[80px]"
+        className="absolute -bottom-10 -right-10 h-[420px] w-[420px] rounded-full bg-[#34d399] opacity-70 blur-[85px]"
       />
 
-      {/* Soft Vignette Overlay for Depth */}
-      <div className="absolute inset-0 bg-black/[0.03] mix-blend-overlay pointer-events-none" />
+      {/* Subtle Depth Shadow */}
+      <div className="absolute inset-0 bg-black/10 mix-blend-overlay pointer-events-none" />
     </div>
   );
 }
@@ -422,38 +422,48 @@ export function EnterpriseAuthView({
     <div className="relative min-h-screen w-full flex bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-200">
       
       {/* ======================================================== */}
-      {/* LEFT SIDE: ANIMATED FLUID GRADIENT MESH (SPACIAL STYLE)   */}
+      {/* LEFT SIDE: EMERALD/TEAL ANIMATED FLUID MESH (DESKTOP)     */}
       {/* ======================================================== */}
       <div className="relative hidden lg:flex lg:w-[48%] xl:w-[50%] flex-col justify-between p-12 xl:p-16 overflow-hidden border-r border-slate-200/80 dark:border-slate-800/80">
         
-        {/* Continuous Fluid Gradient Animation Mesh */}
+        {/* Continuous Fluid Gradient Animation Mesh in Patwatoli Brand Colors */}
         <AnimatedFluidMesh />
 
         {/* Top Header: Clean Bold Typography */}
         <div className="relative z-10 space-y-2.5">
-          <span className="inline-block text-xs font-bold tracking-widest uppercase text-white/80 drop-shadow-xs">
+          <span className="inline-block text-xs font-bold tracking-widest uppercase text-emerald-200 drop-shadow-xs">
             Patwatoli AI
           </span>
           <h2 className="text-4xl xl:text-5xl 2xl:text-6xl font-extrabold tracking-tight text-white leading-[1.12] drop-shadow-md">
             Let&apos;s Create <br /> Something.
           </h2>
-          <p className="text-sm xl:text-base text-white/90 font-medium max-w-sm drop-shadow-xs pt-1">
+          <p className="text-sm xl:text-base text-emerald-50/90 font-medium max-w-sm drop-shadow-xs pt-1">
             Next-generation enterprise AI platform built for multilingual intelligence and scale.
           </p>
         </div>
 
-        {/* Bottom: Official White Brand Logo & Links */}
+        {/* Bottom: Official Brand Identity & Transparent Logo */}
         <div className="relative z-10 pt-10">
-          <Link href="/" className="inline-block transition-transform hover:scale-105 duration-200">
-            <Image
-              src="/logo-white.png"
-              alt="Patwatoli AI"
-              width={260}
-              height={56}
-              priority
-              unoptimized
-              className="h-11 xl:h-12 w-auto object-contain drop-shadow-xl"
-            />
+          <Link href="/" className="inline-flex items-center gap-3.5 group">
+            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/15 backdrop-blur-md border border-white/20 shadow-md transition-transform group-hover:scale-105 duration-200">
+              <Image
+                src="/patwatoli-icon.png"
+                alt="Patwatoli AI"
+                width={40}
+                height={40}
+                priority
+                unoptimized
+                className="h-8 w-8 object-contain"
+              />
+            </div>
+            <div>
+              <span className="text-2xl xl:text-3xl font-black tracking-tight text-white drop-shadow-md">
+                Patwatoli AI
+              </span>
+              <span className="block text-[10px] font-bold text-emerald-200/90 tracking-widest uppercase">
+                Enterprise Intelligence
+              </span>
+            </div>
           </Link>
           <div className="mt-5 flex items-center gap-5 text-xs text-white/80 font-medium drop-shadow-xs">
             <Link href="/privacy" className="hover:text-white transition">Privacy</Link>
@@ -472,11 +482,11 @@ export function EnterpriseAuthView({
       <div className="w-full lg:w-[52%] xl:w-[50%] flex flex-col justify-center items-center px-4 py-8 sm:px-8 sm:py-12 relative bg-white dark:bg-slate-950 overflow-y-auto">
         
         {/* Mobile & Tablet Animated Fluid Banner (< lg) */}
-        <div className="lg:hidden relative w-full max-w-110 h-44 sm:h-52 overflow-hidden rounded-3xl mb-7 shrink-0 flex flex-col justify-between p-6 shadow-xl shadow-sky-500/10">
+        <div className="lg:hidden relative w-full max-w-110 h-44 sm:h-52 overflow-hidden rounded-3xl mb-7 shrink-0 flex flex-col justify-between p-6 shadow-xl shadow-emerald-950/20">
           <AnimatedFluidMesh />
           
           <div className="relative z-10">
-            <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-white/80">
+            <span className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-emerald-200">
               Patwatoli AI
             </span>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-white drop-shadow-sm mt-0.5">
@@ -484,16 +494,23 @@ export function EnterpriseAuthView({
             </h2>
           </div>
 
-          <div className="relative z-10">
-            <Image
-              src="/logo-white.png"
-              alt="Patwatoli AI"
-              width={160}
-              height={36}
-              priority
-              unoptimized
-              className="h-7 sm:h-8 w-auto object-contain drop-shadow-md"
-            />
+          <div className="relative z-10 flex items-center gap-3">
+            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-white/15 backdrop-blur-md border border-white/20 shadow-xs">
+              <Image
+                src="/patwatoli-icon.png"
+                alt="Patwatoli AI"
+                width={28}
+                height={28}
+                priority
+                unoptimized
+                className="h-6 w-6 object-contain"
+              />
+            </div>
+            <div>
+              <span className="text-lg font-bold text-white tracking-tight">
+                Patwatoli AI
+              </span>
+            </div>
           </div>
         </div>
 
