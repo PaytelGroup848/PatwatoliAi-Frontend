@@ -39,7 +39,7 @@ const formVariants = {
 
 export default function ContactPage() {
   return (
-    <div className="min-h-screen from-white/90 via-white to-white/90 pt-5 px-4">
+    <div className="min-h-screen bg-white pt-5 px-4">
       {/* Decorative Background Elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-emerald-200/20 rounded-full blur-3xl"></div>
