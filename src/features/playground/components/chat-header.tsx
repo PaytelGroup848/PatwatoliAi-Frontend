@@ -274,10 +274,6 @@ export function ChatHeader() {
         {/* AUTHENTICATION STATE */}
         {isGuest ? (
           <div className="flex items-center gap-2">
-            <span className="hidden lg:inline-flex items-center gap-1.5 rounded-full bg-amber-500/10 dark:bg-amber-500/15 px-2.5 py-1 text-[11px] font-medium text-amber-700 dark:text-amber-400 border border-amber-500/20">
-              <span className="h-1.5 w-1.5 rounded-full bg-amber-500"></span>
-              Guest Session
-            </span>
             <Link
               href="/login"
               className="flex items-center gap-1.5 px-3 sm:px-3.5 py-1.5 text-xs font-semibold rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white shadow-xs shadow-emerald-600/20 hover:shadow-emerald-600/30 transition-all cursor-pointer"
