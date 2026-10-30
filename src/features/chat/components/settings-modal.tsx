@@ -77,18 +77,18 @@ export function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
   const isDarkMode = resolvedTheme === "dark";
 
   return createPortal(
-    <div className="fixed inset-0 z-99999 flex items-center justify-center bg-slate-900/60 dark:bg-black/75 backdrop-blur-md p-4 animate-in fade-in duration-200">
-      <div className="relative w-full max-w-2xl overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 shadow-2xl transition-colors duration-200">
+    <div className="fixed inset-0 z-99999 flex items-center justify-center bg-slate-900/60 dark:bg-black/75 backdrop-blur-md p-2 sm:p-4 animate-in fade-in duration-200">
+      <div className="relative w-full max-w-2xl max-h-[92vh] sm:max-h-[85vh] overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 shadow-2xl flex flex-col transition-colors duration-200">
         
         {/* HEADER */}
-        <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 px-6 py-4 bg-white dark:bg-slate-900">
+        <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 px-4 sm:px-6 py-3.5 bg-white dark:bg-slate-900 shrink-0">
           <div className="flex items-center gap-2.5">
-            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/80 shadow-xs">
+            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200/80 dark:border-slate-700 shadow-2xs">
               <Sliders size={18} />
             </div>
             <div>
-              <h2 className="text-lg font-bold text-slate-900 dark:text-white">Platform Settings</h2>
-              <p className="text-xs text-slate-500 dark:text-slate-400">Manage your user account & AI environment preferences</p>
+              <h2 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">Platform Settings</h2>
+              <p className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400">Account profile, appearance & AI preferences</p>
             </div>
           </div>
           <button
@@ -100,51 +100,51 @@ export function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
         </div>
 
         {/* BODY CONTAINER */}
-        <div className="flex min-h-100">
-          {/* TABS SIDEBAR */}
-          <div className="w-52 border-r border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-950/40 p-3 space-y-1">
+        <div className="flex flex-col sm:flex-row flex-1 overflow-hidden min-h-0">
+          {/* TABS SIDEBAR (Horizontal scroll on mobile/tablet, vertical on desktop) */}
+          <div className="flex sm:flex-col overflow-x-auto sm:overflow-x-visible w-full sm:w-52 shrink-0 border-b sm:border-b-0 sm:border-r border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-950/40 p-2 sm:p-3 gap-1">
             <button
               onClick={() => setActiveTab("profile")}
-              className={`flex w-full items-center gap-2.5 rounded-xl px-3 py-2.5 text-xs font-semibold transition cursor-pointer ${
+              className={`flex items-center gap-2 shrink-0 sm:w-full rounded-xl px-3 py-2 text-xs font-semibold transition cursor-pointer ${
                 activeTab === "profile"
-                  ? "bg-emerald-600 text-white shadow-md shadow-emerald-600/20"
+                  ? "bg-emerald-600 text-white shadow-xs"
                   : "text-slate-600 dark:text-slate-400 hover:bg-slate-200/60 dark:hover:bg-slate-800/60 hover:text-slate-900 dark:hover:text-white"
               }`}
             >
               <User size={15} />
-              <span>Account Profile</span>
+              <span>Profile</span>
             </button>
 
             <button
               onClick={() => setActiveTab("appearance")}
-              className={`flex w-full items-center gap-2.5 rounded-xl px-3 py-2.5 text-xs font-semibold transition cursor-pointer ${
+              className={`flex items-center gap-2 shrink-0 sm:w-full rounded-xl px-3 py-2 text-xs font-semibold transition cursor-pointer ${
                 activeTab === "appearance"
-                  ? "bg-emerald-600 text-white shadow-md shadow-emerald-600/20"
+                  ? "bg-emerald-600 text-white shadow-xs"
                   : "text-slate-600 dark:text-slate-400 hover:bg-slate-200/60 dark:hover:bg-slate-800/60 hover:text-slate-900 dark:hover:text-white"
               }`}
             >
               <Palette size={15} />
-              <span>Appearance & Theme</span>
+              <span>Appearance</span>
             </button>
 
             <button
               onClick={() => setActiveTab("preferences")}
-              className={`flex w-full items-center gap-2.5 rounded-xl px-3 py-2.5 text-xs font-semibold transition cursor-pointer ${
+              className={`flex items-center gap-2 shrink-0 sm:w-full rounded-xl px-3 py-2 text-xs font-semibold transition cursor-pointer ${
                 activeTab === "preferences"
-                  ? "bg-emerald-600 text-white shadow-md shadow-emerald-600/20"
+                  ? "bg-emerald-600 text-white shadow-xs"
                   : "text-slate-600 dark:text-slate-400 hover:bg-slate-200/60 dark:hover:bg-slate-800/60 hover:text-slate-900 dark:hover:text-white"
               }`}
             >
               <Sliders size={15} />
-              <span>AI Preferences</span>
+              <span>Preferences</span>
             </button>
 
             {isAdmin && (
               <button
                 onClick={() => setActiveTab("admin")}
-                className={`flex w-full items-center gap-2.5 rounded-xl px-3 py-2.5 text-xs font-semibold transition cursor-pointer ${
+                className={`flex items-center gap-2 shrink-0 sm:w-full rounded-xl px-3 py-2 text-xs font-semibold transition cursor-pointer ${
                   activeTab === "admin"
-                    ? "bg-emerald-600 text-white shadow-md shadow-emerald-600/20"
+                    ? "bg-emerald-600 text-white shadow-xs"
                     : "text-slate-600 dark:text-slate-400 hover:bg-slate-200/60 dark:hover:bg-slate-800/60 hover:text-slate-900 dark:hover:text-white"
                 }`}
               >
@@ -155,7 +155,7 @@ export function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
           </div>
 
           {/* TAB CONTENT */}
-          <div className="flex-1 p-6 overflow-y-auto bg-white dark:bg-slate-900 transition-colors duration-200">
+          <div className="flex-1 p-4 sm:p-6 overflow-y-auto bg-white dark:bg-slate-900 transition-colors duration-200">
             {/* 1. PROFILE TAB */}
             {activeTab === "profile" && (
               <div className="space-y-4">
@@ -244,7 +244,7 @@ export function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                 </div>
 
                 {/* 3 INTERACTIVE THEME CARDS */}
-                <div className="grid grid-cols-3 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3">
                   {/* DAY (LIGHT) CARD */}
                   <button
                     type="button"
@@ -363,7 +363,7 @@ export function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                     </span>
                   </div>
 
-                  <div className="grid grid-cols-3 gap-2.5">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-2.5">
                     <button
                       type="button"
                       onClick={() => handleBrightnessChange("100")}
@@ -466,25 +466,25 @@ export function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
         </div>
 
         {/* FOOTER ACTIONS */}
-        <div className="flex items-center justify-between border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/60 px-6 py-3.5">
+        <div className="flex items-center justify-between border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/60 px-4 sm:px-6 py-3 shrink-0">
           {savedNotice ? (
-            <span className="flex items-center gap-1.5 text-xs text-emerald-600 dark:text-emerald-400 font-medium">
-              <Check size={14} /> Settings saved successfully!
+            <span className="flex items-center gap-1.5 text-xs text-emerald-600 dark:text-emerald-400 font-semibold">
+              <Check size={14} /> Settings saved!
             </span>
           ) : (
-            <span className="text-[11px] text-slate-400 dark:text-slate-500">Enterprise AI Infrastructure v2.4</span>
+            <span className="text-[11px] text-slate-400 dark:text-slate-500 font-mono hidden sm:inline">Enterprise Platform v2.4</span>
           )}
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 ml-auto">
             <button
               onClick={onClose}
-              className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-2 text-xs font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition cursor-pointer"
+              className="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-3.5 py-1.5 text-xs font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition cursor-pointer"
             >
               Cancel
             </button>
             <button
               onClick={handleSave}
-              className="rounded-xl bg-emerald-600 px-4 py-2 text-xs font-semibold text-white hover:bg-emerald-700 transition shadow-sm cursor-pointer"
+              className="rounded-xl bg-emerald-600 px-4 py-1.5 text-xs font-semibold text-white hover:bg-emerald-500 transition shadow-xs cursor-pointer"
             >
               Save Changes
             </button>

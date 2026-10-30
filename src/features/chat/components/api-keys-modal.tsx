@@ -242,51 +242,46 @@ console.log(data);`;
   const modalContent = (
     <div className="fixed inset-0 z-999999 h-screen w-screen overflow-hidden bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 flex flex-col animate-in fade-in duration-200">
       {/* DEVELOPER PORTAL TOP NAVBAR */}
-      <div className="flex h-16 items-center justify-between border-b border-slate-200/80 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/95 px-6 backdrop-blur-xl shrink-0 shadow-xs">
-        <div className="flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/60 shadow-xs">
-            <Key size={20} />
+      <div className="flex h-16 items-center justify-between border-b border-slate-200/80 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/95 px-4 sm:px-6 backdrop-blur-xl shrink-0 shadow-xs">
+        <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+          <div className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-xl bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/60 shadow-xs shrink-0">
+            <Key size={18} />
           </div>
-          <div>
-            <div className="flex items-center gap-2 font-bold text-slate-900 dark:text-slate-100 text-base">
-              <span>Patwatoli Developer Portal</span>
-              <span className="flex items-center gap-1 rounded-full bg-emerald-50 dark:bg-emerald-950/40 px-2.5 py-0.5 text-[11px] font-bold text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/60">
-                <Sparkles size={10} /> Patwatoli v1 REST API
+          <div className="min-w-0">
+            <div className="flex items-center gap-1.5 sm:gap-2 font-bold text-slate-900 dark:text-slate-100 text-sm sm:text-base">
+              <span className="truncate">Patwatoli Developer Portal</span>
+              <span className="hidden sm:inline-flex items-center gap-1 rounded-full bg-emerald-50 dark:bg-emerald-950/40 px-2 py-0.5 text-[10px] font-bold text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/60 shrink-0">
+                <Sparkles size={9} /> v1 REST API
               </span>
             </div>
-            <p className="text-xs text-slate-500 dark:text-slate-400 font-medium">
+            <p className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 font-medium truncate hidden xs:block">
               API Keys, Documentation & Metered Usage Dashboard
             </p>
           </div>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
           <button
             onClick={onClose}
-            className="flex items-center gap-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 px-4 py-2 text-xs font-semibold text-white shadow-sm shadow-emerald-600/20 transition cursor-pointer active:scale-95"
+            className="flex items-center gap-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 px-3 sm:px-4 py-2 text-xs font-semibold text-white shadow-xs shadow-emerald-600/20 transition cursor-pointer active:scale-95"
           >
-            <ArrowLeft size={16} />
-            <span>Back to Chat Workspace</span>
+            <ArrowLeft size={15} />
+            <span className="hidden sm:inline">Back to Chat</span>
           </button>
 
           <button
             onClick={onClose}
-            className="flex h-9 w-9 items-center justify-center rounded-xl text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-700 dark:hover:text-slate-200 transition cursor-pointer"
+            className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-xl text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-700 dark:hover:text-slate-200 transition cursor-pointer"
           >
-            <X size={20} />
+            <X size={18} />
           </button>
         </div>
       </div>
 
       {/* MAIN DEVELOPER PORTAL BODY GRID */}
-      <div className="relative flex-1 overflow-y-auto p-6 md:p-8">
-        {/* Patwatoli AI Emerald Green Wave Background */}
-        <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
-          <div className="absolute -top-32 left-1/2 h-130 w-275 -translate-x-1/2 rounded-full bg-emerald-200/40 dark:bg-emerald-900/20 blur-[120px]" />
-          <div className="absolute top-1/4 -left-40 h-105 w-180 rounded-full bg-teal-200/30 dark:bg-teal-900/20 blur-[130px]" />
-          <div className="absolute -bottom-40 -left-20 h-130 w-205 rounded-full bg-emerald-300/30 dark:bg-emerald-950/30 blur-[120px]" />
-          <div className="absolute -bottom-55 -right-25 h-140 w-215 rounded-full bg-teal-100/50 dark:bg-teal-950/30 blur-[120px]" />
-        </div>
+      <div className="relative flex-1 overflow-y-auto p-4 sm:p-6 md:p-8">
+        {/* Enterprise Subtle Grid Background */}
+        <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
 
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6">
           {/* LEFT COLUMN: API KEYS & GENERATOR OR AUTH LOCKOUT (7 COLS) */}
@@ -385,7 +380,7 @@ console.log(data);`;
                     Name your secret key to identify where it is deployed (e.g. Production Backend, WhatsApp Bot, Mobile App).
                   </p>
 
-                  <div className="flex gap-3 pt-1">
+                  <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-3 pt-1">
                     <input
                       type="text"
                       placeholder="e.g. Production Backend Service"
@@ -399,7 +394,7 @@ console.log(data);`;
                     <button
                       onClick={handleGenerateKey}
                       disabled={!newKeyName.trim() || isCreating}
-                      className="flex items-center gap-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 px-5 py-2.5 text-xs font-bold text-white shadow-sm shadow-emerald-600/30 transition cursor-pointer active:scale-95"
+                      className="flex items-center justify-center gap-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 px-5 py-2.5 text-xs font-bold text-white shadow-sm shadow-emerald-600/30 transition cursor-pointer active:scale-95 shrink-0"
                     >
                       {isCreating ? <Loader2 size={15} className="animate-spin" /> : <Plus size={15} />}
                       <span>{isCreating ? "Generating..." : "Generate Key"}</span>
@@ -458,9 +453,9 @@ console.log(data);`;
                     ) : (
                       <div className="divide-y divide-slate-100 dark:divide-slate-800">
                         {keys.map((k) => (
-                          <div key={k.id} className="flex items-center justify-between p-4 text-xs hover:bg-slate-50 dark:hover:bg-slate-800/50 transition">
-                            <div className="space-y-1 max-w-[65%]">
-                              <div className="font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2 text-sm">
+                          <div key={k.id} className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3.5 sm:p-4 text-xs hover:bg-slate-50 dark:hover:bg-slate-800/50 transition">
+                            <div className="space-y-1 max-w-full sm:max-w-[70%]">
+                              <div className="font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2 text-sm flex-wrap">
                                 <span>{k.name}</span>
                                 <span className="rounded-md bg-slate-100 dark:bg-slate-800 px-2 py-0.5 text-[11px] font-mono text-emerald-700 dark:text-emerald-400 border border-slate-200 dark:border-slate-700 font-medium">
                                   {k.key.substring(0, 16)}••••
@@ -469,7 +464,7 @@ console.log(data);`;
                               <div className="text-[11px] text-slate-500 dark:text-slate-400 font-mono">Created: {k.created} • Last used: {k.lastUsed}</div>
                             </div>
 
-                            <div className="flex items-center gap-2">
+                            <div className="flex items-center gap-2 self-end sm:self-center">
                               <button
                                 onClick={() => handleCopy(k.key, k.id)}
                                 className="flex items-center gap-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 px-3 py-1.5 text-xs font-semibold text-slate-700 dark:text-slate-300 transition cursor-pointer border border-slate-200 dark:border-slate-700 active:scale-95"

@@ -489,10 +489,17 @@ export function ConversationSidebar() {
                 setIsApiKeysOpen(true);
                 setMobileSidebarOpen(false);
               }}
-              className="flex w-full items-center gap-2.5 rounded-xl px-3 py-2 text-xs font-semibold text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white hover:bg-slate-200/70 dark:hover:bg-slate-800/70 transition cursor-pointer"
+              className="group flex w-full items-center justify-between rounded-xl px-2.5 py-2 text-xs font-medium text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white hover:bg-slate-200/70 dark:hover:bg-slate-800/70 transition-all cursor-pointer"
             >
-              <Key size={16} className="text-slate-600 dark:text-slate-300" />
-              <span className="text-slate-800 dark:text-slate-200 font-semibold">Developer API Keys</span>
+              <div className="flex items-center gap-2.5">
+                <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20 group-hover:scale-105 transition-transform">
+                  <Key size={14} />
+                </div>
+                <span className="font-semibold text-slate-800 dark:text-slate-200">Developer API Keys</span>
+              </div>
+              <span className="text-[10px] font-mono font-medium px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 border border-slate-200/60 dark:border-slate-700/60">
+                REST v1
+              </span>
             </button>
 
             {/* PLATFORM SETTINGS */}
@@ -501,10 +508,14 @@ export function ConversationSidebar() {
                 setIsSettingsOpen(true);
                 setMobileSidebarOpen(false);
               }}
-              className="flex w-full items-center gap-2.5 rounded-xl px-3 py-2 text-xs font-semibold text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white hover:bg-slate-200/70 dark:hover:bg-slate-800/70 transition cursor-pointer"
+              className="group flex w-full items-center justify-between rounded-xl px-2.5 py-2 text-xs font-semibold text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white hover:bg-slate-200/70 dark:hover:bg-slate-800/70 transition-all cursor-pointer"
             >
-              <Settings size={16} className="text-slate-600 dark:text-slate-300" />
-              <span className="text-slate-800 dark:text-slate-200 font-semibold">Platform Settings</span>
+              <div className="flex items-center gap-2.5">
+                <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200/80 dark:border-slate-700 group-hover:scale-105 transition-transform">
+                  <Settings size={14} />
+                </div>
+                <span className="font-semibold text-slate-800 dark:text-slate-200">Platform Settings</span>
+              </div>
             </button>
           </>
         ) : (
@@ -525,10 +536,10 @@ export function ConversationSidebar() {
                 setIsApiKeysOpen(true);
                 setMobileSidebarOpen(false);
               }}
-              className="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 shadow-xs hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-700 mx-auto transition cursor-pointer"
+              className="flex h-9 w-9 items-center justify-center rounded-xl border border-slate-200/80 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 shadow-2xs hover:text-emerald-600 dark:hover:text-emerald-400 hover:border-emerald-500/30 mx-auto transition-all cursor-pointer"
               title="Developer API Keys"
             >
-              <Key size={18} />
+              <Key size={16} />
             </button>
 
             <button
@@ -536,10 +547,10 @@ export function ConversationSidebar() {
                 setIsSettingsOpen(true);
                 setMobileSidebarOpen(false);
               }}
-              className="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 shadow-xs hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-700 mx-auto transition cursor-pointer"
+              className="flex h-9 w-9 items-center justify-center rounded-xl border border-slate-200/80 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 shadow-2xs hover:text-slate-900 dark:hover:text-white hover:border-slate-300 dark:hover:border-slate-600 mx-auto transition-all cursor-pointer"
               title="Platform Settings"
             >
-              <Settings size={18} />
+              <Settings size={16} />
             </button>
           </>
         )}
