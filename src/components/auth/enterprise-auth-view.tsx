@@ -32,27 +32,31 @@ interface EnterpriseAuthViewProps {
 let activeGoogleAuthHandler: ((credential: string) => void) | null = null;
 let isGisInitialized = false;
 
-// 4 Clean Enterprise SaaS Highlights (No heavy text, ultra-concise)
+// Clean Enterprise SaaS Highlights with Live Metrics
 const SAAS_HIGHLIGHTS = [
   {
     title: "Multilingual Intelligence",
     description: "Enterprise LLMs optimized for reasoning across Indian languages & dialects.",
     tag: "High Reasoning",
+    metric: "22 Indian Languages Active",
   },
   {
     title: "Document Translation Studio",
     description: "High-speed concurrent PDF/DOCX multi-page translation with native OCR.",
     tag: "5x Parallel",
+    metric: "< 1.4s Execution Engine",
   },
   {
     title: "Developer API & Endpoints",
     description: "Sub-100ms inference streaming with OpenAI-compatible tool calling.",
     tag: "Production Ready",
+    metric: "99.9% Uptime Telemetry",
   },
   {
     title: "Cognitive Knowledge Retrieval",
     description: "Enterprise-grade vector memory and grounded document citations.",
-    tag: "99.9% Grounded",
+    tag: "Enterprise RAG",
+    metric: "FAISS Neural Vector Index",
   },
 ];
 
@@ -70,6 +74,16 @@ export function EnterpriseAuthView({
   const [mode, setMode] = useState<"login" | "signup">(
     queryAuth === "signup" ? "signup" : initialMode
   );
+
+  const [activeFeature, setActiveFeature] = useState(0);
+
+  // Auto-cycle through the 4 SaaS features for dynamic presentation (every 3.8s)
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveFeature((prev) => (prev + 1) % SAAS_HIGHLIGHTS.length);
+    }, 3800);
+    return () => clearInterval(timer);
+  }, []);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -355,9 +369,32 @@ export function EnterpriseAuthView({
       {/* ======================================================== */}
       <div className="relative hidden lg:flex lg:w-[48%] xl:w-[50%] flex-col justify-between p-10 xl:p-14 overflow-hidden border-r border-slate-200/80 dark:border-slate-800/80 bg-slate-100/60 dark:bg-slate-900/40">
         
-        {/* Subtle Ambient Radial Lighting */}
-        <div className="absolute top-0 left-0 h-[480px] w-[480px] rounded-full bg-emerald-500/10 dark:bg-emerald-500/8 blur-[120px] pointer-events-none" />
-        <div className="absolute bottom-0 right-0 h-[480px] w-[480px] rounded-full bg-teal-500/10 dark:bg-teal-500/8 blur-[120px] pointer-events-none" />
+        {/* Animated Aurora Breathing Lights (High-end SaaS Depth) */}
+        <motion.div
+          animate={{
+            scale: [1, 1.15, 1],
+            opacity: [0.15, 0.28, 0.15],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+          className="absolute -top-32 -left-32 h-[520px] w-[520px] rounded-full bg-emerald-500/20 dark:bg-emerald-500/15 blur-[130px] pointer-events-none"
+        />
+        <motion.div
+          animate={{
+            scale: [1, 1.18, 1],
+            opacity: [0.12, 0.24, 0.12],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 1.5,
+          }}
+          className="absolute -bottom-32 -right-32 h-[520px] w-[520px] rounded-full bg-teal-500/20 dark:bg-teal-500/15 blur-[130px] pointer-events-none"
+        />
 
         {/* Top Header Official Logo */}
         <div className="relative z-10">
@@ -368,16 +405,17 @@ export function EnterpriseAuthView({
               width={200}
               height={44}
               priority
+              unoptimized
               className="h-9 w-auto object-contain"
             />
           </Link>
         </div>
 
-        {/* Center: Clean SaaS Value Cards */}
+        {/* Center: Clean SaaS Value Cards with Dynamic Auto-Spotlight */}
         <div className="relative z-10 my-auto py-8 max-w-lg">
           
           {/* Punchy Headline */}
-          <div className="mb-8">
+          <div className="mb-7">
             <h2 className="text-3xl xl:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.2]">
               Next-generation AI built for Indian enterprises.
             </h2>
@@ -386,33 +424,55 @@ export function EnterpriseAuthView({
             </p>
           </div>
 
-          {/* 4 Clean Minimalist Cards without clutter/unnecessary symbols */}
+          {/* 4 Clean Minimalist Cards with smooth dynamic highlight & live telemetry */}
           <div className="space-y-3">
-            {SAAS_HIGHLIGHTS.map((item, idx) => (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.35, delay: idx * 0.08 }}
-                className="group relative rounded-2xl border border-slate-200/80 dark:border-slate-800/80 bg-white/70 dark:bg-slate-900/60 backdrop-blur-md p-4 transition-all duration-200 hover:border-emerald-500/40 hover:bg-white dark:hover:bg-slate-900 hover:shadow-md"
-              >
-                <div className="flex items-center justify-between mb-1">
-                  <h3 className="text-sm font-bold text-slate-900 dark:text-white">
-                    {item.title}
-                  </h3>
-                  <span className="text-[10px] font-semibold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-200/60 dark:border-emerald-800/60">
-                    {item.tag}
-                  </span>
-                </div>
-                <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-                  {item.description}
-                </p>
-              </motion.div>
-            ))}
+            {SAAS_HIGHLIGHTS.map((item, idx) => {
+              const isActive = activeFeature === idx;
+              return (
+                <motion.div
+                  key={item.title}
+                  onClick={() => setActiveFeature(idx)}
+                  className={`relative rounded-2xl border p-4 transition-all duration-300 cursor-pointer ${
+                    isActive
+                      ? "border-emerald-500/80 bg-white dark:bg-slate-900 shadow-lg shadow-emerald-500/10 ring-1 ring-emerald-500/40"
+                      : "border-slate-200/80 dark:border-slate-800/80 bg-white/60 dark:bg-slate-900/50 hover:border-slate-300 dark:hover:border-slate-700"
+                  }`}
+                >
+                  <div className="flex items-center justify-between mb-1">
+                    <div className="flex items-center gap-2">
+                      {isActive && (
+                        <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
+                      )}
+                      <h3 className="text-sm font-bold text-slate-900 dark:text-white">
+                        {item.title}
+                      </h3>
+                    </div>
+                    <span className="text-[10px] font-semibold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-200/60 dark:border-emerald-800/60">
+                      {item.tag}
+                    </span>
+                  </div>
+                  <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+                    {item.description}
+                  </p>
+                  {isActive && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.2 }}
+                      className="mt-2.5 pt-2 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-[11px] text-emerald-700 dark:text-emerald-400 font-semibold"
+                    >
+                      <span>Active Telemetry:</span>
+                      <span>{item.metric}</span>
+                    </motion.div>
+                  )}
+                </motion.div>
+              );
+            })}
           </div>
 
           {/* Clean Enterprise Trust Line */}
-          <div className="mt-8 pt-6 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 font-medium">
+          <div className="mt-7 pt-5 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 font-medium">
             <span>SOC-2 Type II Certified</span>
             <span className="h-1 w-1 rounded-full bg-slate-300 dark:bg-slate-700" />
             <span>99.9% Uptime SLA</span>
@@ -454,6 +514,7 @@ export function EnterpriseAuthView({
               width={180}
               height={40}
               priority
+              unoptimized
               className="h-8 w-auto object-contain"
             />
           </Link>
@@ -465,15 +526,16 @@ export function EnterpriseAuthView({
         {/* Main Auth Container */}
         <div className="w-full max-w-110">
           
-          {/* Official Patwatoli Icon Emblem (Replaces vibe coder symbol) */}
+          {/* Official Patwatoli Icon Emblem */}
           <div className="hidden lg:flex flex-col items-center mb-6">
-            <div className="relative flex h-16 w-16 items-center justify-center rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800/90 p-2 shadow-sm transition hover:shadow-md">
+            <div className="relative flex h-16 w-16 items-center justify-center rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800/90 p-2.5 shadow-sm transition hover:shadow-md">
               <Image
-                src="/icon.png"
+                src="/patwatoli-icon.png"
                 alt="Patwatoli AI Icon"
                 width={48}
                 height={48}
                 priority
+                unoptimized
                 className="h-11 w-11 object-contain"
               />
             </div>
