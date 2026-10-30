@@ -252,6 +252,11 @@
         .page-shell .capability-strip b { font-weight: 500; color: #53674d; }
         @media (max-width: 980px) {
           .page-shell .hero { grid-template-columns: 1fr; min-height: auto; }
-          .page-shell .hero-dashboard { width: min(100%, 520px); }
+          .page-shell .hero-dashboard { width:auto;height:auto}
+          .page-shell.hero-visual{margin-top:0%;}
+           .page-shell .indian-flag {
+            margin-top:-2%;
+           }
         }
+       
       
