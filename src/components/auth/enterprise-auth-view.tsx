@@ -274,6 +274,9 @@ export function EnterpriseAuthView({
         tempContainer.style.justifyContent = "center";
         tempContainer.style.alignItems = "center";
         tempContainer.style.height = "44px";
+        tempContainer.style.borderRadius = "9999px";
+        tempContainer.style.overflow = "hidden";
+        tempContainer.style.backgroundColor = "transparent";
 
         window.google.accounts.id.renderButton(tempContainer, {
           theme: gisTheme,
@@ -282,6 +285,23 @@ export function EnterpriseAuthView({
           text: "continue_with",
           shape: "pill",
         });
+
+        // Clip iframe with pill border-radius and transparent background to eliminate white fade in dark mode
+        const applyIframePillStyle = () => {
+          const iframe = tempContainer.querySelector("iframe");
+          if (iframe) {
+            iframe.style.borderRadius = "9999px";
+            iframe.style.overflow = "hidden";
+            iframe.style.backgroundColor = "transparent";
+            iframe.style.colorScheme = resolvedTheme === "dark" ? "dark" : "light";
+          }
+        };
+        applyIframePillStyle();
+        const observer = new MutationObserver(() => {
+          applyIframePillStyle();
+        });
+        observer.observe(tempContainer, { childList: true, subtree: true });
+        setTimeout(() => observer.disconnect(), 3000);
 
         googleButtonContainerRef.current.replaceChildren(tempContainer);
       }
@@ -579,10 +599,10 @@ export function EnterpriseAuthView({
           {/* GOOGLE ONE-TAP OFFICIAL GIS PILL BUTTON                   */}
           {/* ======================================================== */}
           <div className="w-full flex flex-col items-center mb-4">
-            <div className="w-full max-w-90 h-11 min-h-11 flex justify-center items-center shrink-0 overflow-hidden">
+            <div className="w-fit max-w-full h-11 min-h-11 flex justify-center items-center shrink-0 rounded-full overflow-hidden bg-transparent [&_iframe]:!rounded-full [&_iframe]:!overflow-hidden [&_iframe]:!bg-transparent [&_div]:!rounded-full [&_div]:!overflow-hidden [&_div]:!bg-transparent">
               <div
                 ref={googleButtonContainerRef}
-                className="w-full h-11 min-h-11 flex justify-center items-center shrink-0"
+                className="w-full h-11 min-h-11 flex justify-center items-center shrink-0 rounded-full overflow-hidden bg-transparent [&_iframe]:!rounded-full [&_iframe]:!overflow-hidden [&_iframe]:!bg-transparent"
               />
             </div>
             {googleLoading && (
