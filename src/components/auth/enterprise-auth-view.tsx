@@ -34,96 +34,129 @@ let isGisInitialized = false;
 
 /**
  * Continuous Fluid Gradient Animation Mesh matching Patwatoli AI's signature brand palette:
- * Deep Forest Emerald, Vibrant Mint, Rich Teal, and Luminous Cyan.
- * GPU-accelerated with zero CPU lag at 60 FPS across Desktop, Tablet & Mobile.
+ * Deep Forest Emerald, Vibrant Mint, Rich Teal, Luminous Cyan, and Sunlit Jade Glow.
+ * Enhanced with 8-11s dynamic harmonic morphing for an alive, high-energy SaaS aesthetic.
  */
 function AnimatedFluidMesh() {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
-      {/* Base Canvas Deep Emerald-Teal Background */}
+      {/* Base Canvas Deep Emerald-Slate Background */}
       <div className="absolute inset-0 bg-[#022c22]" />
 
-      {/* 1. Vibrant Emerald Glow Blob */}
+      {/* Dynamic Background Base Flow Glow */}
       <motion.div
         animate={{
-          x: [0, 80, -60, 0],
-          y: [0, -70, 50, 0],
-          scale: [1, 1.25, 0.92, 1],
-          rotate: [0, 90, 180, 360],
+          opacity: [0.4, 0.7, 0.4],
+          scale: [1, 1.1, 1],
         }}
         transition={{
-          duration: 16,
+          duration: 8,
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute -top-24 -left-24 h-[440px] w-[440px] rounded-full bg-[#059669] opacity-80 blur-[80px]"
+        className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(16,185,129,0.35),transparent_65%)]"
       />
 
-      {/* 2. Rich Deep Teal Blob */}
+      {/* 1. Luminous Cyan Highlight Blob (Upper Left Sweeping) */}
       <motion.div
         animate={{
-          x: [0, -70, 60, 0],
-          y: [0, 80, -60, 0],
-          scale: [1.1, 0.9, 1.2, 1.1],
-          rotate: [360, 270, 90, 0],
-        }}
-        transition={{
-          duration: 18,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className="absolute top-1/4 -right-20 h-[460px] w-[460px] rounded-full bg-[#0d9488] opacity-75 blur-[85px]"
-      />
-
-      {/* 3. Luminous Cyan Highlight Blob */}
-      <motion.div
-        animate={{
-          x: [0, 70, -70, 0],
-          y: [0, -50, 70, 0],
-          scale: [0.95, 1.3, 1, 0.95],
+          x: [-40, 110, -50, -40],
+          y: [-30, 80, -70, -30],
+          scale: [1, 1.35, 0.9, 1],
+          opacity: [0.65, 0.9, 0.7, 0.65],
           rotate: [0, 120, 240, 360],
         }}
         transition={{
-          duration: 20,
+          duration: 9,
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute -bottom-20 left-10 h-[480px] w-[480px] rounded-full bg-[#0891b2] opacity-75 blur-[85px]"
+        className="absolute -top-20 -left-20 h-[480px] w-[480px] rounded-full bg-[#06b6d4] blur-[70px]"
       />
 
-      {/* 4. Electric Mint / Jade Glow Blob */}
+      {/* 2. Vibrant Emerald Heart Blob (Center-Right Sweeping) */}
       <motion.div
         animate={{
-          x: [0, -60, 50, 0],
-          y: [0, 60, -70, 0],
-          scale: [1.15, 0.85, 1.1, 1.15],
-          rotate: [180, 360, 180, 180],
+          x: [40, -100, 70, 40],
+          y: [-50, 90, -40, -50],
+          scale: [1.1, 0.85, 1.3, 1.1],
+          opacity: [0.75, 0.95, 0.8, 0.75],
+          rotate: [360, 240, 120, 0],
         }}
         transition={{
-          duration: 15,
+          duration: 10.5,
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute bottom-1/3 left-1/4 h-[400px] w-[400px] rounded-full bg-[#10b981] opacity-85 blur-[75px]"
+        className="absolute top-1/4 -right-16 h-[500px] w-[500px] rounded-full bg-[#10b981] blur-[75px]"
       />
 
-      {/* 5. Soft Jade Aurora Accent Blob */}
+      {/* 3. Sunlit Lime / Emerald Aurora Splash (Vibrant contrast edge like reference image) */}
       <motion.div
         animate={{
-          x: [0, 50, -40, 0],
-          y: [0, -50, 60, 0],
-          scale: [1, 1.2, 0.95, 1],
+          x: [20, -80, 90, 20],
+          y: [30, -70, 50, 30],
+          scale: [0.9, 1.3, 0.95, 0.9],
+          opacity: [0.55, 0.85, 0.6, 0.55],
+          rotate: [0, 180, 360],
+        }}
+        transition={{
+          duration: 11,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        className="absolute top-1/3 left-1/4 h-[420px] w-[420px] rounded-full bg-[#84cc16] blur-[80px]"
+      />
+
+      {/* 4. Deep Ocean Teal Depth Blob (Bottom Left Swirl) */}
+      <motion.div
+        animate={{
+          x: [-30, 90, -80, -30],
+          y: [40, -60, 70, 40],
+          scale: [1.2, 0.9, 1.25, 1.2],
+          opacity: [0.7, 0.95, 0.75, 0.7],
+          rotate: [180, 0, 180],
+        }}
+        transition={{
+          duration: 8.5,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        className="absolute -bottom-24 left-10 h-[520px] w-[520px] rounded-full bg-[#0d9488] blur-[80px]"
+      />
+
+      {/* 5. Electric Mint Wave Blob (Bottom Right Aurora Pulse) */}
+      <motion.div
+        animate={{
+          x: [50, -60, 40, 50],
+          y: [-30, 60, -70, -30],
+          scale: [1, 1.25, 0.85, 1],
+          opacity: [0.65, 0.9, 0.7, 0.65],
           rotate: [0, -180, -360],
         }}
         transition={{
-          duration: 22,
+          duration: 9.5,
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute -bottom-10 -right-10 h-[420px] w-[420px] rounded-full bg-[#34d399] opacity-70 blur-[85px]"
+        className="absolute -bottom-16 -right-16 h-[460px] w-[460px] rounded-full bg-[#34d399] blur-[75px]"
       />
 
-      {/* Subtle Depth Shadow */}
+      {/* Deluxe Ambient Shimmer Wave sweeping softly across the canvas */}
+      <motion.div
+        animate={{
+          opacity: [0.15, 0.35, 0.15],
+          rotate: [0, 12, 0],
+        }}
+        transition={{
+          duration: 7,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        className="absolute inset-0 bg-gradient-to-tr from-transparent via-emerald-400/20 to-transparent pointer-events-none"
+      />
+
+      {/* Subtle Vignette Overlay for Depth */}
       <div className="absolute inset-0 bg-black/10 mix-blend-overlay pointer-events-none" />
     </div>
   );
@@ -442,10 +475,10 @@ export function EnterpriseAuthView({
           </p>
         </div>
 
-        {/* Bottom: Official Brand Identity & Transparent Logo */}
+        {/* Bottom: Official Brand Identity & High Contrast Solid White Logo Tile */}
         <div className="relative z-10 pt-10">
           <Link href="/" className="inline-flex items-center gap-3.5 group">
-            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/15 backdrop-blur-md border border-white/20 shadow-md transition-transform group-hover:scale-105 duration-200">
+            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white shadow-xl shadow-black/25 border border-white transition-all group-hover:scale-105 duration-200">
               <Image
                 src="/patwatoli-icon.png"
                 alt="Patwatoli AI"
@@ -495,7 +528,7 @@ export function EnterpriseAuthView({
           </div>
 
           <div className="relative z-10 flex items-center gap-3">
-            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-white/15 backdrop-blur-md border border-white/20 shadow-xs">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white shadow-lg border border-white">
               <Image
                 src="/patwatoli-icon.png"
                 alt="Patwatoli AI"
