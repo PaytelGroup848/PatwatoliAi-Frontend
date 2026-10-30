@@ -27,7 +27,7 @@ export function LandingFooter() {
       <nav className="landing-footer-links" aria-label="Footer">
         <div>
           <b>Explore</b>
-          <Link href="/#platform">Platform</Link>
+          <Link href="/contact">Contact Us</Link>
           <Link href="/#possibilities">Use cases</Link>
           <Link href="/#pricing">Pricing</Link>
           <Link href="/chat">Open app</Link>
