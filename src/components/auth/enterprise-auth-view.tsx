@@ -1,11 +1,11 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  Sparkles,
   Mail,
   Lock,
   User,
@@ -16,11 +16,6 @@ import {
   Shield,
   CheckCircle2,
   Check,
-  Languages,
-  Code2,
-  Cpu,
-  Bot,
-  Zap,
 } from "lucide-react";
 import axios from "axios";
 import { useTheme } from "next-themes";
@@ -36,6 +31,30 @@ interface EnterpriseAuthViewProps {
 
 let activeGoogleAuthHandler: ((credential: string) => void) | null = null;
 let isGisInitialized = false;
+
+// 4 Clean Enterprise SaaS Highlights (No heavy text, ultra-concise)
+const SAAS_HIGHLIGHTS = [
+  {
+    title: "Multilingual Intelligence",
+    description: "Enterprise LLMs optimized for reasoning across Indian languages & dialects.",
+    tag: "High Reasoning",
+  },
+  {
+    title: "Document Translation Studio",
+    description: "High-speed concurrent PDF/DOCX multi-page translation with native OCR.",
+    tag: "5x Parallel",
+  },
+  {
+    title: "Developer API & Endpoints",
+    description: "Sub-100ms inference streaming with OpenAI-compatible tool calling.",
+    tag: "Production Ready",
+  },
+  {
+    title: "Cognitive Knowledge Retrieval",
+    description: "Enterprise-grade vector memory and grounded document citations.",
+    tag: "99.9% Grounded",
+  },
+];
 
 export function EnterpriseAuthView({
   initialMode = "login",
@@ -69,7 +88,7 @@ export function EnterpriseAuthView({
 
   const setAuth = useAuthStore((state) => state.setAuth);
 
-  // Sync mode with query params if they change
+  // Sync mode with query params
   useEffect(() => {
     if (queryAuth === "signup") {
       setMode("signup");
@@ -326,144 +345,87 @@ export function EnterpriseAuthView({
     }
   }
 
+  const isDarkMode = resolvedTheme === "dark";
+
   return (
     <div className="relative min-h-screen w-full flex bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-200">
       
       {/* ======================================================== */}
-      {/* LEFT SIDE: FEATURE SHOWCASE (SARVAM AI ENTERPRISE STYLE)  */}
+      {/* LEFT SIDE: CLEAN ENTERPRISE SAAS SHOWCASE                */}
       {/* ======================================================== */}
-      <div className="relative hidden lg:flex lg:w-[50%] xl:w-[52%] flex-col justify-between p-8 xl:p-12 overflow-hidden border-r border-slate-200/80 dark:border-slate-800/80">
+      <div className="relative hidden lg:flex lg:w-[48%] xl:w-[50%] flex-col justify-between p-10 xl:p-14 overflow-hidden border-r border-slate-200/80 dark:border-slate-800/80 bg-slate-100/60 dark:bg-slate-900/40">
         
-        {/* Artistic Generative Backdrop */}
-        <div className="absolute inset-0 bg-linear-to-br from-emerald-600/10 via-teal-500/5 to-cyan-600/10 dark:from-emerald-950/40 dark:via-slate-950 dark:to-teal-950/30" />
-        
-        {/* Subtle Geometric Wave Pattern */}
-        <div className="absolute inset-0 opacity-[0.07] dark:opacity-[0.12] pointer-events-none bg-[radial-gradient(#10b981_1px,transparent_1px)] [background-size:20px_20px]" />
+        {/* Subtle Ambient Radial Lighting */}
+        <div className="absolute top-0 left-0 h-[480px] w-[480px] rounded-full bg-emerald-500/10 dark:bg-emerald-500/8 blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-0 right-0 h-[480px] w-[480px] rounded-full bg-teal-500/10 dark:bg-teal-500/8 blur-[120px] pointer-events-none" />
 
-        {/* Ambient Glow Orbs */}
-        <div className="absolute -top-32 -left-32 h-96 w-96 rounded-full bg-emerald-400/20 dark:bg-emerald-600/15 blur-[120px] pointer-events-none" />
-        <div className="absolute bottom-0 right-0 h-96 w-96 rounded-full bg-teal-400/20 dark:bg-teal-600/15 blur-[120px] pointer-events-none" />
-
-        {/* Top Header Logo */}
-        <div className="relative z-10 flex items-center gap-3">
-          <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-linear-to-tr from-emerald-600 to-green-500 text-white shadow-md shadow-emerald-500/20 group-hover:scale-105 transition-transform duration-200">
-              <Sparkles size={20} />
-            </div>
-            <div>
-              <span className="text-base font-extrabold tracking-tight text-slate-900 dark:text-white">
-                PATWATOLI AI
-              </span>
-              <span className="block text-[10px] font-semibold text-emerald-600 dark:text-emerald-400 tracking-wider uppercase">
-                Enterprise Intelligence
-              </span>
-            </div>
+        {/* Top Header Official Logo */}
+        <div className="relative z-10">
+          <Link href="/" className="inline-block transition-opacity hover:opacity-90">
+            <Image
+              src={isDarkMode ? "/logo-white.png" : "/logo.png"}
+              alt="Patwatoli AI"
+              width={200}
+              height={44}
+              priority
+              className="h-9 w-auto object-contain"
+            />
           </Link>
         </div>
 
-        {/* Main Floating Showcase Card */}
-        <div className="relative z-10 my-auto py-6 max-w-xl">
-          <div className="rounded-3xl border border-slate-200/90 dark:border-slate-800/90 bg-white/85 dark:bg-slate-900/85 backdrop-blur-2xl p-7 xl:p-9 shadow-2xl shadow-emerald-900/10 transition-colors duration-200">
-            
-            {/* Tagline */}
-            <div className="mb-6">
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 dark:bg-emerald-500/15 px-3 py-1 text-xs font-bold text-emerald-700 dark:text-emerald-400 border border-emerald-500/20">
-                <Zap size={12} className="fill-emerald-500 text-emerald-500" />
-                India&apos;s Full-Stack AI Platform
-              </span>
-              <h2 className="text-2xl xl:text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white mt-2.5">
-                Built for scale, multilingual depth, and high performance.
-              </h2>
-            </div>
-
-            {/* 4 Feature Cards (Directly matching Sarvam UI pattern) */}
-            <div className="space-y-4">
-              
-              {/* Feature 1: Voice & Language */}
-              <div className="flex items-start gap-3.5 group">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-400 border border-emerald-200/80 dark:border-emerald-800/60 shadow-xs group-hover:scale-105 transition-transform duration-200">
-                  <Languages size={18} />
-                </div>
-                <div>
-                  <h4 className="text-sm font-bold text-slate-900 dark:text-white">
-                    Multilingual Voice & Reasoning
-                  </h4>
-                  <p className="text-xs text-slate-600 dark:text-slate-400 mt-0.5 leading-relaxed">
-                    Conversational agents capable of fluent reasoning, live telephony, and natural speaking across Indian languages.
-                  </p>
-                </div>
-              </div>
-
-              {/* Feature 2: High Throughput API */}
-              <div className="flex items-start gap-3.5 group">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-teal-50 text-teal-700 dark:bg-teal-950/60 dark:text-teal-400 border border-teal-200/80 dark:border-teal-800/60 shadow-xs group-hover:scale-105 transition-transform duration-200">
-                  <Code2 size={18} />
-                </div>
-                <div>
-                  <h4 className="text-sm font-bold text-slate-900 dark:text-white">
-                    Patwatoli Developer API
-                  </h4>
-                  <p className="text-xs text-slate-600 dark:text-slate-400 mt-0.5 leading-relaxed">
-                    Add ultra low-latency AI voice, text synthesis, and embeddings to your applications with OpenAI-compatible endpoints.
-                  </p>
-                </div>
-              </div>
-
-              {/* Feature 3: Translation Studio */}
-              <div className="flex items-start gap-3.5 group">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-cyan-50 text-cyan-700 dark:bg-cyan-950/60 dark:text-cyan-400 border border-cyan-200/80 dark:border-cyan-800/60 shadow-xs group-hover:scale-105 transition-transform duration-200">
-                  <Cpu size={18} />
-                </div>
-                <div>
-                  <h4 className="text-sm font-bold text-slate-900 dark:text-white">
-                    Document Translation Studio
-                  </h4>
-                  <p className="text-xs text-slate-600 dark:text-slate-400 mt-0.5 leading-relaxed">
-                    High-speed multi-page PDF/DOCX parallel document translation engine with automated scanned OCR fallback.
-                  </p>
-                </div>
-              </div>
-
-              {/* Feature 4: Autonomous Cowork & RAG */}
-              <div className="flex items-start gap-3.5 group">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-amber-50 text-amber-700 dark:bg-amber-950/60 dark:text-amber-400 border border-amber-200/80 dark:border-amber-800/60 shadow-xs group-hover:scale-105 transition-transform duration-200">
-                  <Bot size={18} />
-                </div>
-                <div>
-                  <h4 className="text-sm font-bold text-slate-900 dark:text-white">
-                    Cognitive RAG & Enterprise Memory
-                  </h4>
-                  <p className="text-xs text-slate-600 dark:text-slate-400 mt-0.5 leading-relaxed">
-                    Ask questions, upload proprietary datasets, and let high-precision vector pipelines provide verified citations.
-                  </p>
-                </div>
-              </div>
-
-            </div>
-
-            {/* Enterprise Trust Metric Badges */}
-            <div className="mt-7 pt-5 border-t border-slate-200/70 dark:border-slate-800/80 flex flex-wrap items-center justify-between gap-3 text-[11px] text-slate-500 dark:text-slate-400 font-medium">
-              <span className="flex items-center gap-1.5">
-                <CheckCircle2 size={13} className="text-emerald-500" />
-                99.9% Uptime SLA
-              </span>
-              <span className="flex items-center gap-1.5">
-                <Shield size={13} className="text-emerald-500" />
-                SOC-2 & TLS 1.3 Encrypted
-              </span>
-              <span className="flex items-center gap-1.5">
-                <Sparkles size={13} className="text-emerald-500" />
-                Zero Data Retention Option
-              </span>
-            </div>
-
+        {/* Center: Clean SaaS Value Cards */}
+        <div className="relative z-10 my-auto py-8 max-w-lg">
+          
+          {/* Punchy Headline */}
+          <div className="mb-8">
+            <h2 className="text-3xl xl:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.2]">
+              Next-generation AI built for Indian enterprises.
+            </h2>
+            <p className="text-sm text-slate-600 dark:text-slate-400 mt-2.5 leading-relaxed">
+              Unified workspace for high-reasoning chat, document translation, and high-throughput developer APIs.
+            </p>
           </div>
+
+          {/* 4 Clean Minimalist Cards without clutter/unnecessary symbols */}
+          <div className="space-y-3">
+            {SAAS_HIGHLIGHTS.map((item, idx) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.35, delay: idx * 0.08 }}
+                className="group relative rounded-2xl border border-slate-200/80 dark:border-slate-800/80 bg-white/70 dark:bg-slate-900/60 backdrop-blur-md p-4 transition-all duration-200 hover:border-emerald-500/40 hover:bg-white dark:hover:bg-slate-900 hover:shadow-md"
+              >
+                <div className="flex items-center justify-between mb-1">
+                  <h3 className="text-sm font-bold text-slate-900 dark:text-white">
+                    {item.title}
+                  </h3>
+                  <span className="text-[10px] font-semibold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-2 py-0.5 rounded-full border border-emerald-200/60 dark:border-emerald-800/60">
+                    {item.tag}
+                  </span>
+                </div>
+                <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+                  {item.description}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Clean Enterprise Trust Line */}
+          <div className="mt-8 pt-6 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 font-medium">
+            <span>SOC-2 Type II Certified</span>
+            <span className="h-1 w-1 rounded-full bg-slate-300 dark:bg-slate-700" />
+            <span>99.9% Uptime SLA</span>
+            <span className="h-1 w-1 rounded-full bg-slate-300 dark:bg-slate-700" />
+            <span>TLS 1.3 Encrypted</span>
+          </div>
+
         </div>
 
         {/* Left Bottom Footer */}
         <div className="relative z-10 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
-          <span>&copy; {new Date().getFullYear()} Patwatoli AI Technologies</span>
-          <div className="flex items-center gap-4">
+          <span>&copy; {new Date().getFullYear()} Patwatoli AI</span>
+          <div className="flex items-center gap-5">
             <Link href="/privacy" className="hover:text-emerald-600 dark:hover:text-emerald-400 transition">
               Privacy
             </Link>
@@ -481,47 +443,39 @@ export function EnterpriseAuthView({
       {/* ======================================================== */}
       {/* RIGHT SIDE: AUTHENTICATION FORM (CLEAN, MINIMALIST, FAST) */}
       {/* ======================================================== */}
-      <div className="w-full lg:w-[50%] xl:w-[48%] flex flex-col justify-center items-center px-6 py-12 sm:px-12 relative">
+      <div className="w-full lg:w-[52%] xl:w-[50%] flex flex-col justify-center items-center px-6 py-12 sm:px-12 relative bg-white dark:bg-slate-950">
         
         {/* Mobile Header Brand Display (Hidden on Desktop) */}
         <div className="lg:hidden mb-8 flex flex-col items-center text-center">
-          <Link href="/" className="flex items-center gap-2 mb-2">
-            <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-linear-to-tr from-emerald-600 to-green-500 text-white shadow-md shadow-emerald-500/20">
-              <Sparkles size={20} />
-            </div>
-            <span className="text-xl font-extrabold tracking-tight text-slate-900 dark:text-white">
-              PATWATOLI AI
-            </span>
+          <Link href="/" className="inline-block mb-2">
+            <Image
+              src={isDarkMode ? "/logo-white.png" : "/logo.png"}
+              alt="Patwatoli AI"
+              width={180}
+              height={40}
+              priority
+              className="h-8 w-auto object-contain"
+            />
           </Link>
           <p className="text-xs text-slate-500 dark:text-slate-400">
-            India&apos;s Full-Stack AI Platform
+            Enterprise Intelligence Platform
           </p>
         </div>
 
         {/* Main Auth Container */}
         <div className="w-full max-w-110">
           
-          {/* Top Geometric Emblem (Sarvam AI Inspired Circular Emblem) */}
+          {/* Official Patwatoli Icon Emblem (Replaces vibe coder symbol) */}
           <div className="hidden lg:flex flex-col items-center mb-6">
-            <div className="relative flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-emerald-600 dark:text-emerald-400 shadow-md">
-              <svg
-                viewBox="0 0 24 24"
-                className="h-8 w-8 stroke-current"
-                fill="none"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <circle cx="12" cy="12" r="3" />
-                <path d="M12 2v4" />
-                <path d="M12 18v4" />
-                <path d="m4.93 4.93 2.83 2.83" />
-                <path d="m16.24 16.24 2.83 2.83" />
-                <path d="M2 12h4" />
-                <path d="M18 12h4" />
-                <path d="m4.93 19.07 2.83-2.83" />
-                <path d="m16.24 7.76 2.83-2.83" />
-              </svg>
+            <div className="relative flex h-16 w-16 items-center justify-center rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800/90 p-2 shadow-sm transition hover:shadow-md">
+              <Image
+                src="/icon.png"
+                alt="Patwatoli AI Icon"
+                width={48}
+                height={48}
+                priority
+                className="h-11 w-11 object-contain"
+              />
             </div>
           </div>
 
@@ -560,7 +514,7 @@ export function EnterpriseAuthView({
             <div className="absolute inset-0 flex items-center">
               <div className="w-full border-t border-slate-200 dark:border-slate-800" />
             </div>
-            <span className="relative bg-slate-50 dark:bg-slate-950 px-3 text-xs uppercase tracking-wider text-slate-400 dark:text-slate-500 font-semibold">
+            <span className="relative bg-white dark:bg-slate-950 px-3 text-xs uppercase tracking-wider text-slate-400 dark:text-slate-500 font-semibold">
               OR
             </span>
           </div>
@@ -617,7 +571,7 @@ export function EnterpriseAuthView({
                     placeholder="e.g. Anand Kumar"
                     required
                     disabled={loading}
-                    className="w-full rounded-xl border border-slate-200 bg-white pl-10 pr-4 py-2.5 text-sm text-slate-900 placeholder-slate-400 outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 dark:border-slate-800 dark:bg-slate-900 dark:text-white dark:placeholder-slate-500 transition disabled:opacity-50"
+                    className="w-full rounded-xl border border-slate-200 bg-slate-50/70 pl-10 pr-4 py-2.5 text-sm text-slate-900 placeholder-slate-400 outline-none focus:border-emerald-500 focus:bg-white focus:ring-2 focus:ring-emerald-500/20 dark:border-slate-800 dark:bg-slate-900 dark:text-white dark:placeholder-slate-500 dark:focus:bg-slate-900 transition disabled:opacity-50"
                   />
                 </div>
               </div>
@@ -642,7 +596,7 @@ export function EnterpriseAuthView({
                   placeholder="e.g., name@company.com"
                   required
                   disabled={loading}
-                  className="w-full rounded-xl border border-slate-200 bg-white pl-10 pr-4 py-2.5 text-sm text-slate-900 placeholder-slate-400 outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 dark:border-slate-800 dark:bg-slate-900 dark:text-white dark:placeholder-slate-500 transition disabled:opacity-50"
+                  className="w-full rounded-xl border border-slate-200 bg-slate-50/70 pl-10 pr-4 py-2.5 text-sm text-slate-900 placeholder-slate-400 outline-none focus:border-emerald-500 focus:bg-white focus:ring-2 focus:ring-emerald-500/20 dark:border-slate-800 dark:bg-slate-900 dark:text-white dark:placeholder-slate-500 dark:focus:bg-slate-900 transition disabled:opacity-50"
                 />
               </div>
             </div>
@@ -674,7 +628,7 @@ export function EnterpriseAuthView({
                   placeholder={mode === "signup" ? "At least 8 characters" : "••••••••"}
                   required
                   disabled={loading}
-                  className="w-full rounded-xl border border-slate-200 bg-white pl-10 pr-10 py-2.5 text-sm text-slate-900 placeholder-slate-400 outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 dark:border-slate-800 dark:bg-slate-900 dark:text-white dark:placeholder-slate-500 transition disabled:opacity-50"
+                  className="w-full rounded-xl border border-slate-200 bg-slate-50/70 pl-10 pr-10 py-2.5 text-sm text-slate-900 placeholder-slate-400 outline-none focus:border-emerald-500 focus:bg-white focus:ring-2 focus:ring-emerald-500/20 dark:border-slate-800 dark:bg-slate-900 dark:text-white dark:placeholder-slate-500 dark:focus:bg-slate-900 transition disabled:opacity-50"
                 />
                 <button
                   type="button"
@@ -704,7 +658,7 @@ export function EnterpriseAuthView({
               )}
             </div>
 
-            {/* Terms of Service Checkbox (Sarvam AI style) */}
+            {/* Terms of Service Checkbox */}
             <div className="flex items-start gap-2.5 pt-1">
               <button
                 type="button"
@@ -762,7 +716,7 @@ export function EnterpriseAuthView({
 
           </form>
 
-          {/* Mode Switch Footer (Directly matching Sarvam UI) */}
+          {/* Mode Switch Footer */}
           <div className="mt-6 text-center text-xs text-slate-600 dark:text-slate-400">
             {mode === "login" ? (
               <p>
