@@ -35,15 +35,12 @@ export function ChatHeader() {
 
   const activeAssistantId = useConversationStore((state) => state.activeAssistantId);
   const setActiveAssistantId = useConversationStore((state) => state.setActiveAssistantId);
-  const conversations = useConversationStore((state) => state.conversations);
-  const activeConversationId = useConversationStore((state) => state.activeConversationId);
   const setActiveConversation = useConversationStore((state) => state.setActiveConversation);
   const setMobileSidebarOpen = useConversationStore((state) => state.setMobileSidebarOpen);
   const setMessages = useChatStore((state) => state.setMessages);
   const { data: assistants = [] } = useAssistants();
 
   const assistant = assistants.find((item) => item.id === activeAssistantId);
-  const activeConversation = conversations.find((item) => item.id === activeConversationId);
 
   const handleNewChat = () => {
     setActiveConversation(null);
@@ -246,15 +243,6 @@ export function ChatHeader() {
         </div>
       </div>
 
-      {/* CENTER ZONE: CONVERSATION BREADCRUMB (When active) */}
-      {activeConversation && (
-        <div className="hidden xl:flex items-center gap-2 max-w-[280px] 2xl:max-w-md px-3 py-1 rounded-lg bg-slate-50 dark:bg-slate-800/50 border border-slate-200/50 dark:border-slate-700/50">
-          <span className="text-[11px] text-slate-400 dark:text-slate-500 font-medium">Chat:</span>
-          <span className="text-xs font-medium text-slate-700 dark:text-slate-300 truncate">
-            {activeConversation.title || "Untitled Conversation"}
-          </span>
-        </div>
-      )}
 
       {/* RIGHT ZONE: ENTERPRISE ACTIONS & AUTHENTICATION */}
       <div className="flex items-center gap-2 sm:gap-3 shrink-0">
