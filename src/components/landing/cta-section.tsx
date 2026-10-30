@@ -280,8 +280,7 @@ export function CtaSection({ annual, setAnnual }: CtaSectionProps) {
           <details>
             <summary>Where can I find account and pricing details?<span>＋</span></summary>
             <p>
-              Compare the Free, Pro, and Enterprise plans above, then open the platform to select a plan and complete payment. For specific questions, visit our{" "}
-              <a href="/contact">contact page</a>.
+              Compare the Free, Pro, and Enterprise plans above, then open the platform to select a plan and complete payment.
             </p>
           </details>
         </div>
