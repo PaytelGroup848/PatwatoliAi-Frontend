@@ -241,7 +241,7 @@ export default function TermsPage() {
 
   return (
     <>
-    <LandingNavbar />
+    {/* <LandingNavbar /> */}
     <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-white via-[#f4faf6] to-white px-4 pt-8 pb-12">
 
       {/* Decorative Background Elements */}
@@ -416,7 +416,7 @@ export default function TermsPage() {
         </motion.div>
       </div>
     </div>
-    <LandingFooter />
+    {/* <LandingFooter /> */}
     </>
   );
 }
