@@ -502,8 +502,6 @@ export function EnterpriseAuthView({
             <Link href="/privacy" className="hover:text-white transition">Privacy</Link>
             <span>&bull;</span>
             <Link href="/terms" className="hover:text-white transition">Terms</Link>
-            <span>&bull;</span>
-            <Link href="/contact" className="hover:text-white transition">Contact</Link>
           </div>
         </div>
 
