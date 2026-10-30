@@ -286,7 +286,7 @@ function AssistantMessageItem({
         return <div className="mb-3 leading-relaxed last:mb-0 text-slate-800 dark:text-slate-100">{children}</div>;
       },
       strong({ children }) {
-        return <strong className="font-bold text-slate-900 dark:text-white">{children}</strong>;
+        return <strong className="font-semibold text-slate-900 dark:text-slate-100">{children}</strong>;
       },
       em({ children }) {
         return <em className="italic text-slate-800 dark:text-slate-200">{children}</em>;
@@ -301,13 +301,13 @@ function AssistantMessageItem({
         return <h3 className="text-base font-bold text-slate-900 dark:text-white mt-2 mb-1">{children}</h3>;
       },
       ul({ children }) {
-        return <ul className="list-disc pl-5 mb-3 space-y-1 text-slate-800 dark:text-slate-100">{children}</ul>;
+        return <ul className="list-disc pl-5 my-3 space-y-2 text-slate-800 dark:text-slate-100">{children}</ul>;
       },
       ol({ children }) {
-        return <ol className="list-decimal pl-5 mb-3 space-y-1 text-slate-800 dark:text-slate-100">{children}</ol>;
+        return <ol className="list-decimal pl-5 my-3 space-y-2 text-slate-800 dark:text-slate-100">{children}</ol>;
       },
       li({ children }) {
-        return <li className="leading-relaxed text-slate-800 dark:text-slate-100">{children}</li>;
+        return <li className="leading-relaxed pl-1 text-slate-800 dark:text-slate-100 marker:text-slate-400 dark:marker:text-slate-500">{children}</li>;
       },
       blockquote({ children }) {
         return <blockquote className="border-l-4 border-emerald-500 bg-slate-50 dark:bg-slate-800/60 pl-3 py-1.5 my-2 text-slate-700 dark:text-slate-200 rounded-r-lg italic">{children}</blockquote>;
