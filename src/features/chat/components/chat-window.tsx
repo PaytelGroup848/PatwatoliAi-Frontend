@@ -17,6 +17,7 @@ import { MessageList } from "./message-list";
 import { MessageInput } from "./message-input";
 import { CodePreviewPanel } from "./code-preview-panel";
 import { useChatStore } from "../stores/chat-store";
+import { useSpeechStore } from "../stores/speech-store";
 import { socketClient } from "@/services/websocket/socket-client";
 import { useAuthStore } from "@/stores/auth-store";
 import { useConversationStore } from "../stores/conversation-store";
@@ -122,6 +123,7 @@ export function ChatWindow() {
 
   useEffect(() => {
     clearMessages();
+    useSpeechStore.getState().stop();
   }, [activeAssistantId, clearMessages]);
 
   useEffect(() => {
@@ -373,6 +375,7 @@ export function ChatWindow() {
   }, [addMessage, setStreaming, updateLastMessage]);
 
   const handleStop = () => {
+    useSpeechStore.getState().stop();
     isManuallyStoppedRef.current = true;
     setStreaming(false);
     const conversationId = streamingConversationIdRef.current || useConversationStore.getState().activeConversationId;

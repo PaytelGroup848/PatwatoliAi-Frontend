@@ -28,6 +28,7 @@ import { parseReasoning } from "../utils/reasoning-parser";
 import { ReasoningAccordion } from "./reasoning-accordion";
 import { SourcesDropdown } from "./sources-dropdown";
 import { RecommendedSuggestions } from "./recommended-suggestions";
+import { SpeechButton } from "./speech-button";
 
 interface MessageListProps {
   messages: ChatMessage[];
@@ -111,6 +112,7 @@ function CodeBlock({
 }
 
 interface AssistantActionsProps {
+  messageId?: string | number;
   content: string;
   webSources?: WebSourceItem[];
   documentSources?: DocumentSourceItem[];
@@ -119,6 +121,7 @@ interface AssistantActionsProps {
 }
 
 function AssistantActions({
+  messageId,
   content,
   webSources = [],
   documentSources = [],
@@ -222,6 +225,9 @@ function AssistantActions({
           <Share2 size={14} />
         )}
       </button>
+
+      {/* READ ALOUD SPEECH SYNTHESIS BUTTON */}
+      {messageId && <SpeechButton messageId={messageId} text={content} />}
 
       {/* SOURCES BUTTON NEXT TO SHARE */}
       {totalSources > 0 && onToggleSources && (
@@ -440,6 +446,7 @@ function AssistantMessageItem({
       {/* 1. ASSISTANT ACTION BAR: DIRECTLY UNDER RESPONSE TEXT WITH SOURCES NEXT TO SHARE */}
       {!isStreaming && (
         <AssistantActions
+          messageId={message.id}
           content={cleanContent}
           webSources={webSources}
           documentSources={documentSources}
