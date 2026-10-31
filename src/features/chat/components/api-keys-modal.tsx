@@ -559,7 +559,7 @@ console.log(data);`;
             <div className="rounded-2xl bg-white dark:bg-slate-900 p-6 border border-slate-200/80 dark:border-slate-800 shadow-sm space-y-4">
               <div className="flex items-center justify-between text-sm">
                 <span className="font-bold text-slate-900 dark:text-slate-100 flex items-center gap-2">
-                  <Zap size={16} className="text-amber-500" /> Live Monthly Token Usage
+                  <Zap size={16} className="text-emerald-500 dark:text-emerald-400" /> Live Monthly Token Usage
                 </span>
                 <span className="font-mono text-xs text-emerald-700 dark:text-emerald-300 font-bold bg-emerald-50 dark:bg-emerald-950/40 px-2.5 py-0.5 rounded-md border border-emerald-200 dark:border-emerald-800/60">
                   {isGuest
