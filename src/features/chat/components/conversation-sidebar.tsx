@@ -223,7 +223,7 @@ export function ConversationSidebar() {
       )}
 
       <aside
-        className={`fixed inset-y-0 left-0 z-50 flex h-full flex-col border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 select-none shadow-2xl transition-transform duration-300 ease-in-out md:relative md:z-0 md:shadow-sm md:translate-x-0 ${
+        className={`fixed inset-y-0 left-0 z-50 flex h-full flex-col border-r border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 select-none shadow-2xl transition-transform duration-300 ease-in-out md:relative md:z-0 md:shadow-sm md:translate-x-0 ${
           isMobileSidebarOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
         } w-72 ${isCollapsed ? "md:w-20" : "md:w-72"}`}
       >
