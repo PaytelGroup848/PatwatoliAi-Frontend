@@ -109,6 +109,8 @@ export function ChatWindow() {
   const isManuallyStoppedRef = useRef(false);
   const streamingConversationIdRef = useRef<number | string | null>(null);
   const activeRequestIdRef = useRef<string | null>(null);
+  const thinkStartTimeRef = useRef<number | null>(null);
+  const thinkDurationRef = useRef<number | null>(null);
   const [prefillState, setPrefillState] = useState<{ text: string; webSearch?: boolean }>({ text: "" });
 
   const handleScroll = useCallback(() => {
@@ -197,6 +199,8 @@ export function ChatWindow() {
         activeRequestIdRef.current = data.request_id;
       }
       setStreaming(true);
+      thinkStartTimeRef.current = null;
+      thinkDurationRef.current = null;
       const currentMessages = useChatStore.getState().messages;
       const lastMsg = currentMessages[currentMessages.length - 1];
       if (!lastMsg || lastMsg.role !== "assistant") {
@@ -229,13 +233,33 @@ export function ChatWindow() {
       const currentMessages = useChatStore.getState().messages;
       const lastMsg = currentMessages[currentMessages.length - 1];
 
+      // Track live reasoning / think timing
+      let updatedDuration = undefined;
+      const fullText = (lastMsg?.content || "") + text;
+      const lowerFull = fullText.toLowerCase();
+
+      if (thinkStartTimeRef.current === null && (lowerFull.includes("<think>") || lowerFull.includes("<thought>"))) {
+        thinkStartTimeRef.current = Date.now();
+      }
+
+      if (
+        thinkStartTimeRef.current !== null &&
+        thinkDurationRef.current === null &&
+        (lowerFull.includes("</think>") || lowerFull.includes("</thought>"))
+      ) {
+        const duration = Number(((Date.now() - thinkStartTimeRef.current) / 1000).toFixed(1));
+        thinkDurationRef.current = duration;
+        updatedDuration = duration;
+      }
+
       if (lastMsg && lastMsg.role === "assistant") {
-        updateLastMessage(text);
+        updateLastMessage(text, updatedDuration !== undefined ? { reasoningDuration: updatedDuration } : undefined);
       } else {
         addMessage({
           id: uuid(),
           role: "assistant",
           content: text,
+          reasoningDuration: updatedDuration,
         });
       }
       return;

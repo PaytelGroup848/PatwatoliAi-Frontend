@@ -11,4 +11,6 @@ export interface ChatMessage {
   aspectRatio?: string;
   webSearch?: boolean;
   think?: boolean;
+  reasoningContent?: string;
+  reasoningDuration?: number;
 }

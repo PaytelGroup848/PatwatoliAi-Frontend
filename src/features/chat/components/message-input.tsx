@@ -491,7 +491,7 @@ export function MessageInput({
               className={cn(
                 "flex items-center gap-1 sm:gap-1.5 px-2 sm:px-2.5 py-1 rounded-full text-xs sm:text-[13px] transition-colors cursor-pointer select-none shrink-0",
                 think
-                  ? "bg-zinc-100 dark:bg-slate-800 text-zinc-900 dark:text-zinc-100 font-medium"
+                  ? "bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border border-emerald-500/30 font-medium shadow-2xs"
                   : "text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-100 hover:bg-zinc-100/60 dark:hover:bg-slate-800/60 font-normal"
               )}
             >
@@ -742,8 +742,8 @@ export function MessageInput({
                 className={cn(
                   "flex items-center gap-1 sm:gap-1.5 px-2 sm:px-2.5 py-1 rounded-full text-xs sm:text-[13px] transition-colors cursor-pointer select-none",
                   think
-                    ? "bg-zinc-100 text-zinc-900 font-medium"
-                    : "text-zinc-500 hover:text-zinc-800 hover:bg-zinc-100/60 font-normal"
+                    ? "bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 border border-emerald-500/30 font-medium shadow-2xs"
+                    : "text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-200 hover:bg-zinc-100/60 dark:hover:bg-slate-800/60 font-normal"
                 )}
               >
                 <Brain className="h-4 w-4 stroke-[1.8]" />

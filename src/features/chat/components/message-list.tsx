@@ -24,6 +24,8 @@ import {
 import { Bot, Sparkles, Copy, Check, Code2, Play, FileText, Pencil, Share2, ThumbsUp, ThumbsDown, Globe, ChevronDown } from "lucide-react";
 import { ChatImageCard } from "./chat-image-card";
 import { parseSources, stripCitations, type WebSourceItem, type DocumentSourceItem } from "../utils/source-parser";
+import { parseReasoning } from "../utils/reasoning-parser";
+import { ReasoningAccordion } from "./reasoning-accordion";
 import { SourcesDropdown } from "./sources-dropdown";
 import { RecommendedSuggestions } from "./recommended-suggestions";
 
@@ -270,9 +272,19 @@ function AssistantMessageItem({
   onSuggestionClick,
 }: AssistantMessageItemProps) {
   const [isSourcesOpen, setIsSourcesOpen] = useState(false);
-  const { cleanContent, webSources, documentSources, sourceIndexSet, suggestions } = useMemo(
-    () => parseSources(message.content),
+
+  // 1. Separate Chain-of-Thought reasoning from answer content
+  const {
+    cleanContent: contentWithoutReasoning,
+    reasoningContent,
+    isThinkingActive,
+  } = useMemo(
+    () => parseReasoning(message.content),
     [message.content]
+  );
+  const { cleanContent, webSources, documentSources, sourceIndexSet, suggestions } = useMemo(
+    () => parseSources(contentWithoutReasoning),
+    [contentWithoutReasoning]
   );
 
   const displayContent = useMemo(
@@ -347,20 +359,21 @@ function AssistantMessageItem({
   return (
     <div className="flex flex-col items-start w-full max-w-3xl">
       <div className="w-full text-[15px] leading-7 overflow-x-auto text-slate-800 dark:text-slate-100 bg-transparent py-1">
-        {/* LOVABLE AI RESPONSE EXTENSIONS */}
+        {/* 1. DYNAMIC REASONING ACCORDION (DEEPSEEK-R1 / OPENAI O1 STANDARD) */}
+        {(reasoningContent || (isStreaming && isLastMessage && isThinkingActive)) && (
+          <ReasoningAccordion
+            reasoning={reasoningContent || ""}
+            isStreaming={isStreaming && isLastMessage && isThinkingActive}
+            durationSeconds={message.reasoningDuration}
+          />
+        )}
+        {/* ACTION SUMMARY CARD */}
         {message.role === "assistant" && message.content.includes("```") && (
           <div className="mb-3 flex flex-col gap-2.5">
-            {/* THOUGHT DURATION BADGE */}
-            <div className="flex items-center gap-1.5 text-xs text-slate-500 font-mono font-medium">
-              <Sparkles size={12} className="text-emerald-600" />
-              <span>Thought for 2s</span>
-            </div>
-
-            {/* ACTION SUMMARY CARD */}
-            <div className="flex items-center justify-between rounded-xl border border-slate-200 bg-slate-50/80 p-3 shadow-2xs">
+            <div className="flex items-center justify-between rounded-xl border border-slate-200/80 dark:border-slate-800/80 bg-slate-50/80 dark:bg-slate-900/60 p-3 shadow-2xs">
               <div className="flex items-center gap-2">
                 <div className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-                <span className="text-xs font-semibold text-slate-800">
+                <span className="text-xs font-semibold text-slate-800 dark:text-slate-200">
                   Generated Code Component
                 </span>
               </div>
@@ -372,7 +385,7 @@ function AssistantMessageItem({
                       onRunPreview(codeMatch[1], "html");
                     }
                   }}
-                  className="rounded-lg bg-white px-3 py-1 text-xs font-semibold text-emerald-700 border border-slate-200 shadow-2xs hover:bg-emerald-50 transition-all cursor-pointer"
+                  className="rounded-lg bg-white dark:bg-slate-800 px-3 py-1 text-xs font-semibold text-emerald-700 dark:text-emerald-400 border border-slate-200 dark:border-slate-700 shadow-2xs hover:bg-emerald-50 dark:hover:bg-slate-700 transition-all cursor-pointer"
                 >
                   Preview
                 </button>

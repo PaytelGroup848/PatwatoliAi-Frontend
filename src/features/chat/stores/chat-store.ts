@@ -5,7 +5,6 @@ import {
 } from "../types/chat.types";
 
 interface ChatState {
-
   messages: ChatMessage[];
   isStreaming: boolean;
 
@@ -18,31 +17,27 @@ interface ChatState {
   ) => void;
 
   updateLastMessage: (
-    chunk: string
+    chunk: string,
+    meta?: { reasoningDuration?: number }
   ) => void;
 
   clearMessages: () => void;
   setStreaming: (
-  value: boolean
-) => void;
+    value: boolean
+  ) => void;
 }
 
 export const useChatStore =
   create<ChatState>((set) => ({
-
     messages: [],
     isStreaming: false,
 
-    setMessages: (
-      messages
-    ) =>
+    setMessages: (messages) =>
       set({
         messages,
-     }),
+      }),
 
-    addMessage: (
-      message
-    ) =>
+    addMessage: (message) =>
       set((state) => ({
         messages: [
           ...state.messages,
@@ -50,9 +45,8 @@ export const useChatStore =
         ],
       })),
 
-    updateLastMessage: (chunk) =>
+    updateLastMessage: (chunk, meta) =>
       set((state) => {
-
         const messages = [...state.messages];
 
         for (
@@ -64,14 +58,15 @@ export const useChatStore =
             messages[i].role ===
             "assistant"
           ) {
-
             messages[i] = {
               ...messages[i],
               content:
                 messages[i].content +
                 chunk,
+              ...(meta?.reasoningDuration !== undefined
+                ? { reasoningDuration: meta.reasoningDuration }
+                : {}),
             };
-
             break;
           }
         }
@@ -80,12 +75,11 @@ export const useChatStore =
           messages,
         };
       }),
-    setStreaming: (
-  value
-) =>
-  set({
-    isStreaming: value,
-  }),
+
+    setStreaming: (value) =>
+      set({
+        isStreaming: value,
+      }),
 
     clearMessages: () =>
       set({
