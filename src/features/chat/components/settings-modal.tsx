@@ -214,7 +214,7 @@ export function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                       >
                         {isDarkMode ? (
                           <>
-                            <Sun size={14} className="text-amber-400" />
+                            <Sun size={14} className="text-slate-600 dark:text-slate-300" />
                             <span>Switch to Day</span>
                           </>
                         ) : (
@@ -255,7 +255,7 @@ export function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                         : "border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 bg-white dark:bg-slate-800/40"
                     }`}
                   >
-                    <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-amber-50 text-amber-500 border border-amber-200 shadow-xs mb-3">
+                    <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 shadow-xs mb-3">
                       <Sun size={22} className="transition-transform duration-200 hover:rotate-12" />
                     </div>
                     <span className="text-xs font-bold text-slate-900 dark:text-white">Day Mode</span>
@@ -334,7 +334,7 @@ export function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                     >
                       {isDarkMode ? (
                         <>
-                          <Sun size={15} className="text-amber-400" />
+                          <Sun size={15} className="text-slate-600 dark:text-slate-300" />
                           <span>Switch to Day</span>
                         </>
                       ) : (
@@ -351,7 +351,7 @@ export function SettingsModal({ isOpen, onClose }: SettingsModalProps) {
                   <div className="flex items-center justify-between">
                     <div>
                       <h4 className="text-xs font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
-                        <Sun size={14} className="text-amber-500" />
+                        <Sun size={14} className="text-emerald-600 dark:text-emerald-400" />
                         <span>Display Brightness & Eye-Comfort</span>
                       </h4>
                       <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">
