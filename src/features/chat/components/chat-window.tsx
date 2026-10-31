@@ -654,17 +654,17 @@ export function ChatWindow() {
 
           <div className="w-full max-w-2xl px-1 sm:px-0">
             {isGuest && guestCreditsRemaining === 0 && (
-              <div className="flex items-center justify-between gap-2 rounded-xl bg-amber-50 border border-amber-200 px-4 py-2.5 text-xs text-amber-900 mb-3 shadow-xs">
+              <div className="flex items-center justify-between gap-3 rounded-xl border border-emerald-500/25 dark:border-emerald-500/30 bg-emerald-500/10 dark:bg-emerald-950/40 px-4 py-2.5 text-xs text-slate-800 dark:text-slate-200 mb-3 shadow-xs backdrop-blur-md">
                 <div className="flex items-center gap-2">
-                  <Sparkles size={14} className="text-amber-600 shrink-0" />
-                  <span><strong>Free credits limit reached:</strong> Sign in or create an account to keep chatting.</span>
+                  <Sparkles size={14} className="text-emerald-600 dark:text-emerald-400 shrink-0 animate-pulse" />
+                  <span><strong className="font-semibold text-slate-900 dark:text-white">Free credits limit reached:</strong> Sign in or create an account to keep chatting.</span>
                 </div>
                 <button
                   onClick={() => {
                     setAuthModalReason("credits_limit");
                     setIsAuthModalOpen(true);
                   }}
-                  className="shrink-0 px-3 py-1 rounded-lg bg-amber-600 hover:bg-amber-500 text-white font-semibold transition cursor-pointer"
+                  className="shrink-0 px-3.5 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-semibold transition-all shadow-xs active:scale-95 cursor-pointer"
                 >
                   Sign In / Register
                 </button>
@@ -790,17 +790,17 @@ export function ChatWindow() {
             <div className="shrink-0 w-full px-2 sm:px-6 pb-[max(0.75rem,env(safe-area-inset-bottom))] sm:pb-4 pt-2 bg-linear-to-t from-white via-white/95 to-transparent dark:from-slate-950 dark:via-slate-950/95 border-t border-slate-100/60 dark:border-slate-800/60">
               <div className="max-w-4xl mx-auto w-full">
                 {isGuest && guestCreditsRemaining === 0 && (
-                  <div className="flex items-center justify-between gap-2 rounded-xl bg-amber-50 border border-amber-200 px-4 py-2 text-xs text-amber-900 mb-2 shadow-xs">
+                  <div className="flex items-center justify-between gap-3 rounded-xl border border-emerald-500/25 dark:border-emerald-500/30 bg-emerald-500/10 dark:bg-emerald-950/40 px-4 py-2 text-xs text-slate-800 dark:text-slate-200 mb-2 shadow-xs backdrop-blur-md">
                     <div className="flex items-center gap-2">
-                      <Sparkles size={14} className="text-amber-600 shrink-0" />
-                      <span><strong>Free credits limit reached:</strong> Sign in or create an account to keep chatting.</span>
+                      <Sparkles size={14} className="text-emerald-600 dark:text-emerald-400 shrink-0 animate-pulse" />
+                      <span><strong className="font-semibold text-slate-900 dark:text-white">Free credits limit reached:</strong> Sign in or create an account to keep chatting.</span>
                     </div>
                     <button
                       onClick={() => {
                         setAuthModalReason("credits_limit");
                         setIsAuthModalOpen(true);
                       }}
-                      className="shrink-0 px-3 py-1 rounded-lg bg-amber-600 hover:bg-amber-500 text-white font-semibold transition cursor-pointer"
+                      className="shrink-0 px-3.5 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-semibold transition-all shadow-xs active:scale-95 cursor-pointer"
                     >
                       Sign In / Register
                     </button>
