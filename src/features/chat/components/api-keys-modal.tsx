@@ -294,9 +294,6 @@ console.log(data);`;
                     <Lock size={24} />
                   </div>
                   <div>
-                    <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-50 dark:bg-amber-950/40 px-2.5 py-0.5 text-[11px] font-bold text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800/60 mb-1.5">
-                      🔒 Developer Account Required
-                    </span>
                     <h3 className="text-lg font-bold text-slate-900 dark:text-slate-100">
                       Unlock Patwatoli Developer Platform
                     </h3>
