@@ -18,12 +18,15 @@ import {
   X,
   LogIn,
   Languages,
+  Pencil,
+  Check,
 } from "lucide-react";
 
 import {
   getConversations,
   getConversationMessages,
   deleteConversation,
+  updateConversationTitle,
 } from "../services/conversation-service";
 
 import { useConversationStore } from "../stores/conversation-store";
@@ -40,7 +43,52 @@ import { AuthModal } from "@/components/auth/auth-modal";
 import { SettingsModal } from "./settings-modal";
 import { ApiKeysModal } from "./api-keys-modal";
 import { TranslationStudioModal } from "@/features/translation/components/translation-studio-modal";
+import { Conversation } from "../types/conversation.types";
 
+export function formatConversationTitle(title?: string | null): string {
+  if (!title) return "New Conversation";
+  const cleaned = title.replace(/^['"`\s]+|['"`\s]+$/g, "").trim();
+  if (!cleaned || cleaned === "''" || cleaned === '""' || cleaned.toLowerCase() === "untitled chat") {
+    return "New Conversation";
+  }
+  return cleaned.charAt(0).toUpperCase() + cleaned.slice(1);
+}
+
+interface GroupedConversations {
+  today: Conversation[];
+  yesterday: Conversation[];
+  last7Days: Conversation[];
+  older: Conversation[];
+}
+
+function groupConversationsByDate(conversations: Conversation[]): GroupedConversations {
+  const now = new Date();
+  const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
+  const yesterdayStart = todayStart - 86400000;
+  const last7DaysStart = todayStart - 86400000 * 7;
+
+  const groups: GroupedConversations = {
+    today: [],
+    yesterday: [],
+    last7Days: [],
+    older: [],
+  };
+
+  for (const conv of conversations) {
+    const convTime = conv.created_at ? new Date(conv.created_at).getTime() : now.getTime();
+    if (convTime >= todayStart) {
+      groups.today.push(conv);
+    } else if (convTime >= yesterdayStart) {
+      groups.yesterday.push(conv);
+    } else if (convTime >= last7DaysStart) {
+      groups.last7Days.push(conv);
+    } else {
+      groups.older.push(conv);
+    }
+  }
+
+  return groups;
+}
 
 export function ConversationSidebar() {
   const router = useRouter();
@@ -207,9 +255,162 @@ export function ConversationSidebar() {
     }
   }
 
+  const [editingId, setEditingId] = useState<number | null>(null);
+  const [editTitle, setEditTitle] = useState("");
+
+  const startRename = (conv: Conversation, e: React.MouseEvent) => {
+    e.stopPropagation();
+    setEditingId(conv.id);
+    setEditTitle(formatConversationTitle(conv.title));
+  };
+
+  const handleSaveRename = async (id: number) => {
+    const trimmed = editTitle.trim();
+    if (trimmed) {
+      useConversationStore.getState().updateTitle(id, trimmed);
+      try {
+        await updateConversationTitle(id, trimmed);
+      } catch (err) {
+        console.error("Failed to rename conversation:", err);
+      }
+    }
+    setEditingId(null);
+  };
+
+  const handleCancelRename = () => {
+    setEditingId(null);
+  };
+
   const filteredConversations = conversations.filter(
     (c) => activeAssistantId === null || c.assistant_id === activeAssistantId
   );
+
+  const grouped = groupConversationsByDate(filteredConversations);
+
+  const renderConversationItem = (conversation: Conversation) => {
+    const isActive = activeConversationId === conversation.id;
+    const isEditing = editingId === conversation.id;
+    const displayTitle = formatConversationTitle(conversation.title);
+
+    if (isCollapsed) {
+      return (
+        <button
+          key={conversation.id}
+          type="button"
+          onClick={async () => {
+            try {
+              const messages = await getConversationMessages(conversation.id);
+              setActiveConversation(conversation.id);
+              setMessages(messages);
+            } catch (error) {
+              console.error(error);
+              setActiveConversation(null);
+              setMessages([]);
+            }
+          }}
+          className={`flex h-9 w-9 items-center justify-center rounded-xl mx-auto transition-all cursor-pointer ${
+            isActive
+              ? "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-semibold"
+              : "text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800/60"
+          }`}
+          title={displayTitle}
+        >
+          <MessageSquare size={16} />
+        </button>
+      );
+    }
+
+    return (
+      <div
+        key={conversation.id}
+        onClick={async () => {
+          if (isEditing) return;
+          setMobileSidebarOpen(false);
+          try {
+            const messages = await getConversationMessages(conversation.id);
+            setActiveConversation(conversation.id);
+            setMessages(messages);
+          } catch (error) {
+            console.error(error);
+            setActiveConversation(null);
+            setMessages([]);
+          }
+        }}
+        className={`group relative flex items-center justify-between rounded-lg px-2.5 py-2 text-xs transition-colors duration-150 cursor-pointer ${
+          isActive
+            ? "bg-emerald-500/10 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-200 font-medium"
+            : "text-slate-600 dark:text-slate-300 hover:bg-slate-100/80 dark:hover:bg-slate-800/60 hover:text-slate-900 dark:hover:text-white"
+        }`}
+        title={displayTitle}
+      >
+        <div className="flex items-center gap-2 overflow-hidden flex-1 mr-1">
+          {isActive ? (
+            <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0" />
+          ) : (
+            <MessageSquare size={13} className="text-slate-400 shrink-0 group-hover:text-slate-500 dark:group-hover:text-slate-300 transition-colors" />
+          )}
+
+          {isEditing ? (
+            <div className="flex items-center gap-1 w-full" onClick={(e) => e.stopPropagation()}>
+              <input
+                type="text"
+                autoFocus
+                value={editTitle}
+                onChange={(e) => setEditTitle(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") handleSaveRename(conversation.id);
+                  if (e.key === "Escape") handleCancelRename();
+                }}
+                className="w-full bg-white dark:bg-slate-900 border border-emerald-500 rounded px-1.5 py-0.5 text-xs text-slate-900 dark:text-white focus:outline-hidden"
+              />
+              <button
+                type="button"
+                onClick={() => handleSaveRename(conversation.id)}
+                className="p-1 hover:text-emerald-600 text-slate-500 cursor-pointer"
+                title="Save"
+              >
+                <Check size={12} />
+              </button>
+              <button
+                type="button"
+                onClick={handleCancelRename}
+                className="p-1 hover:text-red-500 text-slate-500 cursor-pointer"
+                title="Cancel"
+              >
+                <X size={12} />
+              </button>
+            </div>
+          ) : (
+            <span className="truncate">{displayTitle}</span>
+          )}
+        </div>
+
+        {!isEditing && (
+          <div className="flex items-center gap-0.5 opacity-0 group-hover:opacity-100 transition-opacity shrink-0">
+            <button
+              type="button"
+              onClick={(e) => startRename(conversation, e)}
+              className="p-1 text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition cursor-pointer rounded hover:bg-slate-200/60 dark:hover:bg-slate-700/60"
+              title="Rename conversation"
+            >
+              <Pencil size={12} />
+            </button>
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                handleDeleteChat(conversation.id);
+              }}
+              className="p-1 text-slate-400 hover:text-red-500 transition cursor-pointer rounded hover:bg-red-50 dark:hover:bg-red-950/40"
+              title="Delete conversation"
+            >
+              <Trash2 size={12} />
+            </button>
+          </div>
+        )}
+      </div>
+    );
+  };
 
   return (
     <>
@@ -390,60 +591,55 @@ export function ConversationSidebar() {
       </div>
 
       {/* CONVERSATION HISTORY */}
-      <div className="flex-1 overflow-y-auto px-3.5 py-1 space-y-1">
-        {!isCollapsed && (
-          <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 px-2 py-1">
-            Recent Chats
-          </div>
-        )}
-
+      <div className="flex-1 overflow-y-auto px-3 py-1 space-y-3">
         {filteredConversations.length === 0 ? (
           !isCollapsed && (
-            <div className="px-3 py-8 text-center text-xs text-slate-400 italic">
+            <div className="px-3 py-8 text-center text-xs text-slate-400 dark:text-slate-500 italic">
               No chats yet for {activeAssistant?.name || "this model"}. Click &quot;New Conversation&quot; to start!
             </div>
           )
+        ) : isCollapsed ? (
+          <div className="space-y-1.5 py-1">
+            {filteredConversations.map(renderConversationItem)}
+          </div>
         ) : (
-          filteredConversations.map((conversation) => {
-            const isActive = activeConversationId === conversation.id;
-            return (
-              <div
-                key={conversation.id}
-                onClick={async () => {
-                  setMobileSidebarOpen(false);
-                  try {
-                    const messages = await getConversationMessages(conversation.id);
-                    setActiveConversation(conversation.id);
-                    setMessages(messages);
-                  } catch (error) {
-                    console.error(error);
-                    setActiveConversation(null);
-                    setMessages([]);
-                  }
-                }}
-                className={`group flex items-center ${isCollapsed ? "justify-center p-2.5" : "justify-between px-3 py-2.5"} rounded-xl text-sm cursor-pointer transition-all duration-150 ${isActive ? "bg-emerald-50 dark:bg-emerald-950/60 text-emerald-800 dark:text-emerald-300 font-semibold border border-emerald-200/80 dark:border-emerald-800 shadow-sm" : "text-slate-600 dark:text-slate-300 border border-transparent hover:bg-slate-100 dark:hover:bg-slate-800/70 hover:text-slate-900 dark:hover:text-white"}`}
-                title={isCollapsed ? conversation.title || "Untitled Chat" : undefined}
-              >
-                {!isCollapsed ? (
-                  <>
-                    <span className="truncate pr-2">{conversation.title || "Untitled Chat"}</span>
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleDeleteChat(conversation.id);
-                      }}
-                      className="opacity-0 group-hover:opacity-100 p-1 text-slate-400 hover:text-red-500 transition"
-                      title="Delete chat"
-                    >
-                      <Trash2 size={14} />
-                    </button>
-                  </>
-                ) : (
-                  <MessageSquare size={16} className={isActive ? "text-emerald-600" : "text-slate-400"} />
-                )}
+          <>
+            {grouped.today.length > 0 && (
+              <div className="space-y-0.5">
+                <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 px-2.5 py-1">
+                  Today
+                </div>
+                {grouped.today.map(renderConversationItem)}
               </div>
-            );
-          })
+            )}
+
+            {grouped.yesterday.length > 0 && (
+              <div className="space-y-0.5">
+                <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 px-2.5 py-1">
+                  Yesterday
+                </div>
+                {grouped.yesterday.map(renderConversationItem)}
+              </div>
+            )}
+
+            {grouped.last7Days.length > 0 && (
+              <div className="space-y-0.5">
+                <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 px-2.5 py-1">
+                  Previous 7 Days
+                </div>
+                {grouped.last7Days.map(renderConversationItem)}
+              </div>
+            )}
+
+            {grouped.older.length > 0 && (
+              <div className="space-y-0.5">
+                <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 px-2.5 py-1">
+                  Older
+                </div>
+                {grouped.older.map(renderConversationItem)}
+              </div>
+            )}
+          </>
         )}
       </div>
 

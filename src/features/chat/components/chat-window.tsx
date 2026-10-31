@@ -499,7 +499,14 @@ export function ChatWindow() {
     // Auto create conversation on demand if currently in lazy draft mode (activeConversationId === null)
     if (!conversationId) {
       try {
-        const initialTitle = finalContent.slice(0, 40).trim() || "New Chat";
+        let initialTitle = finalContent.replace(/^['"`\s]+|['"`\s]+$/g, "").replace(/\n+/g, " ").trim();
+        if (initialTitle.length > 36) {
+          const slice = initialTitle.slice(0, 36);
+          const lastSpace = slice.lastIndexOf(" ");
+          initialTitle = (lastSpace > 16 ? slice.slice(0, lastSpace) : slice) + "...";
+        }
+        initialTitle = initialTitle ? initialTitle.charAt(0).toUpperCase() + initialTitle.slice(1) : "New Conversation";
+
         const newConversation = await createConversation(activeAssistantId, initialTitle);
         conversationId = newConversation.id;
         useConversationStore.getState().setActiveConversation(conversationId);
@@ -541,7 +548,14 @@ export function ChatWindow() {
     });
 
     if (shouldGenerateTitle && conversationId) {
-      const generatedTitle = finalContent.slice(0, 40).trim();
+      let generatedTitle = finalContent.replace(/^['"`\s]+|['"`\s]+$/g, "").replace(/\n+/g, " ").trim();
+      if (generatedTitle.length > 36) {
+        const slice = generatedTitle.slice(0, 36);
+        const lastSpace = slice.lastIndexOf(" ");
+        generatedTitle = (lastSpace > 16 ? slice.slice(0, lastSpace) : slice) + "...";
+      }
+      generatedTitle = generatedTitle ? generatedTitle.charAt(0).toUpperCase() + generatedTitle.slice(1) : "New Conversation";
+
       useConversationStore.getState().updateTitle(conversationId, generatedTitle);
       updateConversationTitle(conversationId, generatedTitle).catch(console.error);
     }
