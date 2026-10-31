@@ -422,8 +422,8 @@ export function AuthModal({
         <div className="flex flex-col items-center text-center mb-6">
           {reason === "credits_limit" ? (
             <>
-              <div className="flex items-center gap-1.5 rounded-full bg-amber-500/10 px-3 py-1 text-xs font-semibold text-amber-600 dark:text-amber-400 border border-amber-500/20 mb-3 shadow-xs">
-                <Sparkles size={13} className="text-amber-500 fill-amber-500" />
+              <div className="flex items-center gap-1.5 rounded-full bg-emerald-500/10 dark:bg-emerald-500/15 px-3 py-1 text-xs font-semibold text-emerald-700 dark:text-emerald-300 border border-emerald-500/25 dark:border-emerald-500/30 mb-3 shadow-xs">
+                <Sparkles size={13} className="text-emerald-600 dark:text-emerald-400 fill-emerald-500/20" />
                 <span>Free Guest Limit Reached</span>
               </div>
               <h2 className="text-xl sm:text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white">
