@@ -610,10 +610,10 @@ export function ChatWindow() {
     <div className="relative flex h-full w-full flex-col overflow-hidden bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-200">
       {/* Patwatoli AI Emerald Green Wave Background */}
       <div className="absolute inset-0 -z-10 overflow-hidden bg-white dark:bg-slate-950 pointer-events-none transition-colors duration-200">
-        <div className="absolute -top-32 left-1/2 h-130 w-275 -translate-x-1/2 rounded-full bg-emerald-200/40 dark:bg-emerald-950/20 blur-[120px]" />
-        <div className="absolute top-1/4 -left-40 h-105 w-180 rounded-full bg-teal-200/30 dark:bg-teal-950/20 blur-[130px]" />
-        <div className="absolute -bottom-40 -left-20 h-130 w-205 rounded-full bg-emerald-300/30 dark:bg-emerald-950/20 blur-[120px]" />
-        <div className="absolute -bottom-55 -right-25 h-140 w-215 rounded-full bg-teal-100/50 dark:bg-teal-950/20 blur-[120px]" />
+        <div className="absolute -top-32 left-1/2 h-130 w-275 -translate-x-1/2 rounded-full bg-emerald-200/40 dark:bg-emerald-500/10 blur-[120px]" />
+        <div className="absolute top-1/4 -left-40 h-105 w-180 rounded-full bg-teal-200/30 dark:bg-teal-500/8 blur-[130px]" />
+        <div className="absolute -bottom-40 -left-20 h-130 w-205 rounded-full bg-emerald-300/30 dark:bg-emerald-500/8 blur-[120px]" />
+        <div className="absolute -bottom-55 -right-25 h-140 w-215 rounded-full bg-teal-100/50 dark:bg-teal-500/8 blur-[120px]" />
       </div>
 
       {isEmpty ? (
